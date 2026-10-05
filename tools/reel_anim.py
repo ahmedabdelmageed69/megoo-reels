@@ -38,15 +38,23 @@ def lines(s,cls,d0,step,anim='up .7s'):
         out.append(f'<div class="a" style="animation:{anim} {d0+k*step:.2f}s both cubic-bezier(.2,.8,.2,1)">{l}</div>')
     return ''.join(out)
 DUR=[4.2]+[5.8]*(n-2)+[5.2]
-THEMES=[
- dict(bg='#9C8BFF',fg='#15131A',hl='#C8F25A',hlfg='#15131A',badge='#FFD23F',badgefg='#15131A',blobs=('#C8F25A','#FF5A36','#FFD23F')),
- dict(bg='#C8F25A',fg='#15131A',hl='#15131A',hlfg='#C8F25A',badge='#15131A',badgefg='#C8F25A',blobs=('#9C8BFF','#FF5A36','#FFD23F')),
- dict(bg='#FFD23F',fg='#15131A',hl='#9C8BFF',hlfg='#15131A',badge='#15131A',badgefg='#FFD23F',blobs=('#FFB39F','#9C8BFF','#C8F25A')),
- dict(bg='#FFB39F',fg='#15131A',hl='#C8F25A',hlfg='#15131A',badge='#15131A',badgefg='#FFB39F',blobs=('#9C8BFF','#FF5A36','#FFD23F')),
- dict(bg='#15131A',fg='#F4F1FF',hl='#C8F25A',hlfg='#15131A',badge='#FFD23F',badgefg='#15131A',blobs=('#9C8BFF','#FF5A36','#C8F25A')),
- dict(bg='#FF5A36',fg='#15131A',hl='#FFD23F',hlfg='#15131A',badge='#15131A',badgefg='#FF5A36',blobs=('#FFD23F','#9C8BFF','#C8F25A')),
- dict(bg='#C8F25A',fg='#15131A',hl='#C8F25A',hlfg='#15131A',badge='#FFD23F',badgefg='#15131A',blobs=('#9C8BFF','#FF5A36','#FFD23F')),
+import datetime
+def _day():
+    try: return datetime.date.fromisoformat(os.path.basename(os.path.dirname(os.environ['POST']))).toordinal()
+    except Exception: return datetime.date.today().toordinal()
+# soft palettes, one per day (rotates), so every reel looks different
+PALETTES=[
+ dict(ink='#2A1A2E',bgs=['#FFC8A2','#F4A7B9','#FFD6A5','#E7A9C4','#FFB59E'],acc=['#FFF3B0','#C9F0E3','#FFFFFF']),
+ dict(ink='#0B2545',bgs=['#A9D6E5','#BFE3D0','#8ECAE6','#CDE7F0','#9AD1D4'],acc=['#FFE8A3','#FFFFFF','#FFC8B8']),
+ dict(ink='#1E1B3A',bgs=['#CDB4FF','#BDE0FE','#FFC8DD','#E0C3FC','#D7C8FF'],acc=['#FDFFB6','#FFFFFF','#CAFFBF']),
+ dict(ink='#12372A',bgs=['#B7E4C7','#D8F3DC','#95D5B2','#CDEAC0','#A8DADC'],acc=['#FFF1A8','#FFFFFF','#FFD6C0']),
+ dict(ink='#3A2318',bgs=['#F6D8AE','#F9C6A5','#FBE3C0','#F2B5A0','#EBCFA0'],acc=['#FFFFFF','#CDE8E5','#FFF3B0']),
 ]
+PAL=PALETTES[_day()%len(PALETTES)]
+THEMES=[]
+for k in range(7):
+    bg=PAL['bgs'][k%5]; ink=PAL['ink']; acc=PAL['acc']
+    THEMES.append(dict(bg=bg,fg=ink,hl=(ink if k%2 else acc[k%3]),hlfg=(bg if k%2 else ink),badge=ink,badgefg=bg,blobs=(acc[(k+1)%3],PAL['bgs'][(k+2)%5],acc[(k+2)%3])))
 def theme_css(i):
     t=THEMES[i%len(THEMES)]; b1,b2,b3=t['blobs']
     return f'''body{{background:{t['bg']};color:{t['fg']}}}
@@ -58,7 +66,7 @@ def theme_css(i):
 .b1{{background:{b1}}} .b2{{background:{b2}}} .b3{{background:{b3}}}
 .mark i{{box-shadow:0 0 0 3px rgba(21,19,26,.18)}}
 .tag{{background:{t['fg']};color:{t['bg']}}}
-.cta-box .body{{color:#E4DEFF}} .cta-box h2 em{{background:#C8F25A;color:#15131A}}'''
+.cta-box{{background:{t['fg']}}} .cta-box h2,.cta-box .body,.cta-box .site2{{color:{t['bg']}}} .cta-box h2 em{{background:{t['hl']};color:{t['fg']}}} .site2 b{{color:{t['hl']}}}'''
 def page(i,s):
     t=s.get('type','point'); D=DUR[i]
     if t=='cover':
