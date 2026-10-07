@@ -24,3 +24,6 @@ To post a specific day by hand, go to **Actions â†’ Publish Reel to Instagram â†
 tools/setup_fonts.sh                       # once
 python3 tools/build.py post.json reels/2026-10-05   # needs python3, numpy, scipy, playwright+chromium, ffmpeg
 ```
+
+
+<!-- Security scan triggered at 2026-10-07 11:53:32 -->
