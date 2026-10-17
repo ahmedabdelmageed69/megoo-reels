@@ -28,8 +28,8 @@ PROGS=[[(45,[57,60,64]),(41,[57,60,65]),(48,[55,60,64]),(43,[55,59,62])],
        [(48,[55,60,64]),(43,[55,59,62]),(45,[57,60,64]),(41,[57,60,65])],
        [(41,[57,60,65]),(48,[55,60,64]),(43,[55,59,62]),(45,[57,60,64])]]
 chords=[(r+SH,[m+SH for m in ch]) for r,ch in PROGS[(SEED//7)%3]]
-L=4.5
-for i in range(9):
+L=3.0 if os.environ.get('MUSIC_MODE')=='am' else 4.5
+for i in range(14 if L<4 else 9):
     root,ch=chords[i%4]; st=i*L-0.3 if i else 0
     if st>=T: break
     mix+=voice(midi(root),st,L+0.6,0.7,'m')
@@ -38,6 +38,15 @@ for i in range(9):
     for j in range(2):
         m=int(rng.choice(ch))+12
         if st+j*2.2<T-1: mix+=voice(midi(m),st+j*2.2+0.4,2.6,0.16,'m')
+if os.environ.get('MUSIC_MODE')=='am':   # morning: light arpeggio plucks on top of the pad
+    def pluck(f0,start,amp):
+        n=int(0.7*sr); tt=np.arange(n)/sr; y=np.zeros(N); s0=int(start*sr)
+        if s0>=N: return y
+        sig=(np.sin(2*np.pi*f0*tt)+.3*np.sin(4*np.pi*f0*tt))*np.exp(-tt*7)*np.minimum(tt/0.005,1)
+        e=min(N,s0+n); y[s0:e]=(sig*amp)[:e-s0]; return y
+    for k in range(int(T/0.375)):
+        root,ch=chords[int(k*0.375/L)%4]; pat=[0,1,2,1,2,1,0,2]
+        mix+=pluck(midi(ch[pat[k%8]]+12),k*0.375,0.16 if k%4 else 0.22)
 # reverb
 ir_t=np.arange(int(2.2*sr))/sr; ir=rng.standard_normal(len(ir_t))*np.exp(-ir_t*2.8); ir[0]=1
 wet=sg.fftconvolve(mix,ir)[:N]; wet/=np.abs(wet).max()+1e-9; dry=mix/np.abs(mix).max()

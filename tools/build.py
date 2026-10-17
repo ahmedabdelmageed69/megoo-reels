@@ -23,7 +23,7 @@ d = os.path.dirname(post); am = os.path.basename(d) == 'am'   # morning Reel liv
 if am: d = os.path.dirname(d)
 try: seed = datetime.date.fromisoformat(os.path.basename(d)).toordinal() * 2 + am
 except Exception: seed = datetime.date.today().toordinal() * 2
-subprocess.run([sys.executable, f'{HERE}/hum.py', str(total + 2), f'{tmp}/hum.wav'], env={**os.environ, 'MUSIC_SEED': str(seed)}, check=True)
+subprocess.run([sys.executable, f'{HERE}/hum.py', str(total + 2), f'{tmp}/hum.wav'], env={**os.environ, 'MUSIC_SEED': str(seed), 'MUSIC_MODE': 'am' if am else ''}, check=True)
 trans = [['smoothleft', 'circleopen', 'smoothleft', 'slideleft'], ['fade', 'wipeup', 'fadeblack', 'smoothup'],
          ['slideright', 'radial', 'wipeleft', 'smoothright'], ['circleclose', 'dissolve', 'slidedown', 'zoomin']][seed % 4]
 args = ['ffmpeg', '-y', '-v', 'error']

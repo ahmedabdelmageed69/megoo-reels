@@ -59,6 +59,7 @@ PALETTES=[
 ]
 SEED=_day()
 PAL=PALETTES[SEED%len(PALETTES)]
+AM=os.environ.get('REEL_MODE')=='am' or os.path.basename(os.path.dirname(os.environ.get('POST','')))=='am'   # 8 AM Reel = futuristic look
 STYLE=SEED%4   # 0 soft, 1 round, 2 sharp, 3 outline; also picks the entry animation
 ENTER=['up','zoom','flip','inR'][STYLE]
 BODYIN=['inR','up','zoom','flip'][STYLE]
@@ -93,6 +94,27 @@ body::before{{content:"";position:absolute;inset:0;background:repeating-linear-g
 .main h1 em,.main h2 em{{border-radius:999px}}
 body::before{{content:"";position:absolute;inset:0;background:linear-gradient({fg}14 2px,transparent 2px) 0 0/72px 72px,linear-gradient(90deg,{fg}14 2px,transparent 2px) 0 0/72px 72px}}""",
     ][STYLE]
+NEON=[('#00F0FF','#FF2BD6'),('#7CFF6B','#00B7FF'),('#FFB000','#FF3D81')]
+def future_css(i):
+    c1,c2=NEON[SEED%3]; c=(c1,c2)[i%2]
+    return f"""body{{background:radial-gradient(900px 700px at 85% 8%,{c1}33,transparent 60%),radial-gradient(900px 800px at 5% 95%,{c2}30,transparent 60%),#070B1A!important;color:#E8F6FF!important}}
+.top,.top .cnt,.handle,.sub,.body,.main h1,.main h2{{color:#E8F6FF!important}} .top .cnt{{opacity:.7}}
+.top .site,.handle,.tag,.num,.kicker{{font-family:Mono!important}}
+.main h1 em,.main h2 em{{background:{c}!important;color:#070B1A!important;border-radius:10px!important;transform:none!important;box-shadow:0 0 38px {c}aa,0 0 90px {c}55}}
+.main h1,.main h2{{text-shadow:0 0 26px {c1}66}}
+.kicker{{background:transparent!important;color:{c1}!important;border:3px solid {c1};border-radius:6px!important;box-shadow:0 0 24px {c1}88}}
+.num{{background:transparent!important;color:{c1}!important;border:3px solid {c1}!important;border-radius:6px!important;box-shadow:0 0 24px {c1}88,inset 0 0 18px {c1}44}}
+.tag{{background:transparent!important;color:{c2}!important;border:3px solid {c2}!important;border-radius:6px!important;box-shadow:0 0 22px {c2}88}}
+.ghost{{color:transparent!important;-webkit-text-stroke:4px {c1}55;filter:drop-shadow(0 0 22px {c1}66)}}
+.blob{{background:radial-gradient(circle,{c1}88,transparent 70%)!important;border:0!important;border-radius:50%!important;filter:blur(18px)}} .b2{{background:radial-gradient(circle,{c2}88,transparent 70%)!important}}
+.prog{{background:linear-gradient(90deg,{c1},{c2})!important;height:10px;box-shadow:0 0 22px {c1}}}
+.cta-box{{background:#0E1530!important;border:3px solid {c1};box-shadow:0 0 50px {c1}66,inset 0 0 40px {c1}22;border-radius:18px!important}}
+.cta-box h2,.cta-box .body,.cta-box .site2{{color:#E8F6FF!important}} .site2 b{{color:{c1}!important}}
+.icons span{{background:transparent!important;border:2px solid {c2};box-shadow:0 0 18px {c2}66}}
+.mark i{{box-shadow:0 0 18px currentColor}} .mark .a{{background:{c1}}} .mark .b{{background:{c2}}} .mark .c{{background:#E8F6FF}} .mark .d{{background:{c1}}}
+body::before{{content:"";position:absolute;left:-50%;right:-50%;bottom:0;height:62%;background:linear-gradient({c1}40 2px,transparent 2px) 0 0/90px 90px,linear-gradient(90deg,{c1}40 2px,transparent 2px) 0 0/90px 90px;transform:perspective(520px) rotateX(62deg);transform-origin:bottom;-webkit-mask-image:linear-gradient(transparent,#000);animation:gridmove 3s linear infinite}}
+body::after{{content:"";position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 5px,#00000026 5px 6px);pointer-events:none;z-index:5}}
+@keyframes gridmove{{to{{background-position:0 90px,0 90px}}}}"""
 def page(i,s):
     t=s.get('type','point'); D=DUR[i]
     if t=='cover':
@@ -115,7 +137,7 @@ def page(i,s):
               + (f'<div class="tag a" style="animation:pop .5s {1.1+len(bl)*1.1:.2f}s both">{M.esc(s["tag"],False)}</div>' if s.get('tag') else ''))
         ghost=f'<div class="ghost">{i}</div>'
     mark='<div class="mark"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>'
-    return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}{ANIM}{theme_css(i)}{style_css(i)}</style></head><body>
+    return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}{ANIM}{theme_css(i)}{style_css(i)}{future_css(i) if AM else ''}</style></head><body>
 <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>{ghost}
 <div class="prog" style="animation-duration:{D}s"></div>
 <div class="wrap"><div class="top"><span class="site">megoo.me</span><span class="cnt">{i+1}/{n}</span></div>
