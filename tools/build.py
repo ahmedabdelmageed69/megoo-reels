@@ -16,13 +16,16 @@ if 'OVERFLOW' in r.stdout: sys.exit('OVERFLOW: shorten the slide text and rebuil
 # 2) reel frames
 tmp = tempfile.mkdtemp()
 subprocess.run([sys.executable, f'{HERE}/reel_anim.py', f'{tmp}/frames'], env={**os.environ, 'POST': post}, check=True)
-DUR = [4.2] + [5.8] * (n - 2) + [5.2]; X = 0.45
+DUR = [3.4] + [5.2] * (n - 2) + [4.6]; X = 0.45
 total = sum(DUR) - (n - 1) * X
 import datetime
-try: seed = datetime.date.fromisoformat(os.path.basename(os.path.dirname(post))).toordinal()
-except Exception: seed = datetime.date.today().toordinal()
+d = os.path.dirname(post); am = os.path.basename(d) == 'am'   # morning Reel lives in reels/<date>/am/
+if am: d = os.path.dirname(d)
+try: seed = datetime.date.fromisoformat(os.path.basename(d)).toordinal() * 2 + am
+except Exception: seed = datetime.date.today().toordinal() * 2
 subprocess.run([sys.executable, f'{HERE}/hum.py', str(total + 2), f'{tmp}/hum.wav'], env={**os.environ, 'MUSIC_SEED': str(seed)}, check=True)
-trans = ['smoothleft', 'circleopen', 'smoothleft', 'slideleft']
+trans = [['smoothleft', 'circleopen', 'smoothleft', 'slideleft'], ['fade', 'wipeup', 'fadeblack', 'smoothup'],
+         ['slideright', 'radial', 'wipeleft', 'smoothright'], ['circleclose', 'dissolve', 'slidedown', 'zoomin']][seed % 4]
 args = ['ffmpeg', '-y', '-v', 'error']
 for i in range(n): args += ['-framerate', '30', '-i', f'{tmp}/frames/s{i+1:02d}/%04d.jpg']
 args += ['-i', f'{tmp}/hum.wav']

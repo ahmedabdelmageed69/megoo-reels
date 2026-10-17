@@ -31,6 +31,7 @@ chords=[(r+SH,[m+SH for m in ch]) for r,ch in PROGS[(SEED//7)%3]]
 L=4.5
 for i in range(9):
     root,ch=chords[i%4]; st=i*L-0.3 if i else 0
+    if st>=T: break
     mix+=voice(midi(root),st,L+0.6,0.7,'m')
     for m in ch: mix+=voice(midi(m)*(1+rng.normal(0,.002)),st,L+0.6,0.4,'u')
     # a few gentle high notes from the chord

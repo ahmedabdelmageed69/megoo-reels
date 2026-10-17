@@ -13,6 +13,8 @@ ANIM = """
 @keyframes grow{0%{transform:scaleY(0)}70%{transform:scaleY(1.2)}100%{transform:scaleY(1)}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 @keyframes drift{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(60px,-80px) rotate(25deg)}100%{transform:translate(0,0) rotate(0)}}
+@keyframes zoom{from{opacity:0;transform:scale(1.6)}to{opacity:1;transform:none}}
+@keyframes flip{from{opacity:0;transform:perspective(800px) rotateX(80deg) translateY(40px)}to{opacity:1;transform:none}}
 @keyframes bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 @keyframes ghost{from{opacity:0;transform:translateY(120px) rotate(-8deg)}to{opacity:.13;transform:none rotate(-8deg)}}
@@ -32,16 +34,21 @@ h1 em,h2 em{animation:wipe .6s both cubic-bezier(.2,.8,.2,1)}
 h1{font-size:100px}
 .wrap{z-index:1}
 """
-def lines(s,cls,d0,step,anim='up .7s'):
+def lines(s,cls,d0,step,anim=None):
+    anim=anim or ENTER+' .7s'
     out=[]
     for k,l in enumerate(M.esc(s).split('<br>')):
         out.append(f'<div class="a" style="animation:{anim} {d0+k*step:.2f}s both cubic-bezier(.2,.8,.2,1)">{l}</div>')
     return ''.join(out)
-DUR=[4.2]+[5.8]*(n-2)+[5.2]
+DUR=[3.4]+[5.2]*(n-2)+[4.6]
 import datetime
 def _day():
-    try: return datetime.date.fromisoformat(os.path.basename(os.path.dirname(os.environ['POST']))).toordinal()
-    except Exception: return datetime.date.today().toordinal()
+    # reels/<date>/reel.mp4 = evening, reels/<date>/am/reel.mp4 = morning; the two always get different looks
+    try:
+        d=os.path.dirname(os.environ['POST']); am=os.path.basename(d)=='am'
+        if am: d=os.path.dirname(d)
+        return datetime.date.fromisoformat(os.path.basename(d)).toordinal()*2+(1 if am else 0)
+    except Exception: return datetime.date.today().toordinal()*2
 # soft palettes, one per day (rotates), so every reel looks different
 PALETTES=[
  dict(ink='#2A1A2E',bgs=['#FFC8A2','#F4A7B9','#FFD6A5','#E7A9C4','#FFB59E'],acc=['#FFF3B0','#C9F0E3','#FFFFFF']),
@@ -50,7 +57,11 @@ PALETTES=[
  dict(ink='#12372A',bgs=['#B7E4C7','#D8F3DC','#95D5B2','#CDEAC0','#A8DADC'],acc=['#FFF1A8','#FFFFFF','#FFD6C0']),
  dict(ink='#3A2318',bgs=['#F6D8AE','#F9C6A5','#FBE3C0','#F2B5A0','#EBCFA0'],acc=['#FFFFFF','#CDE8E5','#FFF3B0']),
 ]
-PAL=PALETTES[_day()%len(PALETTES)]
+SEED=_day()
+PAL=PALETTES[SEED%len(PALETTES)]
+STYLE=SEED%4   # 0 soft, 1 round, 2 sharp, 3 outline; also picks the entry animation
+ENTER=['up','zoom','flip','inR'][STYLE]
+BODYIN=['inR','up','zoom','flip'][STYLE]
 THEMES=[]
 for k in range(7):
     bg=PAL['bgs'][k%5]; ink=PAL['ink']; acc=PAL['acc']
@@ -67,6 +78,21 @@ def theme_css(i):
 .mark i{{box-shadow:0 0 0 3px rgba(21,19,26,.18)}}
 .tag{{background:{t['fg']};color:{t['bg']}}}
 .cta-box{{background:{t['fg']}}} .cta-box h2,.cta-box .body,.cta-box .site2{{color:{t['bg']}}} .cta-box h2 em{{background:{t['hl']};color:{t['fg']}}} .site2 b{{color:{t['hl']}}}'''
+def style_css(i):
+    t=THEMES[i%len(THEMES)]; hl=t['hl']; fg=t['fg']
+    return [
+     '',
+     f""".num{{border-radius:50%}} .tag{{border-radius:999px}} .blob{{border-radius:50%}} .cta-box{{border-radius:70px}}
+.main h1 em,.main h2 em{{background:linear-gradient(transparent 52%,{hl} 52%);color:{fg};border-radius:0;padding:0 8px}}
+body::before{{content:"";position:absolute;inset:0;background:radial-gradient({fg}22 3px,transparent 3px) 0 0/54px 54px}}""",
+     f""".num{{border-radius:6px}} .tag{{border-radius:4px}} .blob{{border-radius:8px;transform:rotate(18deg)}} .cta-box{{border-radius:14px}} .kicker{{border-radius:8px}}
+.main h1 em,.main h2 em{{border-radius:6px;transform:skewX(-8deg)}} .prog{{top:auto;bottom:0}}
+body::before{{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,{fg}12 0 3px,transparent 3px 38px)}}""",
+     f""".blob{{background:transparent!important;border:26px solid {fg}33;border-radius:50%}} .ghost{{color:transparent!important;-webkit-text-stroke:5px {fg}}}
+.num{{background:transparent!important;color:{fg}!important;border:5px solid {fg}}} .tag{{background:transparent!important;color:{fg}!important;border:3px solid {fg}}}
+.main h1 em,.main h2 em{{border-radius:999px}}
+body::before{{content:"";position:absolute;inset:0;background:linear-gradient({fg}14 2px,transparent 2px) 0 0/72px 72px,linear-gradient(90deg,{fg}14 2px,transparent 2px) 0 0/72px 72px}}""",
+    ][STYLE]
 def page(i,s):
     t=s.get('type','point'); D=DUR[i]
     if t=='cover':
@@ -83,13 +109,13 @@ def page(i,s):
         ghost=''
     else:
         bl=M.esc(s.get('body','')).split('<br>')
-        body=''.join(f'<div class="a" style="animation:inR .7s {1.0+k*1.1:.2f}s both cubic-bezier(.2,.8,.2,1)">{l}</div>' for k,l in enumerate(bl))
+        body=''.join(f'<div class="a" style="animation:{BODYIN} .7s {1.0+k*1.1:.2f}s both cubic-bezier(.2,.8,.2,1)">{l}</div>' for k,l in enumerate(bl))
         main=(f'<div class="num a" style="animation:pop .6s .15s both">{i}</div>'
               f'<h2>{lines(s["title"],"",.35,.2)}</h2><div class="body">{body}</div>'
               + (f'<div class="tag a" style="animation:pop .5s {1.1+len(bl)*1.1:.2f}s both">{M.esc(s["tag"],False)}</div>' if s.get('tag') else ''))
         ghost=f'<div class="ghost">{i}</div>'
     mark='<div class="mark"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>'
-    return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}{ANIM}{theme_css(i)}</style></head><body>
+    return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}{ANIM}{theme_css(i)}{style_css(i)}</style></head><body>
 <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>{ghost}
 <div class="prog" style="animation-duration:{D}s"></div>
 <div class="wrap"><div class="top"><span class="site">megoo.me</span><span class="cnt">{i+1}/{n}</span></div>
