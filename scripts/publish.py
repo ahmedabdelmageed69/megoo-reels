@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """Publish today's Reel to Instagram (Instagram API with Instagram Login).
-Env: IG_USER_ID, IG_ACCESS_TOKEN, PAGES_BASE (e.g. https://USER.github.io/megoo-reels), DATE (optional, YYYY-MM-DD; default = today in Cairo)
-Looks for reels/<DATE>/reel.mp4 + caption.txt. Skips if the folder is missing, has a HOLD file, or was already posted.
+Env: IG_USER_ID, IG_ACCESS_TOKEN, PAGES_BASE (e.g. https://USER.github.io/megoo-reels), DATE (optional, YYYY-MM-DD; default = today in Cairo), SLOT (optional, am|pm; default = am before 2 PM Cairo, else pm)
+Evening Reel lives in reels/<DATE>/, morning Reel in reels/<DATE>/am/. Looks for <folder>/reel.mp4 + caption.txt. Skips if the folder is missing, has a HOLD file, or was already posted.
 """
 import json, os, sys, time, urllib.parse, urllib.request, urllib.error, datetime
 from zoneinfo import ZoneInfo
 API = 'https://graph.instagram.com'
 uid, tok = os.environ['IG_USER_ID'], os.environ['IG_ACCESS_TOKEN']
 base = os.environ['PAGES_BASE'].rstrip('/')
-date = os.environ.get('DATE') or datetime.datetime.now(ZoneInfo('Africa/Cairo')).strftime('%Y-%m-%d')
-d = f'reels/{date}'
+now = datetime.datetime.now(ZoneInfo('Africa/Cairo'))
+date = os.environ.get('DATE') or now.strftime('%Y-%m-%d')
+slot = os.environ.get('SLOT') or ('am' if now.hour < 14 else 'pm')
+d = f'reels/{date}' + ('/am' if slot == 'am' else '')
 
 def call(method, path, **params):
     params['access_token'] = tok
@@ -21,9 +23,9 @@ def call(method, path, **params):
     except urllib.error.HTTPError as e:
         sys.exit(f'Instagram API error {e.code} on {path}: {e.read().decode()[:500]}')
 
-if not os.path.isfile(f'{d}/reel.mp4'): print(f'No reel for {date}; nothing to post.'); sys.exit(0)
-if os.path.exists(f'{d}/HOLD'): print(f'{date} is on HOLD; skipping.'); sys.exit(0)
-if os.path.exists(f'{d}/posted.json'): print(f'{date} already posted; skipping.'); sys.exit(0)
+if not os.path.isfile(f'{d}/reel.mp4'): print(f'No {slot} reel for {date}; nothing to post.'); sys.exit(0)
+if os.path.exists(f'{d}/HOLD'): print(f'{date} {slot} is on HOLD; skipping.'); sys.exit(0)
+if os.path.exists(f'{d}/posted.json'): print(f'{date} {slot} already posted; skipping.'); sys.exit(0)
 caption = open(f'{d}/caption.txt', encoding='utf-8').read().strip()
 video_url = f'{base}/{d}/reel.mp4'
 for _ in range(20):  # wait until GitHub Pages serves the file
