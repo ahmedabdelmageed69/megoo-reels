@@ -21,7 +21,7 @@ def dur_of(f): return float(subprocess.check_output(['ffprobe', '-v', 'error', '
 def gemini(texts):
     arc = ('Narrate this as ONE continuous take by the same single speaker, in a natural Egyptian Arabic accent. Keep the SAME very low, quiet, secretive, intimate voice from the first word to the last, '
            'like whispering a secret to a close friend; calm and steady, never louder or more excited at the end. Speak at a calm, relaxed, natural conversational pace (not slow, not rushed), and read every word. '
-           'Pause only briefly (about half a second) between lines of the same section and about one second between sections. Sections:\n')
+           'Pause only very briefly (about 0.4 seconds) between lines of the same section, but clearly (about 1.5 seconds) between sections. Sections:\n')
     body = {'contents': [{'parts': [{'text': arc + '\n\n'.join(f'Section {k+1}:\n' + '\n'.join(p) for k, p in enumerate(texts))}]}],
             'generationConfig': {'responseModalities': ['AUDIO'], 'speechConfig': {'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': os.environ.get('GEMINI_VOICE', 'Puck')}}}}}
     models = [os.environ['GEMINI_TTS_MODEL']] if os.environ.get('GEMINI_TTS_MODEL') else ['gemini-3.8-flash-tts', 'gemini-3.8-flash-lite-tts', 'gemini-3.1-flash-tts-preview']
@@ -46,6 +46,13 @@ def gemini(texts):
 def plan(post, work):
     slides = json.load(open(post, encoding='utf-8'))['slides']; n = len(slides); os.makedirs(work, exist_ok=True)
     P = [parts(s) for s in slides]
+    for attempt in range(3):
+        res = _plan(P, n, work)
+        if res: break
+        print('speech split looks off, regenerating', file=sys.stderr)
+    else: sys.exit('could not split the voice into slides reliably')
+    return finish(P, n, work, *res)
+def _plan(P, n, work):
     full = f'{work}/full.wav'; open(full, 'wb').write(gemini(P))
     log = subprocess.run(['ffmpeg', '-i', full, '-af', 'silencedetect=n=-38dB:d=0.3', '-f', 'null', '-'], capture_output=True, text=True).stderr
     st = [float(x) for x in re.findall(r'silence_start: ([\d.]+)', log)]; en = [float(x) for x in re.findall(r'silence_end: ([\d.]+)', log)]
@@ -56,13 +63,17 @@ def plan(post, work):
     for k in range(1, n):                                    # each slide boundary = the longest pause near where it should fall by text length
         exp = total * cum[k] / cum[-1]
         win = [g for g in gaps if abs(g[1] - exp) < 0.14 * total and g[1] > last + 0.3]
-        if not win: sys.exit(f'could not find the pause before slide {k+1}; try again')
-        m = max(win, key=lambda g: g[0] - 3 * abs(g[1] - exp) / total)[1]; cuts.append(m); last = m
+        if not win: return None
+        m = max(win, key=lambda g: g[0] - 1.0 * abs(g[1] - exp) / total)[1]; cuts.append(m); last = m
     b = [0.0] + cuts + [total]; segs, vs = [], []
     for i in range(n):
         o = f'{work}/seg{i}.wav'
         run('ffmpeg', '-y', '-ss', f'{b[i]:.3f}', '-to', f'{b[i+1]:.3f}', '-i', full, '-af', 'silenceremove=start_periods=1:start_threshold=-42dB,areverse,silenceremove=start_periods=1:start_threshold=-42dB,areverse', '-ar', '48000', '-ac', '2', o)
         segs.append(o); vs.append(dur_of(o))
+    rate = [v / max(c, 1) for v, c in zip(vs, chars)]      # seconds per character should be similar on every slide, else a cut landed on the wrong pause
+    if max(rate) > 2.2 * min(rate): return None
+    return segs, vs
+def finish(P, n, work, segs, vs):
     over = sum(max(MIN[0 if i == 0 else 2 if i == n - 1 else 1], LEAD + v + TAIL + X) for i, v in enumerate(vs)) - (n - 1) * X
     if over > MAXTOTAL:                                      # the Reel must stay under ~60 s: speak a little faster, never beyond 1.25x
         f = min(1.25, sum(vs) / max(sum(vs) - (over - MAXTOTAL), 1)); print(f'speech too long for {MAXTOTAL:.0f}s Reel ({over:.0f}s): speeding up x{f:.2f}' + ('  STILL TOO LONG - shorten the slide text' if f >= 1.25 else ''), file=sys.stderr)
