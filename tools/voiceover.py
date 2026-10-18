@@ -39,12 +39,41 @@ def tts(text, rate, pitch, gain):
     req = urllib.request.Request(f'https://texttospeech.googleapis.com/v1/text:synthesize?key={KEY}', json.dumps(body).encode(), {'Content-Type': 'application/json'})
     return base64.b64decode(json.load(urllib.request.urlopen(req, timeout=60))['audioContent'])
 def run(*a): subprocess.run(a, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+def one_take(texts):
+    """One Gemini call for the whole script (same voice end to end), then cut it at the n-1 longest pauses."""
+    arc = ('Narrate this as ONE continuous take by the same single speaker, in a natural Egyptian Arabic accent. Start very low, quiet and secretive, like whispering a secret to a close friend; '
+           'gradually warm up and speed up; finish with loud, joyful, high energy. Pause clearly (about a second) between the lines. Lines:\n')
+    body = {'contents': [{'parts': [{'text': arc + '\n'.join(f'{k+1}) {t}' for k, t in enumerate(texts))}]}],
+            'generationConfig': {'responseModalities': ['AUDIO'], 'speechConfig': {'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': os.environ.get('GEMINI_VOICE', 'Puck')}}}}}
+    model = os.environ.get('GEMINI_TTS_MODEL', 'gemini-3.8-flash-tts')
+    req = urllib.request.Request(f'https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent', json.dumps(body).encode(),
+                                 {'Content-Type': 'application/json', 'x-goog-api-key': GEM})
+    for attempt in range(6):
+        try:
+            d = base64.b64decode(json.load(urllib.request.urlopen(req, timeout=180))['candidates'][0]['content']['parts'][0]['inlineData']['data']); break
+        except Exception as e:
+            if attempt == 5: raise
+            time.sleep(25 if '429' in str(e) else 3)
+    full = f'{tmp}/full.wav'; open(full, 'wb').write(d if d[:4] == b'RIFF' else b'RIFF' + d)
+    log = subprocess.run(['ffmpeg', '-i', full, '-af', 'silencedetect=n=-38dB:d=0.35', '-f', 'null', '-'], capture_output=True, text=True).stderr
+    import re
+    st = [float(x) for x in re.findall(r'silence_start: ([\d.]+)', log)]; en = [float(x) for x in re.findall(r'silence_end: ([\d.]+)', log)]
+    total = float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', full]))
+    gaps = [(e - a, (a + e) / 2) for a, e in zip(st, en) if 0.3 < (a + e) / 2 < total - 0.3]
+    cuts = sorted(m for _, m in sorted(gaps, reverse=True)[:len(texts) - 1])
+    if len(cuts) != len(texts) - 1: sys.exit(f'could not split the take into {len(texts)} lines (found {len(cuts)} pauses)')
+    bounds = [0.0] + cuts + [total]; parts = []
+    for k in range(len(texts)):
+        o = f'{tmp}/seg{k}.wav'; run('ffmpeg', '-y', '-i', full, '-ss', f'{bounds[k]:.3f}', '-to', f'{bounds[k+1]:.3f}', '-ar', '48000', '-ac', '2', o); parts.append(o)
+    return parts
 tmp = tempfile.mkdtemp(); inputs, filt, starts = [], [], []; off = 0.0
+takes = one_take([s.get('vo') or s.get('title', '').replace('\n', ' ') for s in slides]) if GEM else None
 for i, s in enumerate(slides):
     t = i / (n - 1)                       # 0 = intimate whisper-ish, 1 = full energy
     text = s.get('vo') or s.get('title', '').replace('\n', ' ')
     rate, pitch, gain = 0.82 + 0.34 * t ** 1.5, -4 + 7 * t, -9 + 11 * t
-    raw = f'{tmp}/v{i}.' + ('wav' if GEM else 'mp3'); open(raw, 'wb').write(gemini(text, t) if GEM else tts(text, rate, pitch, gain))
+    raw = takes[i] if GEM else f'{tmp}/v{i}.mp3'
+    if not GEM: open(raw, 'wb').write(tts(text, rate, pitch, gain))
     # soft + breathy + close early on (low-passed, small room), bright + compressed + punchy at the end
     eq = 'highpass=f=80,volume=1.0' if GEM else ('lowpass=f=3800,highpass=f=120,aecho=0.7:0.5:35:0.25,volume=0.9' if t < 0.4 else
           'highpass=f=100,equalizer=f=3500:t=q:w=1:g=3,acompressor=threshold=-18dB:ratio=3,volume=1.15' if t > 0.7 else 'highpass=f=100')
