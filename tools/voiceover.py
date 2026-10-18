@@ -42,7 +42,7 @@ def run(*a): subprocess.run(a, check=True, stdout=subprocess.DEVNULL, stderr=sub
 def one_take(texts):
     """One Gemini call for the whole script (same voice end to end), then cut it at the n-1 longest pauses."""
     arc = ('Narrate this as ONE continuous take by the same single speaker, in a natural Egyptian Arabic accent. Keep the SAME very low, quiet, secretive, intimate voice from the first word to the last, '
-           'like whispering a secret to a close friend; calm and steady, never louder or more excited at the end. Pause clearly (about a second) between the lines. Lines:\n')
+           'like whispering a secret to a close friend; calm and steady, never louder or more excited at the end. Speak SLOWLY, at a relaxed, unhurried pace, with soft deliberate pauses. Pause clearly (about a second) between the lines. Lines:\n')
     body = {'contents': [{'parts': [{'text': arc + '\n'.join(f'{k+1}) {t}' for k, t in enumerate(texts))}]}],
             'generationConfig': {'responseModalities': ['AUDIO'], 'speechConfig': {'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': os.environ.get('GEMINI_VOICE', 'Puck')}}}}}
     model = os.environ.get('GEMINI_TTS_MODEL', 'gemini-3.8-flash-tts')
@@ -79,10 +79,12 @@ for i, s in enumerate(slides):
           'highpass=f=100,equalizer=f=3500:t=q:w=1:g=3,acompressor=threshold=-18dB:ratio=3,volume=1.15' if t > 0.7 else 'highpass=f=100')
     out = f'{tmp}/p{i}.wav'; run('ffmpeg', '-y', '-i', raw, '-af', eq, '-ar', '48000', '-ac', '2', out)
     dur = float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', out]))
-    room = DUR[i] - X - 0.5
+    lead = 0.2 if i == 0 else 0.5       # the hook starts almost at once
+    room = DUR[i] - X - lead
+    print(f'slide {i+1}: voice {dur:.1f}s / room {room:.1f}s' + ('  (sped up - shorten the vo line)' if dur > room else ''), file=sys.stderr)
     if dur > room:                         # never let a line spill into the next slide
-        sp = f'{tmp}/s{i}.wav'; run('ffmpeg', '-y', '-i', out, '-af', f'atempo={min(dur / room, 1.6):.3f}', sp); out = sp
-    inputs += ['-i', out]; starts.append(int((off + 0.5) * 1000)); off += DUR[i] - X
+        sp = f'{tmp}/s{i}.wav'; run('ffmpeg', '-y', '-i', out, '-af', f'atempo={min(dur / room, 1.12):.3f}', sp); out = sp
+    inputs += ['-i', out]; starts.append(int((off + lead) * 1000)); off += DUR[i] - X
 fl = [f'[{k+1}:a]adelay={ms}|{ms}[d{k}]' for k, ms in enumerate(starts)]
 vm = ''.join(f'[d{k}]' for k in range(n))
 fl.append(f'{vm}amix=inputs={n}:normalize=0[vo]')
