@@ -13,10 +13,16 @@ n = len(json.load(open(post, encoding='utf-8'))['slides'])
 r = subprocess.run([sys.executable, f'{HERE}/make_carousel_brand.py', post, out], capture_output=True, text=True, check=True)
 print(r.stdout.strip())
 if 'OVERFLOW' in r.stdout: sys.exit('OVERFLOW: shorten the slide text and rebuild')
-# 2) reel frames
-tmp = tempfile.mkdtemp()
-subprocess.run([sys.executable, f'{HERE}/reel_anim.py', f'{tmp}/frames'], env={**os.environ, 'POST': post}, check=True)
-DUR = [3.4] + [5.2] * (n - 2) + [4.6]; X = 0.45
+# 2) voice first (if GEMINI_API_KEY is set): the speech decides how long each slide lasts and when each line appears
+tmp = tempfile.mkdtemp(); plan_json = None
+if (os.environ.get('GEMINI_API_KEY') or os.environ.get('GEMINI_API_KEYS')) and not os.environ.get('NO_VOICE'):
+    r = subprocess.run([sys.executable, f'{HERE}/voiceover.py', 'plan', post, f'{tmp}/vo'], capture_output=True, text=True)
+    print(r.stderr.strip()[-400:])
+    if r.returncode == 0: plan_json = f'{tmp}/vo/plan.json'
+    else: print('WARNING: VOICE-OVER FAILED, building a silent-voice reel (music only)')
+else: print('WARNING: GEMINI_API_KEY not set, building without voice-over')
+subprocess.run([sys.executable, f'{HERE}/reel_anim.py', f'{tmp}/frames'], env={**os.environ, 'POST': post, **({'VO_PLAN': plan_json} if plan_json else {})}, check=True)
+DUR = json.load(open(plan_json))['dur'] if plan_json else [3.4] + [5.2] * (n - 2) + [4.6]; X = 0.45
 total = sum(DUR) - (n - 1) * X
 import datetime
 d = os.path.dirname(post); am = os.path.basename(d) == 'am'   # morning Reel lives in reels/<date>/am/
@@ -38,6 +44,9 @@ fl.append(f'[{n}:a]atrim=0:{total:.2f},afade=t=out:st={total-2:.2f}:d=2,aresampl
 args += ['-filter_complex', ';'.join(fl), '-map', '[vout]', '-map', '[aout]', '-c:v', 'libx264', '-profile:v', 'high',
          '-crf', '20', '-r', '30', '-c:a', 'aac', '-b:a', '128k', '-ar', '48000', '-movflags', '+faststart', '-t', f'{total:.2f}', f'{out}/reel.mp4']
 subprocess.run(args, check=True)
+if plan_json:
+    shutil.move(f'{out}/reel.mp4', f'{tmp}/music_only.mp4')
+    subprocess.run([sys.executable, f'{HERE}/voiceover.py', 'mix', post, f'{tmp}/vo', f'{tmp}/music_only.mp4', f'{out}/reel.mp4'], check=True)
 subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', f'{out}/reel.mp4', '-an', '-c:v', 'copy', f'{out}/reel_no_audio.mp4'], check=True)
 shutil.rmtree(tmp)
 print('built', out, f'{total:.1f}s')

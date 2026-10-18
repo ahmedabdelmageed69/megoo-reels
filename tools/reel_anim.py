@@ -40,7 +40,9 @@ def lines(s,cls,d0,step,anim=None):
     for k,l in enumerate(M.esc(s).split('<br>')):
         out.append(f'<div class="a" style="animation:{anim} {d0+k*step:.2f}s both cubic-bezier(.2,.8,.2,1)">{l}</div>')
     return ''.join(out)
-DUR=[3.4]+[5.2]*(n-2)+[4.6]
+PLAN=json.load(open(os.environ['VO_PLAN'])) if os.environ.get('VO_PLAN') else None
+DUR=PLAN['dur'] if PLAN else [3.4]+[5.2]*(n-2)+[4.6]
+def rv(i,j,default): return PLAN['reveal'][i][j] if PLAN and j<len(PLAN['reveal'][i]) else default   # when the voice reaches line j
 import datetime
 def _day():
     # reels/<date>/reel.mp4 = evening, reels/<date>/am/reel.mp4 = morning; the two always get different looks
@@ -120,21 +122,21 @@ def page(i,s):
     if t=='cover':
         main=(f'<div class="kicker a" style="animation:pop .6s .1s both">{M.esc(s["kicker"],False)}</div>'
               f'<h1>{lines(s["title"],"",.35,.22)}</h1>'
-              f'<div class="sub a" style="animation:up .7s 1.3s both">{M.esc(s.get("subtitle",""))}</div>')
+              f'<div class="sub a" style="animation:up .7s {rv(i,1,1.3):.2f}s both">{M.esc(s.get("subtitle",""))}</div>')
         ghost=''
     elif t=='cta':
         icons=''.join(f'<span class="a" style="animation:pop .5s {1.3+k*.18:.2f}s both,pulse 1.6s {2.2+k*.3:.2f}s ease-in-out infinite">{x}</span>' for k,x in enumerate(['❤️ لايك','🔖 احفظ','↗️ شارك']))
         main=(f'<div class="cta-box a" style="animation:up .8s .1s both"><h2>{lines(s["title"],"",.4,.2)}</h2>'
-              f'<div class="body a" style="animation:up .6s 1s both">{M.esc(s.get("body"))}</div>'
+              f'<div class="body a" style="animation:up .6s {rv(i,1,1.0):.2f}s both">{M.esc(s.get("body"))}</div>'
               f'<div class="icons">{icons}</div>'
               f'<div class="site2 a" style="animation:up .6s 2s both">التفاصيل كاملة على <b>megoo.me</b> · اللينك في البايو 🔗</div></div>')
         ghost=''
     else:
         bl=M.esc(s.get('body','')).split('<br>')
-        body=''.join(f'<div class="a" style="animation:{BODYIN} .7s {1.0+k*1.1:.2f}s both cubic-bezier(.2,.8,.2,1)">{l}</div>' for k,l in enumerate(bl))
+        body=''.join(f'<div class="a" style="animation:{BODYIN} .7s {rv(i,k+1,1.0+k*1.1):.2f}s both cubic-bezier(.2,.8,.2,1)">{l}</div>' for k,l in enumerate(bl))
         main=(f'<div class="num a" style="animation:pop .6s .15s both">{i}</div>'
               f'<h2>{lines(s["title"],"",.35,.2)}</h2><div class="body">{body}</div>'
-              + (f'<div class="tag a" style="animation:pop .5s {1.1+len(bl)*1.1:.2f}s both">{M.esc(s["tag"],False)}</div>' if s.get('tag') else ''))
+              + (f'<div class="tag a" style="animation:pop .5s {rv(i,len(bl),1.1+len(bl)*1.1)+0.4:.2f}s both">{M.esc(s["tag"],False)}</div>' if s.get('tag') else ''))
         ghost=f'<div class="ghost">{i}</div>'
     mark='<div class="mark"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>'
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}{ANIM}{theme_css(i)}{style_css(i)}{future_css(i) if AM else ''}</style></head><body>

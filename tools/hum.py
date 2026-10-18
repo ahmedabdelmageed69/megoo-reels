@@ -29,7 +29,7 @@ PROGS=[[(45,[57,60,64]),(41,[57,60,65]),(48,[55,60,64]),(43,[55,59,62])],
        [(41,[57,60,65]),(48,[55,60,64]),(43,[55,59,62]),(45,[57,60,64])]]
 chords=[(r+SH,[m+SH for m in ch]) for r,ch in PROGS[(SEED//7)%3]]
 L=3.0 if os.environ.get('MUSIC_MODE')=='am' else 4.5
-for i in range(14 if L<4 else 9):
+for i in range(int(T/L)+2):
     root,ch=chords[i%4]; st=i*L-0.3 if i else 0
     if st>=T: break
     mix+=voice(midi(root),st,L+0.6,0.7,'m')
