@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Add a Google Cloud TTS voice-over to a built reel: starts low and intimate (like sharing a secret), ends with high energy.
+"""Add a Google Cloud TTS voice-over to a built reel: stays low and intimate (like sharing a secret) from start to finish.
 Usage: python3 tools/voiceover.py post.json reel_in.mp4 reel_out.mp4
 Env: GEMINI_API_KEY (Gemini TTS: Egyptian accent + spoken style direction; voice via GEMINI_VOICE, default Puck, model via GEMINI_TTS_MODEL)
      or GOOGLE_TTS_API_KEY (Cloud TTS fallback; TTS_VOICE, default ar-XA-Wavenet-B)
@@ -41,8 +41,8 @@ def tts(text, rate, pitch, gain):
 def run(*a): subprocess.run(a, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 def one_take(texts):
     """One Gemini call for the whole script (same voice end to end), then cut it at the n-1 longest pauses."""
-    arc = ('Narrate this as ONE continuous take by the same single speaker, in a natural Egyptian Arabic accent. Start very low, quiet and secretive, like whispering a secret to a close friend; '
-           'gradually warm up and speed up; finish with loud, joyful, high energy. Pause clearly (about a second) between the lines. Lines:\n')
+    arc = ('Narrate this as ONE continuous take by the same single speaker, in a natural Egyptian Arabic accent. Keep the SAME very low, quiet, secretive, intimate voice from the first word to the last, '
+           'like whispering a secret to a close friend; calm and steady, never louder or more excited at the end. Pause clearly (about a second) between the lines. Lines:\n')
     body = {'contents': [{'parts': [{'text': arc + '\n'.join(f'{k+1}) {t}' for k, t in enumerate(texts))}]}],
             'generationConfig': {'responseModalities': ['AUDIO'], 'speechConfig': {'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': os.environ.get('GEMINI_VOICE', 'Puck')}}}}}
     model = os.environ.get('GEMINI_TTS_MODEL', 'gemini-3.8-flash-tts')
