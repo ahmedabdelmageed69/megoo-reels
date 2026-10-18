@@ -10,6 +10,8 @@ SCHEDULE NOTE: run this task every evening (about 9 PM Cairo). D = tomorrow's Ca
 
 HOW PUBLISHING WORKS: push to main only (never a claude/ branch). GitHub Actions posts reels/$D/am/reel.mp4 at 05:00 UTC (8 AM Cairo) and reels/$D/reel.mp4 at 17:00 UTC (8 PM Cairo). Never post to Instagram yourself, never edit workflows or secrets.
 
+0. NO REPEATS (hard rule). First run `python3 tools/check_unique.py --list` and read it: every app/feature/action ever used. Never reuse an idea, feature or trick from it (even reworded), and the two Reels of the day must differ from each other. If a build says REPEATED CONTENT, replace those slides with genuinely new, verified ideas.
+
 1. TOPICS (two DIFFERENT ones). 8 PM Reel: practical theme by weekday of D (Sat work & career; Sun study & learning; Mon photos & design; Tue daily life; Wed small business; Thu hidden AI features on phones/WhatsApp/Google; Fri one new AI feature or free tool from the last 1–2 weeks). 8 AM Reel: a different quick-win topic (morning routine, commute, breakfast/meals, messages, planning the day…), never the same apps/angle as the 8 PM Reel. Use web search to confirm every app/feature exists, is available now (ideally in Egypt) and works as described; verify specific facts in 2 sources; never invent features, numbers or prices. Avoid anything already in reels/ (read each post.json, including reels/*/am/post.json).
 
 2. FILES. Evening: reels/$D/post.json. Morning: reels/$D/am/post.json. Format:

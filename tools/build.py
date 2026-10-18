@@ -9,6 +9,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 post, out = os.path.abspath(sys.argv[1]), os.path.abspath(sys.argv[2])
 os.makedirs(out, exist_ok=True)
 n = len(json.load(open(post, encoding='utf-8'))['slides'])
+# 0) never repeat an idea already used in reels/ (set NO_UNIQUE_CHECK=1 to skip, e.g. for samples)
+if '/reels/' in post and not os.environ.get('NO_UNIQUE_CHECK'):
+    r = subprocess.run([sys.executable, f'{HERE}/check_unique.py', post], capture_output=True, text=True)
+    print((r.stdout + r.stderr).strip())
+    if r.returncode: sys.exit('REPEATED CONTENT: replace the listed slides with new ideas and rebuild')
 # 1) carousel PNGs
 r = subprocess.run([sys.executable, f'{HERE}/make_carousel_brand.py', post, out], capture_output=True, text=True, check=True)
 print(r.stdout.strip())
