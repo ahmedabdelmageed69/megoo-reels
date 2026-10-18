@@ -7,7 +7,7 @@ Env: GEMINI_API_KEY (required; GEMINI_API_KEYS = comma-separated list to fall th
 A slide may carry "vo" to override what is spoken for it.
 """
 import base64, json, os, re, subprocess, sys, time, urllib.error, urllib.request
-X, LEAD, TAIL, MIN = 0.45, 0.5, 0.7, [3.4, 5.2, 4.6]   # xfade overlap, silence before/after the line, minimum slide time (cover, point, cta)
+X, LEAD, TAIL, MIN, MAXTOTAL = 0.45, 0.3, 0.35, [3.4, 5.2, 4.6], 59.0   # xfade overlap, silence before/after the line, minimum slide time (cover, point, cta)
 def run(*a): subprocess.run(a, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 def clean(t): return re.sub(r'\s+', ' ', re.sub(r'[^\w\s:،؟?!.,/+\-]', ' ', t.replace(' ', ' '))).strip()
 def parts(s):
@@ -20,8 +20,8 @@ def parts(s):
 def dur_of(f): return float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]))
 def gemini(texts):
     arc = ('Narrate this as ONE continuous take by the same single speaker, in a natural Egyptian Arabic accent. Keep the SAME very low, quiet, secretive, intimate voice from the first word to the last, '
-           'like whispering a secret to a close friend; calm and steady, never louder or more excited at the end. Speak SLOWLY, at a relaxed, unhurried pace, and read every word. '
-           'Pause about one second between lines of the same section and about two seconds between sections. Sections:\n')
+           'like whispering a secret to a close friend; calm and steady, never louder or more excited at the end. Speak at a calm, relaxed, natural conversational pace (not slow, not rushed), and read every word. '
+           'Pause only briefly (about half a second) between lines of the same section and about one second between sections. Sections:\n')
     body = {'contents': [{'parts': [{'text': arc + '\n\n'.join(f'Section {k+1}:\n' + '\n'.join(p) for k, p in enumerate(texts))}]}],
             'generationConfig': {'responseModalities': ['AUDIO'], 'speechConfig': {'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': os.environ.get('GEMINI_VOICE', 'Puck')}}}}}
     models = [os.environ['GEMINI_TTS_MODEL']] if os.environ.get('GEMINI_TTS_MODEL') else ['gemini-3.8-flash-tts', 'gemini-3.8-flash-lite-tts', 'gemini-3.1-flash-tts-preview']
@@ -58,12 +58,19 @@ def plan(post, work):
         win = [g for g in gaps if abs(g[1] - exp) < 0.14 * total and g[1] > last + 0.3]
         if not win: sys.exit(f'could not find the pause before slide {k+1}; try again')
         m = max(win, key=lambda g: g[0] - 3 * abs(g[1] - exp) / total)[1]; cuts.append(m); last = m
-    b = [0.0] + cuts + [total]; segs, durs, reveal = [], [], []
+    b = [0.0] + cuts + [total]; segs, vs = [], []
     for i in range(n):
         o = f'{work}/seg{i}.wav'
         run('ffmpeg', '-y', '-ss', f'{b[i]:.3f}', '-to', f'{b[i+1]:.3f}', '-i', full, '-af', 'silenceremove=start_periods=1:start_threshold=-42dB,areverse,silenceremove=start_periods=1:start_threshold=-42dB,areverse', '-ar', '48000', '-ac', '2', o)
-        v = dur_of(o); t = 'cover' if i == 0 else 'cta' if i == n - 1 else 'point'
-        segs.append(o); durs.append(round(max(MIN[['cover', 'point', 'cta'].index(t)], LEAD + v + TAIL + X), 2))
+        segs.append(o); vs.append(dur_of(o))
+    over = sum(max(MIN[0 if i == 0 else 2 if i == n - 1 else 1], LEAD + v + TAIL + X) for i, v in enumerate(vs)) - (n - 1) * X
+    if over > MAXTOTAL:                                      # the Reel must stay under ~60 s: speak a little faster, never beyond 1.25x
+        f = min(1.25, sum(vs) / max(sum(vs) - (over - MAXTOTAL), 1)); print(f'speech too long for {MAXTOTAL:.0f}s Reel ({over:.0f}s): speeding up x{f:.2f}' + ('  STILL TOO LONG - shorten the slide text' if f >= 1.25 else ''), file=sys.stderr)
+        for i in range(n):
+            o2 = f'{work}/fast{i}.wav'; run('ffmpeg', '-y', '-i', segs[i], '-af', f'atempo={f:.3f}', o2); segs[i] = o2; vs[i] = dur_of(o2)
+    durs, reveal = [], []
+    for i in range(n):
+        v = vs[i]; durs.append(round(max(MIN[0 if i == 0 else 2 if i == n - 1 else 1], LEAD + v + TAIL + X), 2))
         c = [0]
         for x in P[i]: c.append(c[-1] + len(x))
         reveal.append([round(max(0.3, LEAD + v * c[j] / max(c[-1], 1) - 0.15), 2) for j in range(len(P[i]))])   # when each line starts being spoken

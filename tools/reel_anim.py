@@ -30,6 +30,7 @@ ANIM = """
 h1 em,h2 em{animation:wipe .6s both cubic-bezier(.2,.8,.2,1)}
 .icons span{display:inline-block}
 .cta-box{position:relative;z-index:2}
+.url{display:inline-block;margin-top:22px;font-family:Mono;direction:ltr;font-size:46px;font-weight:700;padding:12px 30px;border-radius:16px;background:#C8F25A;color:#15131A;text-decoration:underline;text-underline-offset:8px}
 .mark i.a{opacity:1}
 h1{font-size:100px}
 .wrap{z-index:1}
@@ -80,7 +81,7 @@ def theme_css(i):
 .b1{{background:{b1}}} .b2{{background:{b2}}} .b3{{background:{b3}}}
 .mark i{{box-shadow:0 0 0 3px rgba(21,19,26,.18)}}
 .tag{{background:{t['fg']};color:{t['bg']}}}
-.cta-box{{background:{t['fg']}}} .cta-box h2,.cta-box .body,.cta-box .site2{{color:{t['bg']}}} .cta-box h2 em{{background:{t['hl']};color:{t['fg']}}} .site2 b{{color:{t['hl']}}}'''
+.cta-box{{background:{t['fg']}}} .cta-box h2,.cta-box .body,.cta-box .site2{{color:{t['bg']}}} .cta-box h2 em{{background:{t['hl']};color:{t['fg']}}} .site2 b{{color:{t['hl']}}} .url{{background:{t['hl']};color:{t['fg']}}}'''
 def style_css(i):
     t=THEMES[i%len(THEMES)]; hl=t['hl']; fg=t['fg']
     return [
@@ -111,7 +112,7 @@ def future_css(i):
 .blob{{background:radial-gradient(circle,{c1}88,transparent 70%)!important;border:0!important;border-radius:50%!important;filter:blur(18px)}} .b2{{background:radial-gradient(circle,{c2}88,transparent 70%)!important}}
 .prog{{background:linear-gradient(90deg,{c1},{c2})!important;height:10px;box-shadow:0 0 22px {c1}}}
 .cta-box{{background:#0E1530!important;border:3px solid {c1};box-shadow:0 0 50px {c1}66,inset 0 0 40px {c1}22;border-radius:18px!important}}
-.cta-box h2,.cta-box .body,.cta-box .site2{{color:#E8F6FF!important}} .site2 b{{color:{c1}!important}}
+.cta-box h2,.cta-box .body,.cta-box .site2{{color:#E8F6FF!important}} .site2 b{{color:{c1}!important}} .url{{background:{c1}!important;color:#070B1A!important;box-shadow:0 0 34px {c1}99}}
 .icons span{{background:transparent!important;border:2px solid {c2};box-shadow:0 0 18px {c2}66}}
 .mark i{{box-shadow:0 0 18px currentColor}} .mark .a{{background:{c1}}} .mark .b{{background:{c2}}} .mark .c{{background:#E8F6FF}} .mark .d{{background:{c1}}}
 body::before{{content:"";position:absolute;left:-50%;right:-50%;bottom:0;height:62%;background:linear-gradient({c1}40 2px,transparent 2px) 0 0/90px 90px,linear-gradient(90deg,{c1}40 2px,transparent 2px) 0 0/90px 90px;transform:perspective(520px) rotateX(62deg);transform-origin:bottom;-webkit-mask-image:linear-gradient(transparent,#000);animation:gridmove 3s linear infinite}}
@@ -129,7 +130,7 @@ def page(i,s):
         main=(f'<div class="cta-box a" style="animation:up .8s .1s both"><h2>{lines(s["title"],"",.4,.2)}</h2>'
               f'<div class="body a" style="animation:up .6s {rv(i,1,1.0):.2f}s both">{M.esc(s.get("body"))}</div>'
               f'<div class="icons">{icons}</div>'
-              f'<div class="site2 a" style="animation:up .6s 2s both">التفاصيل كاملة على <b>megoo.me</b> · اللينك في البايو 🔗</div></div>')
+              f'<div class="site2 a" style="animation:up .6s 2s both">الموقع واللينك في البايو 🔗<div class="url">🌐 https://megoo.me</div></div></div>')
         ghost=''
     else:
         bl=M.esc(s.get('body','')).split('<br>')
@@ -142,9 +143,9 @@ def page(i,s):
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}{ANIM}{theme_css(i)}{style_css(i)}{future_css(i) if AM else ''}</style></head><body>
 <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>{ghost}
 <div class="prog" style="animation-duration:{D}s"></div>
-<div class="wrap"><div class="top"><span class="site">megoo.me</span><span class="cnt">{i+1}/{n}</span></div>
+<div class="wrap"><div class="top"><span class="site">🌐 https://megoo.me</span><span class="cnt">{i+1}/{n}</span></div>
 <div class="main">{main}</div>
-<div class="foot"><span class="handle">megoo.me<s>|</s>@_megoo.me</span>{mark}</div></div></body></html>"""
+<div class="foot"><span class="handle">https://megoo.me<s>|</s>@_megoo.me</span>{mark}</div></div></body></html>"""
 out=sys.argv[1] if len(sys.argv)>1 else 'anim'; os.makedirs(out,exist_ok=True)
 only=[int(x) for x in sys.argv[2:]] or range(n)
 FPS=30
