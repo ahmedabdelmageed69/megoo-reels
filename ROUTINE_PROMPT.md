@@ -1,4 +1,6 @@
-# نص المهمة المجدولة الجديد (انسخه كله مكان النص القديم)
+# Instructions for the daily Reels routine
+
+(The scheduled task only says: "Open ROUTINE_PROMPT.md in the megoo-reels repo on main and follow it exactly." Edit THIS file on GitHub to change how the Reels are made.)
 
 You make TOMORROW's two Instagram Reels for MeGo's account @_megoo.me (8 AM and 8 PM Cairo) and hand them to the auto-publisher.
 
@@ -12,12 +14,12 @@ HOW PUBLISHING WORKS: push to main only (never a claude/ branch). GitHub Actions
 
 2. FILES. Evening: reels/$D/post.json. Morning: reels/$D/am/post.json. Format:
 {"slides":[{"type":"cover","kicker":"AI Tips","title":"…","subtitle":"…"},{"type":"point","title":"…","body":"❌ زمان: …\n✅ دلوقتي: …","tag":"AppName"},…,{"type":"cta","title":"…","body":"…"}]}
-7 slides: cover, 5 points, cta. Cover title ≤ 3 short lines; point title exactly 2 lines (~14 chars each); body ≤ 30 words; tag ≤ 18 Latin chars; cta body ≤ 12 words. *word* = highlight pill, exactly 1 single word per title. Say exactly which app and what to type/tap. Bidi: space between Arabic "و" and an English word; never chain English names with "و"; non-breaking space inside two-word English names; don't end a body with an emoji. Hook/emotion rules are in CLAUDE.md. The voice reads ALL slide text aloud, so write it to be heard (natural spoken Egyptian); keep total text short enough that the Reel stays ≤ ~60 s.
+7 slides: cover, 5 points, cta. Cover title ≤ 3 short lines; point title exactly 2 lines (~14 chars each); body ≤ 30 words; tag ≤ 18 Latin chars; cta body ≤ 12 words. *word* = highlight pill, exactly 1 single word per title. Say exactly which app and what to type/tap. Bidi: space between Arabic "و" and an English word; never chain English names with "و"; non-breaking space inside two-word English names; don't end a body with an emoji. Hook/emotion rules are in CLAUDE.md. The voice reads ALL slide text aloud, so write it to be heard (natural spoken Egyptian); keep the TOTAL text of all 7 slides to about 140 words so the Reel stays ≤ ~60 s at a natural speaking pace (shorter bodies are better than a sped-up voice).
 
 3. BUILD (each Reel separately).
   pip install numpy scipy playwright (python3 -m pip …), python3 -m playwright install --with-deps chromium, ffmpeg if missing; tools/setup_fonts.sh
   python3 tools/build.py reels/$D/post.json /tmp/out_pm      and      python3 tools/build.py reels/$D/am/post.json /tmp/out_am
-  The environment provides GEMINI_API_KEYS (voice-over). If the build prints "WARNING: GEMINI_API_KEY not set" or "VOICE-OVER FAILED", say so clearly in your final message (the Reel is then music-only) and also send a notification. If it prints "STILL TOO LONG" or the duration is over ~62 s, shorten the slide text and rebuild. OVERFLOW = shorten that slide and rebuild.
+  The environment provides GEMINI_API_KEYS (comma-separated Gemini API keys for the voice-over; the build falls through to the next model/key when a free daily quota is spent). If the build prints "WARNING: GEMINI_API_KEY not set" or "VOICE-OVER FAILED", say so clearly in your final message (the Reel is then music-only) and also send a notification. If it prints "STILL TOO LONG" or the duration is over ~62 s, shorten the slide text and rebuild. OVERFLOW = shorten that slide and rebuild.
   Check with Read: slide_01.png, a point slide, the cta slide of each, and frames at ~12 s and ~45 s (ffmpeg -ss): no clipped text, broken Arabic, misplaced English, missing ❌/✅; the AM Reel must look futuristic/neon and the PM Reel must look clearly different. Then cp /tmp/out_pm/reel.mp4 reels/$D/ and cp /tmp/out_am/reel.mp4 reels/$D/am/.
 
 4. CAPTIONS. Write the website as https://megoo.me.
