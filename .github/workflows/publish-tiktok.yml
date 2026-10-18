@@ -1,0 +1,34 @@
+name: Publish Reel to TikTok
+on:
+  schedule:
+    - cron: '5 5 * * *'    # 5 minutes after the Instagram post (8 AM Cairo summer time)
+    - cron: '5 17 * * *'   # 8 PM Cairo summer time
+  workflow_dispatch:
+    inputs:
+      date: { description: 'Date to post (YYYY-MM-DD). Empty = today in Cairo', required: false }
+      slot: { description: 'am or pm. Empty = by current Cairo time', required: false }
+permissions: { contents: write }
+concurrency: { group: publish-tiktok, cancel-in-progress: false }
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Post to TikTok
+        env:
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+          TIKTOK_PRIVACY: ${{ vars.TIKTOK_PRIVACY || 'SELF_ONLY' }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          DATE: ${{ inputs.date }}
+          SLOT: ${{ inputs.slot || (github.event.schedule == '5 5 * * *' && 'am') || (github.event.schedule == '5 17 * * *' && 'pm') || '' }}
+        run: |
+          python3 scripts/publish_tiktok.py | tee /tmp/tt.log
+          NEW=$(grep '^NEW_REFRESH_TOKEN=' /tmp/tt.log | cut -d= -f2-)
+          if [ -n "$NEW" ] && [ -n "$GH_TOKEN" ]; then gh secret set TIKTOK_REFRESH_TOKEN --body "$NEW" --repo "$GITHUB_REPOSITORY"; fi
+      - name: Save posted marker
+        run: |
+          git config user.name "megoo-bot"; git config user.email "actions@users.noreply.github.com"
+          git add reels/*/tiktok.json reels/*/am/tiktok.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "Posted reel to TikTok" && git push)
