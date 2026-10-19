@@ -72,6 +72,7 @@ for k in range(7):
     THEMES.append(dict(bg=bg,fg=ink,hl=(ink if k%2 else acc[k%3]),hlfg=(bg if k%2 else ink),badge=ink,badgefg=bg,blobs=(acc[(k+1)%3],PAL['bgs'][(k+2)%5],acc[(k+2)%3])))
 def theme_css(i):
     t=THEMES[i%len(THEMES)]; b1,b2,b3=t['blobs']
+    chl=t['bg'] if t['hl']==t['fg'] else t['hl']   # CTA box is filled with fg, so a fg-coloured highlight would vanish
     return f'''body{{background:{t['bg']};color:{t['fg']}}}
 .top,.top .cnt,.handle,.sub,.body{{color:{t['fg']}}} .top .cnt{{opacity:.6}}
 .main h1 em,.main h2 em{{background:{t['hl']};color:{t['hlfg']}}}
@@ -81,7 +82,7 @@ def theme_css(i):
 .b1{{background:{b1}}} .b2{{background:{b2}}} .b3{{background:{b3}}}
 .mark i{{box-shadow:0 0 0 3px rgba(21,19,26,.18)}}
 .tag{{background:{t['fg']};color:{t['bg']}}}
-.cta-box{{background:{t['fg']}}} .cta-box h2,.cta-box .body,.cta-box .site2{{color:{t['bg']}}} .cta-box h2 em{{background:{t['hl']};color:{t['fg']}}} .site2 b{{color:{t['hl']}}} .url{{background:{t['hl']};color:{t['fg']}}}'''
+.cta-box{{background:{t['fg']}}} .cta-box h2,.cta-box .body,.cta-box .site2{{color:{t['bg']}}} .cta-box h2 em{{background:{chl};color:{t['fg']}}} .site2 b{{color:{chl}}} .url{{background:{chl};color:{t['fg']}}}'''
 def style_css(i):
     t=THEMES[i%len(THEMES)]; hl=t['hl']; fg=t['fg']
     return [
