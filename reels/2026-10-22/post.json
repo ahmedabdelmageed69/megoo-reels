@@ -1,0 +1,11 @@
+{
+ "slides": [
+  {"type":"cover","kicker":"AI Tips","title":"أغنية في *دماغك*\nومش عارف اسمها؟","subtitle":"٥ حاجات مستخبية في موبايلك 🤫"},
+  {"type":"point","title":"أغنية على\n*لسانك*","body":"❌ زمان: تدندنها ومتعرفش اسمها.\n✅ دلوقتي: في Google app اضغط الميكروفون واختار Search a song ودندن 15 ثانية.","tag":"Google app"},
+  {"type":"point","title":"نبتة مش\n*معروفة*","body":"❌ زمان: تسأل كل اللي تعرفهم.\n✅ دلوقتي: في iPhone Photos افتح الصورة واضغط info وبعدين الأيقونة اللي ظهرت.","tag":"iPhone Photos"},
+  {"type":"point","title":"شاشة مش\n*فاهمها*","body":"❌ زمان: تصور وتبعت لحد يشرحلك.\n✅ دلوقتي: نادي Gemini واضغط ask about this screen وهو يشرحلك اللي قدامك.","tag":"Gemini"},
+  {"type":"point","title":"سؤال محتاج\n*رد* طويل","body":"❌ زمان: تفتح عشر صفحات.\n✅ دلوقتي: في Google Search اضغط تبويب AI Mode واسأل سؤالك كامل بالعربي.","tag":"AI Mode"},
+  {"type":"point","title":"صورة مش\n*عارفها*","body":"❌ زمان: تحتار فيها لوحدك.\n✅ دلوقتي: ابعت الصورة لـ Meta AI في WhatsApp واسأله ده إيه.","tag":"Meta AI Photo"},
+  {"type":"cta","title":"ابعتها لصاحبك\nاللي *بيدندن*","body":"واحفظها عشان متنساش"}
+ ]
+}
