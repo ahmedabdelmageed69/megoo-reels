@@ -1,0 +1,11 @@
+{
+ "slides": [
+  {"type":"cover","kicker":"AI Tips","title":"خارج النهاردة\nومش عايز *تتوه*","subtitle":"٥ حركات للمشوار من غير توهان 🧭"},
+  {"type":"point","title":"النت\n*فصل*","body":"❌ زمان: تتوه في نص الطريق.\n✅ دلوقتي: في Google Maps اضغط صورتك واختار Offline maps ثم Select your own map.","tag":"Maps Offline"},
+  {"type":"point","title":"العربية\n*فين*","body":"❌ زمان: تلف الشارع كله.\n✅ دلوقتي: في Google Maps اضغط النقطة الزرقاء واختار Save your parking.","tag":"Maps Parking"},
+  {"type":"point","title":"أماكن\n*حلوة*","body":"❌ زمان: تبعت كل مكان لوحده.\n✅ دلوقتي: احفظها في list في Google Maps وابعت اللينك مرة واحدة.","tag":"Maps Lists"},
+  {"type":"point","title":"سفرية\n*غالية*","body":"❌ زمان: تدور كل يوم على السعر.\n✅ دلوقتي: في Google Flights فعل Track prices ويجيلك تنبيه.","tag":"Google Flights"},
+  {"type":"point","title":"مستنيك\n*فين*","body":"❌ زمان: ترن عليه كل خمس دقايق.\n✅ دلوقتي: في WhatsApp اضغط المرفقات ثم Location واختار Share live location.","tag":"WhatsApp Live"},
+  {"type":"cta","title":"ابعتها لأكتر واحد\nبيتوه *دايما*","body":"واحفظها للمشوار الجاي"}
+ ]
+}
