@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "الإيميل متكدس\nمن *الصبح*",
+   "subtitle": "٥ حركات تفضي الإنبوكس ☕"
+  },
+  {
+   "type": "point",
+   "title": "إيميل\n*مش وقته*",
+   "body": "❌ زمان: يفضل قدامك ويقلقك.\n✅ دلوقتي: في Gmail اضغط النقط التلاتة واختار Snooze وحدد الوقت.",
+   "tag": "Gmail Snooze"
+  },
+  {
+   "type": "point",
+   "title": "إعلانات\n*مزعجة*",
+   "body": "❌ زمان: تمسح نفس الإعلان كل يوم.\n✅ دلوقتي: افتح الإيميل في Gmail واضغط Unsubscribe فوق.",
+   "tag": "Gmail Unsub"
+  },
+  {
+   "type": "point",
+   "title": "إيميل\n*طويل*",
+   "body": "❌ زمان: تقرا تلات صفحات.\n✅ دلوقتي: لو ظهرلك في Gmail زرار Summarize this email اضغطه.",
+   "tag": "Gmail Summary"
+  },
+  {
+   "type": "point",
+   "title": "فاتورة\n*فين*",
+   "body": "❌ زمان: تقلب في الإيميلات ساعة.\n✅ دلوقتي: فعل Gmail من Extensions في Gemini واسأله دور على فاتورة النت.",
+   "tag": "Gemini Gmail"
+  },
+  {
+   "type": "point",
+   "title": "رسالة\n*متأخرة*",
+   "body": "❌ زمان: تصحي المدير الساعة ١٢ بليل.\n✅ دلوقتي: في Gmail اضغط النقط جنب Send واختار Schedule send.",
+   "tag": "Schedule Send"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لأكتر واحد\nإيميلاته *متكدسة*",
+   "body": "واحفظها لصباح بكرة"
+  }
+ ]
+}

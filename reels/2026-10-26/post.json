@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "الذاكرة مليانة\nوعايز *تصور*",
+   "subtitle": "٥ حركات تريّح جاليري موبايلك 📱"
+  },
+  {
+   "type": "point",
+   "title": "الذاكرة\n*مليانة*",
+   "body": "❌ زمان: تمسح صورة صورة بإيدك.\n✅ دلوقتي: في Google Photos اضغط صورتك واختار Free up space.",
+   "tag": "Photos Space"
+  },
+  {
+   "type": "point",
+   "title": "صور\n*مكررة*",
+   "body": "❌ زمان: تقارنها بعينك.\n✅ دلوقتي: في الآيفون افتح Albums ثم Duplicates واضغط Merge.",
+   "tag": "iPhone Duplicates"
+  },
+  {
+   "type": "point",
+   "title": "صور\n*خاصة*",
+   "body": "❌ زمان: قلبك يدق لو حد مسك موبايلك.\n✅ دلوقتي: في Google Photos افتح Library ثم Utilities واختار Locked Folder.",
+   "tag": "Locked Folder"
+  },
+  {
+   "type": "point",
+   "title": "ألبوم\n*العيلة*",
+   "body": "❌ زمان: كل واحد يبعت صوره في شات.\n✅ دلوقتي: في Google Photos اعمل Shared album وابعت اللينك ويضيفوا فيه.",
+   "tag": "Shared Album"
+  },
+  {
+   "type": "point",
+   "title": "صور\n*زيادة*",
+   "body": "❌ زمان: تمسحها وتندم.\n✅ دلوقتي: في Google Photos اضغط مطولا على الصورة واختار Archive.",
+   "tag": "Photos Archive"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لأكتر واحد\nجاليريه *زحمة*",
+   "body": "واحفظها قبل ما الذاكرة تتملي"
+  }
+ ]
+}
