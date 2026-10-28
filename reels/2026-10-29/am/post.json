@@ -1,0 +1,9 @@
+{"slides":[
+{"type":"cover","kicker":"AI Tips","title":"نسيت عيد ميلاد\nحد *غالي*؟","subtitle":"٥ حركات متنساش بعدها 🎂"},
+{"type":"point","title":"ضيف\n*الميعاد*","body":"❌ زمان: تفتكر بعد ما يفوت.\n✅ دلوقتي: في Google Contacts افتح الشخص وضيف Birthday ويظهر في Calendar.","tag":"Contacts Bday"},
+{"type":"point","title":"فكرة\n*هدية*","body":"❌ زمان: تلف السوق وإنت تايه.\n✅ دلوقتي: قول ل ChatGPT اقترحلي هدية لأمي في حدود ٣٠٠ جنيه.","tag":"ChatGPT Gift"},
+{"type":"point","title":"كلمة\n*من القلب*","body":"❌ زمان: تبعت نفس التهنئة الجاهزة.\n✅ دلوقتي: قول ل Gemini اكتبلي تهنئة لصاحبي بأسلوب مرح عن ذكرياتنا.","tag":"Gemini Wish"},
+{"type":"point","title":"كارت\n*باسمه*","body":"❌ زمان: صورة مكررة من النت.\n✅ دلوقتي: افتح Canva وابحث Birthday card وغير الاسم والصورة.","tag":"Canva Card"},
+{"type":"point","title":"تنبيه\n*قبلها*","body":"❌ زمان: تفتكر الليلة نفسها.\n✅ دلوقتي: قول ل Gemini فكرني قبل عيد ميلاد ماما بيومين.","tag":"Gemini Remind"},
+{"type":"cta","title":"ابعتها لحد\nبينسى *المواعيد*","body":"واحفظها قبل ما تنسى"}
+]}
