@@ -1,0 +1,9 @@
+{"slides":[
+{"type":"cover","kicker":"AI Tips","title":"حد مسك موبايلك\nوفتح *شاتك*؟","subtitle":"٥ حركات تخلي أسرارك معاك 🔒"},
+{"type":"point","title":"اقفل\n*الشات*","body":"❌ زمان: أي حد يفتح ChatGPT يقرا كل حاجة.\n✅ دلوقتي: اختار الشات وحوله Locked Chat بكود أو بصمة.","tag":"ChatGPT Locked"},
+{"type":"point","title":"شات\n*مؤقت*","body":"❌ زمان: سؤالك الحساس يفضل محفوظ.\n✅ دلوقتي: في ChatGPT اختار Temporary Chat وهو مش بيتحفظ.","tag":"Temporary Chat"},
+{"type":"point","title":"نفس\n*الفكرة*","body":"❌ زمان: تسأل Gemini وتفضل قلقان.\n✅ دلوقتي: في Gemini اضغط Temporary Chat قبل ما تسأل.","tag":"Gemini Temp"},
+{"type":"point","title":"امسح\n*أثرك*","body":"❌ زمان: كل أسئلتك قاعدة لسه.\n✅ دلوقتي: في Gemini افتح Apps Activity وحدد مسح تلقائي بعد مدة.","tag":"Gemini Activity"},
+{"type":"point","title":"اقفل\n*التدريب*","body":"❌ زمان: كلامك ممكن يحسن النموذج.\n✅ دلوقتي: في ChatGPT افتح Data Controls وقفل Improve the model for everyone.","tag":"Data Controls"},
+{"type":"cta","title":"ابعتها لحد\nبيسأل *أسئلة حساسة*","body":"واحفظها وقفل شاتك النهاردة"}
+]}
