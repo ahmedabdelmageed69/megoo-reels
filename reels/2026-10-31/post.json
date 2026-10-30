@@ -1,0 +1,45 @@
+{
+"slides": [
+{
+"type": "cover",
+"kicker": "AI Tips",
+"title": "الشغل متراكم\nومش عارف *تبدأ*؟",
+"subtitle": "٥ حركات تخلصك قبل الضهر 💼"
+},
+{
+"type": "point",
+"title": "عدّل\n*الفقرة*",
+"body": "❌ زمان: تعيد كتابة التقرير كله عشان جملة.\n✅ دلوقتي: في ChatGPT افتح Canvas، حدد الفقرة واطلب اختصرها.",
+"tag": "ChatGPT Canvas"
+},
+{
+"type": "point",
+"title": "اسأل\n*الإكسل*",
+"body": "❌ زمان: تقعد تحسب المبيعات بإيدك.\n✅ دلوقتي: ارفع الملف في Gemini واسأل أعلى ٣ شهور مبيعات إيه.",
+"tag": "Gemini Data"
+},
+{
+"type": "point",
+"title": "وقّع\n*العقد*",
+"body": "❌ زمان: تطبع الورقة وتوقع وتصورها.\n✅ دلوقتي: افتح الـ PDF في Acrobat Reader، اختار Fill and Sign وارسم توقيعك.",
+"tag": "Acrobat Reader"
+},
+{
+"type": "point",
+"title": "سطرك\n*المهني*",
+"body": "❌ زمان: ملفك على LinkedIn فاضي.\n✅ دلوقتي: اكتب خبرتك ل Gemini واطلب سطر تعريفي قصير للينكدإن.",
+"tag": "Gemini LinkedIn"
+},
+{
+"type": "point",
+"title": "محضر\n*جاهز*",
+"body": "❌ زمان: تدور على أسماء الحاضرين.\n✅ دلوقتي: في Google Docs اكتب @meeting notes واختار الاجتماع.",
+"tag": "Docs Notes"
+},
+{
+"type": "cta",
+"title": "ابعتها لزميلك\nالـ *غرقان*",
+"body": "واحفظها وابدأ أسبوعك صح"
+}
+]
+}

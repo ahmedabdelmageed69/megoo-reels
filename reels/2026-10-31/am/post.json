@@ -1,0 +1,45 @@
+{
+"slides": [
+{
+"type": "cover",
+"kicker": "AI Tips",
+"title": "الواتساب بيرن\nمن *الصبح*",
+"subtitle": "٥ حركات تهدي الزحمة 📱"
+},
+{
+"type": "point",
+"title": "علّم\n*الرسالة*",
+"body": "❌ زمان: ترجع تدور على العنوان وسط الشات.\n✅ دلوقتي: علّمها بنجمة في WhatsApp وافتح Starred messages من القايمة.",
+"tag": "WA Star"
+},
+{
+"type": "point",
+"title": "ثبّت\n*الأهم*",
+"body": "❌ زمان: شات الشغل غرقان تحت.\n✅ دلوقتي: اختار الشات المهم في WhatsApp واضغط أيقونة الدبوس ليثبت فوق.",
+"tag": "WA Pin"
+},
+{
+"type": "point",
+"title": "فلتر\n*الغير مقروء*",
+"body": "❌ زمان: تفتح كل الشاتات تدور على الجديد.\n✅ دلوقتي: في WhatsApp اضغط فوق على Unread وشوف اللي فاتك بس.",
+"tag": "WA Filter"
+},
+{
+"type": "point",
+"title": "خبّي\n*السر*",
+"body": "❌ زمان: أي حد يمسك موبايلك يقرا.\n✅ دلوقتي: افتح الشات في WhatsApp، اضغط اسم الشخص وفعل Chat lock.",
+"tag": "WA Lock"
+},
+{
+"type": "point",
+"title": "اسكت\n*المجهول*",
+"body": "❌ زمان: رقم غريب يرن في وقت راحتك.\n✅ دلوقتي: في WhatsApp افتح Privacy ثم Calls وفعل Silence unknown callers.",
+"tag": "WA Silence"
+},
+{
+"type": "cta",
+"title": "ابعتها لصاحبك\nصاحب الـ *٩٩ شات*",
+"body": "واحفظها وصباحك يهدا"
+}
+]
+}
