@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "باقة النت خلصت\nقبل آخر *الشهر*؟",
+   "subtitle": "٥ حركات توفر نتك 📶"
+  },
+  {
+   "type": "point",
+   "title": "نبّهك\n*بدري*",
+   "body": "❌ زمان: النت يخلص فجأة.\n✅ دلوقتي: في أندرويد افتح Settings ثم Data usage وحدد Data warning.",
+   "tag": "Data Warning"
+  },
+  {
+   "type": "point",
+   "title": "وفّر\n*الآيفون*",
+   "body": "❌ زمان: التطبيقات تسحب نت في الخلفية.\n✅ دلوقتي: في الآيفون افتح Cellular وفعل Low Data Mode.",
+   "tag": "Low Data Mode"
+  },
+  {
+   "type": "point",
+   "title": "كلّم\n*بأقل*",
+   "body": "❌ زمان: مكالمات الواتساب تاكل باقتك.\n✅ دلوقتي: في WhatsApp افتح Storage and data وفعل Use less data for calls.",
+   "tag": "WA Less Data"
+  },
+  {
+   "type": "point",
+   "title": "شوف\n*أرخص*",
+   "body": "❌ زمان: فيديو يوتيوب يخلص جيجا.\n✅ دلوقتي: في YouTube افتح Video quality preferences واختار Data saver.",
+   "tag": "YT Data Saver"
+  },
+  {
+   "type": "point",
+   "title": "ارفع\n*بالواي فاي*",
+   "body": "❌ زمان: صورك ترفع على باقتك.\n✅ دلوقتي: في Google Photos افتح Backup وقفل Mobile data usage.",
+   "tag": "Photos Wi-Fi"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لصاحبك\nاللي *نتّه* بيخلص",
+   "body": "واحفظها وباقتك تكفيك"
+  }
+ ]
+}

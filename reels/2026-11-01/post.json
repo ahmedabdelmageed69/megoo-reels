@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "ذاكرت ساعتين\nومفيش *حاجة* دخلت؟",
+   "subtitle": "٥ حركات تركّزك 📚"
+  },
+  {
+   "type": "point",
+   "title": "دور في\n*الفيديو*",
+   "body": "❌ زمان: تسمع محاضرة ساعة عشان جملة.\n✅ دلوقتي: في YouTube افتح الوصف واضغط Show transcript وادور على الكلمة.",
+   "tag": "YT Transcript"
+  },
+  {
+   "type": "point",
+   "title": "ركّز\n*المذاكرة*",
+   "body": "❌ زمان: تفتح كتابك وتلاقي نفسك على الريلز.\n✅ دلوقتي: في أندرويد افتح Digital Wellbeing واختار Focus mode.",
+   "tag": "Focus Mode"
+  },
+  {
+   "type": "point",
+   "title": "قسّم\n*المنهج*",
+   "body": "❌ زمان: المنهج جبل قدامك.\n✅ دلوقتي: في Google Tasks اعمل مهمة وضيف Subtasks لكل درس.",
+   "tag": "Google Tasks"
+  },
+  {
+   "type": "point",
+   "title": "اتنقل\n*بسرعة*",
+   "body": "❌ زمان: تسحب الملزمة تدور على الفصل.\n✅ دلوقتي: في Google Docs افتح View واختار Show outline.",
+   "tag": "Docs Outline"
+  },
+  {
+   "type": "point",
+   "title": "قارن\n*المصطلحين*",
+   "body": "❌ زمان: بتخلط بين مفهومين.\n✅ دلوقتي: اكتب ل ChatGPT اعملي جدول يقارن بين المفهومين دول.",
+   "tag": "ChatGPT Table"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لصاحبك\nاللي *بيذاكر* معاك",
+   "body": "واحفظها وذاكر وإنت مرتاح"
+  }
+ ]
+}
