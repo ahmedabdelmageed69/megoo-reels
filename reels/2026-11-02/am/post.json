@@ -1,0 +1,11 @@
+{
+ "slides": [
+  {"type":"cover","kicker":"AI Tips","title":"صحيت تعبان\nبعد *سهر* الموبايل؟","subtitle":"٥ حركات لنوم أهدى 🌙"},
+  {"type":"point","title":"قفل\n*الفيديو*","body":"❌ زمان: تنام والفيديو شغال للصبح.\n✅ دلوقتي: شغل Sleep timer من إعدادات فيديو YouTube، وهيقفل لوحده.","tag":"YT Sleep"},
+  {"type":"point","title":"ريّح\n*عينك*","body":"❌ زمان: الشاشة نور في وشك بالليل.\n✅ دلوقتي: في أندرويد افتح Display وفعل Night Light.","tag":"Night Light"},
+  {"type":"point","title":"اسكت\n*الإشعارات*","body":"❌ زمان: رنة تصحيك الساعة ٢.\n✅ دلوقتي: في أندرويد افتح Do Not Disturb وأضف Schedule للنوم.","tag":"DND Schedule"},
+  {"type":"point","title":"نظّم\n*نومك*","body":"❌ زمان: بتنام في ميعاد عشوائي.\n✅ دلوقتي: في الآيفون افتح Health وبعدين Sleep وظبط Full Schedule.","tag":"iPhone Sleep"},
+  {"type":"point","title":"هدّي\n*دماغك*","body":"❌ زمان: تفضل تفكر وانت على السرير.\n✅ دلوقتي: اكتب ل ChatGPT اقترحلي روتين هادي ١٠ دقايق قبل النوم.","tag":"ChatGPT Sleep"},
+  {"type":"cta","title":"ابعتها لصاحبك\nاللي *سهران* دايما","body":"واحفظها ونام كويس الليلة"}
+ ]
+}
