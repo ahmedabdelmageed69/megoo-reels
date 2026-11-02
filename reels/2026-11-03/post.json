@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "موبايلك ضاع\nوقلبك *وقع*؟",
+   "subtitle": "٥ حاجات تلحق بيها 📱"
+  },
+  {
+   "type": "point",
+   "title": "دور\n*عليه*",
+   "body": "❌ زمان: كنت بتتصل برقمه وهو مقفول.\n✅ دلوقتي: افتح Find Hub من أي كمبيوتر بحسابك، وهيوريك مكانه حتى لو أوفلاين.",
+   "tag": "Find Hub"
+  },
+  {
+   "type": "point",
+   "title": "اقفله\n*فورا*",
+   "body": "❌ زمان: كنت بتدعي إن اللي لقاه أمين.\n✅ دلوقتي: في Find Hub اضغط Mark as lost، وسيب رسالة ورقمك على الشاشة.",
+   "tag": "Lost Mode"
+  },
+  {
+   "type": "point",
+   "title": "الآيفون\n*ضايع*",
+   "body": "❌ زمان: الآيفون ضاع وخلاص.\n✅ دلوقتي: افتح Find My من آيفون تاني، واختار جهازك وفعل Lost Mode.",
+   "tag": "Find My"
+  },
+  {
+   "type": "point",
+   "title": "اقفل\n*حسابك*",
+   "body": "❌ زمان: خايف حد يفتح إيميلك وصورك.\n✅ دلوقتي: في Google Account افتح Security ثم Your devices، واضغط Sign out.",
+   "tag": "Google Account"
+  },
+  {
+   "type": "point",
+   "title": "احمي\n*واتساب*",
+   "body": "❌ زمان: حد يسحب رقمك ويدخل شاتاتك.\n✅ دلوقتي: في WhatsApp افتح Settings ثم Account وفعل Two-step verification.",
+   "tag": "WA 2-Step"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لحد\nدايما *بيضيع* موبايله",
+   "body": "وخليه يفعلها النهاردة"
+  }
+ ]
+}

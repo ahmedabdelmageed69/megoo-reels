@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "بتكتب نفس الكلام\n*كل* يوم؟",
+   "subtitle": "٥ حركات توفرلك وقتك ⏱️"
+  },
+  {
+   "type": "point",
+   "title": "اختصر\n*العنوان*",
+   "body": "❌ زمان: تكتب عنوانك كل مرة.\n✅ دلوقتي: في Gboard افتح Dictionary ثم Personal dictionary وضيف اختصار، واكتبه يطلعلك الكلام كامل.",
+   "tag": "Gboard"
+  },
+  {
+   "type": "point",
+   "title": "على\n*الآيفون*",
+   "body": "❌ زمان: تكتب نفس الجملة ألف مرة.\n✅ دلوقتي: في الآيفون افتح Settings ثم General ثم Keyboard ثم Text Replacement.",
+   "tag": "Text Replace"
+  },
+  {
+   "type": "point",
+   "title": "ثبّت\n*النسخ*",
+   "body": "❌ زمان: ترجع تنسخ الرقم من الأول.\n✅ دلوقتي: في Gboard افتح Clipboard، واضغط مطولا على الجملة واختار Pin.",
+   "tag": "Gboard Clip"
+  },
+  {
+   "type": "point",
+   "title": "املا\n*الفورم*",
+   "body": "❌ زمان: تكتب اسمك وعنوانك في كل موقع.\n✅ دلوقتي: في Chrome افتح Settings ثم Addresses and more وضيف عنوانك، وهيتملى لوحده.",
+   "tag": "Chrome Autofill"
+  },
+  {
+   "type": "point",
+   "title": "قالب\n*جاهز*",
+   "body": "❌ زمان: تكتب نفس الاعتذار من الأول.\n✅ دلوقتي: اكتب ل ChatGPT اكتبلي قالب رسالة مؤدبة، وانسخه وابعته كل مرة.",
+   "tag": "ChatGPT Template"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لصاحبك\nاللي *بيكتب* كتير",
+   "body": "وخليه يوفر وقته من بكرة"
+  }
+ ]
+}
