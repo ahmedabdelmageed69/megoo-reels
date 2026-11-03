@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "الخط صغير وماما\n*مش* شايفة؟",
+   "subtitle": "٥ حركات تريّحها 👓"
+  },
+  {
+   "type": "point",
+   "title": "كبّر\n*الخط*",
+   "body": "❌ زمان: تقرأ لها الرسالة بصوت عالي.\n✅ دلوقتي: في أندرويد افتح Settings ثم Display ثم Font size، وكبّره.",
+   "tag": "Android Font"
+  },
+  {
+   "type": "point",
+   "title": "حجم\n*الحروف*",
+   "body": "❌ زمان: تقولها قربي الموبايل.\n✅ دلوقتي: افتح Settings ثم Display & Brightness ثم Text Size، وحرك السلايدر.",
+   "tag": "iPhone Text"
+  },
+  {
+   "type": "point",
+   "title": "كبّر\n*الواتساب*",
+   "body": "❌ زمان: رسايل العيلة صغيرة ومش باينة.\n✅ دلوقتي: في WhatsApp على أندرويد افتح Settings ثم Chats ثم Font size.",
+   "tag": "WA Font Size"
+  },
+  {
+   "type": "point",
+   "title": "ورقة\n*صغيرة*",
+   "body": "❌ زمان: تدور على النضارة في كل مرة.\n✅ دلوقتي: فعل Magnifier من Accessibility في الآيفون، ووجه الكاميرا على الورقة.",
+   "tag": "Magnifier"
+  },
+  {
+   "type": "point",
+   "title": "كبّر\n*الشاشة*",
+   "body": "❌ زمان: تزغلل عشان تقرا زرار صغير.\n✅ دلوقتي: في أندرويد افتح Accessibility ثم Magnification، واضغط ٣ مرات على الشاشة.",
+   "tag": "Magnification"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لماما أو بابا\nعشان *يشوفوا* براحة",
+   "body": "وظبطها لهم النهاردة"
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "زبونك مبسوط\nومشي من غير *كلمة*؟",
+   "subtitle": "٥ حركات تخلي محلك يتكلم 🛍️"
+  },
+  {
+   "type": "point",
+   "title": "اطلب\n*رأيه*",
+   "body": "❌ زمان: تستنى الزبون يفتكر يقيّمك.\n✅ دلوقتي: من الكمبيوتر افتح Business Profile، واضغط Get more reviews وابعت اللينك.",
+   "tag": "Business Profile"
+  },
+  {
+   "type": "point",
+   "title": "رد\n*جاهز*",
+   "body": "❌ زمان: تكتب نفس الرد لكل رسالة.\n✅ دلوقتي: في Instagram افتح Saved replies، وضيف اختصار وجملتك.",
+   "tag": "Instagram"
+  },
+  {
+   "type": "point",
+   "title": "وصف\n*المنتج*",
+   "body": "❌ زمان: تقعد ساعة تفكر تكتب إيه.\n✅ دلوقتي: ابعت صورة المنتج ل ChatGPT واكتب اكتبلي وصف بيع قصير.",
+   "tag": "ChatGPT Desc"
+  },
+  {
+   "type": "point",
+   "title": "أسئلة\n*الزباين*",
+   "body": "❌ زمان: بتجاوب نفس السؤال كل يوم.\n✅ دلوقتي: اكتب ل ChatGPT أكتر ٥ أسئلة بيسألها زباين محل هدوم وجاوبهم.",
+   "tag": "ChatGPT FAQ"
+  },
+  {
+   "type": "point",
+   "title": "تابع\n*الطلبات*",
+   "body": "❌ زمان: ورقة طلبات وتنسى مين استلم.\n✅ دلوقتي: في Google Sheets حدد الخانات واختار Insert ثم Checkbox.",
+   "tag": "Google Sheets"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لصاحب محل\nبيتعب *لوحده*",
+   "body": "وخليه يجرب واحدة النهاردة"
+  }
+ ]
+}
