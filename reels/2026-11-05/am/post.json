@@ -1,0 +1,11 @@
+{
+ "slides": [
+  {"type":"cover","kicker":"AI Tips","title":"البطارية ٥٪\nوإنت في *الطريق*؟","subtitle":"٥ حركات تطوّل عمرها 🔋"},
+  {"type":"point","title":"وفّر\n*أندرويد*","body":"❌ زمان: تقفل الموبايل وتستنى المعجزة.\n✅ دلوقتي: افتح Settings ثم Battery، وشغل Battery saver.","tag":"Battery Saver"},
+  {"type":"point","title":"شحن\n*أطول*","body":"❌ زمان: البطارية تنزل قدام عينك.\n✅ دلوقتي: شغل Low Power Mode من Battery، والإيميل والتحميل يتأجلوا لوحدهم.","tag":"Low Power"},
+  {"type":"point","title":"شاشة\n*سوداء*","body":"❌ زمان: الشاشة البيضا تاكل الشحن.\n✅ دلوقتي: شغل Dark theme من شاشة أندرويد، ولو شاشتك OLED هتوفر شحن.","tag":"Dark Theme"},
+  {"type":"point","title":"اقفلها\n*بدري*","body":"❌ زمان: الشاشة منورة وإنت مش بتلمسها.\n✅ دلوقتي: افتح Display ثم Screen timeout، واختار ٣٠ ثانية.","tag":"Screen Timeout"},
+  {"type":"point","title":"اسأل\n*Gemini*","body":"❌ زمان: تخمّن إيه اللي بيستهلك الشحن.\n✅ دلوقتي: قول ل Gemini معايا ١٠٪ ونص ساعة طريق، وفر إيه؟","tag":"Gemini Battery"},
+  {"type":"cta","title":"ابعتها لأي حد موبايله\nدايمًا *بيفصل*","body":"قبل ما يخرج بكرة"}
+ ]
+}
