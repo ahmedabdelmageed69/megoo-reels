@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "بحث ساعات\nمن *الصفر*؟",
+   "subtitle": "٥ أدوات مجانية تختصرها 🚀"
+  },
+  {
+   "type": "point",
+   "title": "بحث\n*كامل*",
+   "body": "❌ زمان: تفتح ٢٠ تبويب وتتوه.\n✅ دلوقتي: في Gemini اختار Deep Research واكتب موضوعك.",
+   "tag": "Gemini Research"
+  },
+  {
+   "type": "point",
+   "title": "ملفاتك\nفي *مكان*",
+   "body": "❌ زمان: تلم ملفاتك من كل شات.\n✅ دلوقتي: في ChatGPT اضغط New project وارفع ملفاتك وتعليماتك.",
+   "tag": "ChatGPT Project"
+  },
+  {
+   "type": "point",
+   "title": "شرح\nبالـ *صورة*",
+   "body": "❌ زمان: تقعد تصمم ملخص.\n✅ دلوقتي: في Gemini افتح Canvas واضغط Create ثم Infographic.",
+   "tag": "Canvas Infographic"
+  },
+  {
+   "type": "point",
+   "title": "صفحة\n*جاهزة*",
+   "body": "❌ زمان: تحتاج مبرمج لصفحة بسيطة.\n✅ دلوقتي: من Create في Canvas اختار Web page.",
+   "tag": "Canvas Web"
+  },
+  {
+   "type": "point",
+   "title": "لـ Docs\nبضغطة",
+   "body": "❌ زمان: تنسخ وتلصق وتتبهدل.\n✅ دلوقتي: من Share & export في Canvas اختار Export to Docs.",
+   "tag": "Canvas Docs"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لزميلك اللي\nعنده *بحث* كبير",
+   "body": "وجربوها سوا النهاردة"
+  }
+ ]
+}

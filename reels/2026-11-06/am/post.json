@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "رايح الشغل\nوالطريق *زحمة*؟",
+   "subtitle": "٥ حركات تهون المشوار 🚗"
+  },
+  {
+   "type": "point",
+   "title": "مشاوير\n*كتير*",
+   "body": "❌ زمان: تلف كتير عشان مشوار صغير.\n✅ دلوقتي: في Google Maps اضغط More واختار Add stop.",
+   "tag": "Maps Stop"
+  },
+  {
+   "type": "point",
+   "title": "بلاش\n*الرسوم*",
+   "body": "❌ زمان: تدفع رسوم من غير ما تقصد.\n✅ دلوقتي: افتح Route options في Google Maps وفعّل Avoid tolls.",
+   "tag": "Maps Tolls"
+  },
+  {
+   "type": "point",
+   "title": "مشوار\n*سري*",
+   "body": "❌ زمان: هدية مفاجأة والمكان يظهر في بحثك.\n✅ دلوقتي: اضغط صورتك في Google Maps واختار Turn on Incognito mode.",
+   "tag": "Maps Incognito"
+  },
+  {
+   "type": "point",
+   "title": "بيتك\nوشغلك",
+   "body": "❌ زمان: تكتب العنوان كل يوم وإنت متأخر.\n✅ دلوقتي: احفظ Home و Work في Google Maps، وبعدها اختارهم بلمسة.",
+   "tag": "Maps Home"
+  },
+  {
+   "type": "point",
+   "title": "الكاميرا\nفي *ثانية*",
+   "body": "❌ زمان: اللقطة تضيع وإنت بتدور على الكاميرا.\n✅ دلوقتي: في أندرويد افتح Settings ثم Gestures وفعّل ضغطتين على زر الباور للكاميرا.",
+   "tag": "Power Camera"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لصاحبك اللي\nدايمًا *بيتأخر*",
+   "body": "قبل ما الطريق يزحم عليه"
+  }
+ ]
+}
