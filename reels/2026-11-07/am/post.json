@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "نسيت الباسورد\nوإنت *مستعجل*؟",
+   "subtitle": "٥ حركات تفتح بيها أي حساب 🔐"
+  },
+  {
+   "type": "point",
+   "title": "كل\n*الباسوردات*",
+   "body": "❌ زمان: تدور في الورق والرسايل.\n✅ دلوقتي: افتح passwords.google.com وادخل ببصمتك.",
+   "tag": "Google Passwords"
+  },
+  {
+   "type": "point",
+   "title": "اعرف\nاللي *اتسرب*",
+   "body": "❌ زمان: باسوردك اتسرب وإنت مش عارف.\n✅ دلوقتي: في Google Password Manager اضغط Checkup.",
+   "tag": "Password Checkup"
+  },
+  {
+   "type": "point",
+   "title": "باسورد\n*قوي*",
+   "body": "❌ زمان: نفس الباسورد الضعيف في كل حساب.\n✅ دلوقتي: في Chrome اختار Use suggested password وهيتحفظ لوحده.",
+   "tag": "Chrome Suggest"
+  },
+  {
+   "type": "point",
+   "title": "للأهل\n*بأمان*",
+   "body": "❌ زمان: تبعت باسورد الواي فاي في رسالة.\n✅ دلوقتي: في Google Password Manager اختار الباسورد واضغط Share لعيلتك.",
+   "tag": "Password Share"
+  },
+  {
+   "type": "point",
+   "title": "باسوردك\n*محفوظ*",
+   "body": "❌ زمان: تحفظ باسوردك في ملاحظة.\n✅ دلوقتي: افتح Settings ثم Passwords وادخل بـ Face ID.",
+   "tag": "iPhone Passwords"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لصاحبك اللي\nدايمًا *بينسى*",
+   "body": "قبل ما يتقفل عليه حسابه"
+  }
+ ]
+}

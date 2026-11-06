@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "عايز شغل أحسن\nومديرك *ميعرفش*؟",
+   "subtitle": "٥ حركات تدور بيها في السر 🤫"
+  },
+  {
+   "type": "point",
+   "title": "ظهر\nللـ *شركات*",
+   "body": "❌ زمان: تخاف مديرك يشوف إنك بتدور.\n✅ دلوقتي: في LinkedIn فعّل Open to work واختار Recruiters only.",
+   "tag": "LinkedIn Private"
+  },
+  {
+   "type": "point",
+   "title": "الوظايف\n*تجيلك*",
+   "body": "❌ زمان: تفتح الموقع كل يوم تدور.\n✅ دلوقتي: ابحث في LinkedIn واضغط Set alert ويجيلك إشعار.",
+   "tag": "LinkedIn Alert"
+  },
+  {
+   "type": "point",
+   "title": "سيرتك\n*PDF*",
+   "body": "❌ زمان: السيرة تتبوظ لما تتفتح على موبايل تاني.\n✅ دلوقتي: في Google Docs اختار File ثم Download ثم PDF Document.",
+   "tag": "Docs PDF"
+  },
+  {
+   "type": "point",
+   "title": "سيرة\n*نضيفة*",
+   "body": "❌ زمان: غلطة إملائية تضيع الفرصة.\n✅ دلوقتي: في Google Docs افتح Tools واختار Spelling and grammar.",
+   "tag": "Docs Spelling"
+  },
+  {
+   "type": "point",
+   "title": "مقابلة\n*مضبوطة*",
+   "body": "❌ زمان: ميعاد المقابلة يفوتك.\n✅ دلوقتي: في Google Calendar اعمل حدث وأضف Notification قبلها بساعة.",
+   "tag": "Calendar Interview"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لصاحبك اللي\nعايز *يغير* شغله",
+   "body": "وخليها سر بينكم"
+  }
+ ]
+}
