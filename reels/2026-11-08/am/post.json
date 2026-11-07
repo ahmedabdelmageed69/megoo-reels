@@ -1,0 +1,11 @@
+{
+ "slides": [
+  {"type":"cover","kicker":"AI Tips","title":"الموبايل بيهنج\nوإنت *مستعجل*؟","subtitle":"٥ حركات ترجّعه سريع ⚡"},
+  {"type":"point","title":"امسح\n*الزبالة*","body":"❌ زمان: الموبايل مليان ملفات ملهاش لازمة.\n✅ دلوقتي: افتح Files by Google واضغط Clean وامسح الزيادة.","tag":"Files by Google"},
+  {"type":"point","title":"تطبيقات\n*منسية*","body":"❌ زمان: تطبيقات مش بتفتحها بتاكل مساحة.\n✅ دلوقتي: في Play Store افتح Manage apps ورتبها بـ Least used.","tag":"Play Store"},
+  {"type":"point","title":"فيديوهات\n*الواتساب*","body":"❌ زمان: واتساب واخد جيجات من غير ما تحس.\n✅ دلوقتي: افتح Manage storage واختار Larger than 5 MB وامسح.","tag":"WA Storage"},
+  {"type":"point","title":"كاش\n*المتصفح*","body":"❌ زمان: المتصفح بطيء وصفحاته تقيلة.\n✅ دلوقتي: في Chrome افتح Delete browsing data وامسح Cached images.","tag":"Chrome Cache"},
+  {"type":"point","title":"ريستارت\n*أسبوعي*","body":"❌ زمان: تسيبه شغال شهور.\n✅ دلوقتي: اقفله وشغله مرة في الأسبوع وهيرجع أخف.","tag":"Restart"},
+  {"type":"cta","title":"ابعتها لصاحبك اللي\nموبايله *بطيء*","body":"وخليه يرجع سريع"}
+ ]
+}

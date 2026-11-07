@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "قاعد تذاكر\nومخك *فاصل*؟",
+   "subtitle": "٥ حركات تخلي المذاكرة أخف 📚"
+  },
+  {
+   "type": "point",
+   "title": "سؤال\n*وجواب*",
+   "body": "❌ زمان: تقعد تكتب كروت بإيدك ساعة.\n✅ دلوقتي: ارفع ملزمتك في Gemini واكتب اعملي كروت سؤال وجواب.",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "صفحة\n*نضيفة*",
+   "body": "❌ زمان: إعلانات كتير تشتت المقال.\n✅ دلوقتي: في Safari على الآيفون اضغط aA واختار Show Reader.",
+   "tag": "Safari Reader"
+  },
+  {
+   "type": "point",
+   "title": "عدد\n*الكلمات*",
+   "body": "❌ زمان: تعد كلمات البحث بإيدك.\n✅ دلوقتي: في Google Docs اضغط Tools ثم Word count.",
+   "tag": "Word Count"
+  },
+  {
+   "type": "point",
+   "title": "دور\n*جوه* الصفحة",
+   "body": "❌ زمان: تقرا مقال طويل عشان تلاقي جملة.\n✅ دلوقتي: في Chrome افتح القايمة فوق وادوس Find in page واكتب الكلمة.",
+   "tag": "Chrome Find"
+  },
+  {
+   "type": "point",
+   "title": "سيب\n*الفيسبوك*",
+   "body": "❌ زمان: تفتح فيسبوك دقيقة وتضيع ساعة.\n✅ دلوقتي: في Digital Wellbeing اضغط App timers وحدد وقت للتطبيق.",
+   "tag": "App Timers"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لصاحبك اللي\nعنده *امتحان*",
+   "body": "وخليكم تذاكروا بذكاء"
+  }
+ ]
+}
