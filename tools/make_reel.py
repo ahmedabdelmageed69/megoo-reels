@@ -134,7 +134,10 @@ def point_main(slide, i, wrap=lambda key, k, cls, inner: f'<div class="{cls}">{i
 def slide_html(slide, i, n, css, logo="", hero=None):
     bar = "".join(f'<i class="{"on" if k == i else ""}"></i>' for k in range(n))
     t = slide.get("type", "point")
-    if t == "cover":
+    import comic
+    if comic.enabled():
+        main = comic.main_html(slide, i, hero=hero)
+    elif t == "cover":
         emoji = slide.get("emoji") or (hero or {}).get("emoji")
         main = ((f'<div class="cemoji">{emoji}</div>' if emoji else "")
                 + f'<div class="kicker">{esc(slide.get("kicker"), False)}</div>'
@@ -161,6 +164,8 @@ def main():
     css = CSS % {"ar": font_b64("cairo-arabic-wght-normal.woff2"),
                  "la": font_b64("cairo-latin-wght-normal.woff2"),
                  "mono": font_b64("jetbrains-mono-latin-700-normal.woff2")} + EXTRA_CSS
+    import comic
+    if comic.enabled(): css += comic.font_css() + comic.CSS + comic.vars_css(0, False)
     slides = spec["slides"]
     logo = ""
     for ext, mime in ((".png", "image/png"), (".svg", "image/svg+xml")):

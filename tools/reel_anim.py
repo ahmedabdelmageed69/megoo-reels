@@ -135,7 +135,42 @@ body{{background:radial-gradient(900px 700px at 85% 8%,{c1}33,transparent 60%),r
 body::before{{content:"";position:absolute;left:-50%;right:-50%;bottom:0;height:62%;background:linear-gradient({c1}40 2px,transparent 2px) 0 0/90px 90px,linear-gradient(90deg,{c1}40 2px,transparent 2px) 0 0/90px 90px;transform:perspective(520px) rotateX(62deg);transform-origin:bottom;-webkit-mask-image:linear-gradient(transparent,#000);animation:gridmove 3s linear infinite}}
 body::after{{content:"";position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 5px,#00000026 5px 6px);pointer-events:none;z-index:5}}
 @keyframes gridmove{{to{{background-position:0 90px,0 90px}}}}"""
+import comic as C
+COMIC_ANIM = """
+@keyframes slam{0%{opacity:0;transform:scale(1.25) rotate(var(--r,0deg))}60%{opacity:1;transform:scale(.97) rotate(var(--r,0deg))}100%{opacity:1;transform:scale(1) rotate(var(--r,0deg))}}
+@keyframes stamp{0%{opacity:0;transform:scale(2.2) rotate(-12deg)}70%{opacity:1;transform:scale(.92) rotate(-3deg)}100%{opacity:1;transform:rotate(-3deg)}}
+@keyframes shake{0%,100%{transform:translate(0,0)}25%{transform:translate(-8px,4px)}50%{transform:translate(7px,-5px)}75%{transform:translate(-4px,-3px)}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.p1{--r:-.8deg} .p2{--r:.8deg} .cxtitle{--r:-1.5deg} .cxcta{--r:-1deg}
+.burst{animation:pop .6s .5s both,spin 18s 1.1s linear infinite!important}
+"""
+def comic_page(i,s):
+    D=DUR[i]; t=s.get('type','point'); hero=spec.get('hero') or {}
+    bl=M.body_lines(s); nb=len(bl)
+    after=next((k for k,l in enumerate(bl) if M.line_kind(l)=='after'),max(nb-1,0))
+    t_after=rv(i,after+1,1.0+after*1.1); t_pr=rv(i,nb+1,1.0+nb*1.1); t_end=max(t_pr+1.0,D-0.9)
+    words=len((s.get('prompt') or '').split()) or 1
+    t_b=(t_pr-.5) if s.get('prompt') else (t_after+.9)
+    def wrap(key,k,cls,inner):
+        st={'chap':'stamp .55s .1s','tag':'pop .5s .35s','title':f'punch .55s {(.05 if t=="cover" else .25)+k*.18:.2f}s',
+            'line':f'up .55s {rv(i,k+1,1.0+k*1.1)-.1:.2f}s','panelA':f'slam .5s {max(.3,rv(i,1,1.0)-.35):.2f}s',
+            'chip':f'stamp .45s {t_after+.5+k*.3:.2f}s','arrow':f'pop .35s {t_after+.4+k*.3:.2f}s',
+            'panelB':f'slam .5s {t_b:.2f}s','hero':f'pop .6s {t_b+.15:.2f}s,shake .5s {t_b+.8:.2f}s','bubble':f'pop .5s {t_b+.3:.2f}s',
+            'noteb':f'pop .5s {t_b+.3:.2f}s','word':f'win .08s {t_pr+(t_end-t_pr)*k/words:.2f}s',
+            'kick':'stamp .5s .1s','ctitle':'slam .5s .02s','burst':'pop .6s .5s','sub':f'up .6s {rv(i,1,1.2):.2f}s',
+            'end':'stamp .55s .1s','ctabox':'slam .55s .02s','cbody':f'up .6s {rv(i,1,1.0):.2f}s','icon':f'stamp .45s {1.3+k*.2:.2f}s','site':'up .6s 2s'}.get(key,'up .6s .3s')
+        st=','.join(x.strip()+' both cubic-bezier(.2,.8,.2,1)' for x in st.split(','))   # every animation keeps its end state
+        return f'<div class="a {cls}" style="animation:{st}">{inner}</div>'
+    main=C.main_html(s,i,wrap,hero)
+    css_c=C.font_css()+C.CSS+C.vars_css(SEED,AM)+COMIC_ANIM
+    return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}{ANIM}{theme_css(i)}{css_c}</style></head><body>
+<div class="segs">{''.join(f'<i class="done"></i>' if k<i else (f'<i><b style="animation-duration:{D}s"></b></i>' if k==i else '<i></i>') for k in range(n))}</div>
+<div class="wrap" style="animation:kb {D}s linear both">
+<div class="top"><span class="site">🌐 https://megoo.me</span><span class="cnt">{i+1}/{n}</span></div>
+<div class="main">{main}</div>
+<div class="foot"><span class="handle">https://megoo.me<s>|</s>@_megoo.me</span></div></div></body></html>"""
 def page(i,s):
+    if C.enabled(): return comic_page(i,s)
     t=s.get('type','point'); D=DUR[i]
     if t=='cover':
         emo=s.get('emoji') or (spec.get('hero') or {}).get('emoji')
