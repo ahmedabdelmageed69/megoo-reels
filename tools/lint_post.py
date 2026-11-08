@@ -5,7 +5,7 @@ tools/build.py runs this automatically for files under reels/ (set NO_LINT=1 to 
 """
 import json, re, sys
 
-def words(t): return len(re.sub(r'[*❌✅💡⚠️]', ' ', t or '').split())
+def words(t): return len(re.sub(r'[*❌✅💡⚠️🎬👉]', ' ', t or '').split())
 def emojiless_end(t): return not re.search(r'[\U0001F300-\U0001FAFF☀-➿]\s*$', t or '')
 
 def lint(path):
@@ -14,6 +14,9 @@ def lint(path):
     if types != ['cover'] + ['point'] * 5 + ['cta']: E.append(f'slides must be cover, 5 points, cta (got {types})')
     src = [u for u in post.get('sources', []) if str(u).startswith('http')]
     if len(src) < 3: E.append('add "sources": at least 3 URLs you used to verify the apps/features (not shown in the video)')
+    hero = post.get('hero') or {}
+    if not hero.get('name') or not hero.get('emoji'): E.append('add "hero": {"name": "<everyday Egyptian name>", "emoji": "<one emoji>"} (the story\'s main character)')
+    elif hero['name'] not in S[0].get('title', '') + S[0].get('subtitle', ''): W.append(f'cover should introduce the hero by name ({hero["name"]})')
     spoken = 0; prompts = paths = extras = 0
     for i, s in enumerate(S, 1):
         t = s.get('type', 'point'); title = s.get('title', ''); tl = title.split('\n')
@@ -29,8 +32,9 @@ def lint(path):
         else:
             body = s.get('body', ''); lines = [l for l in body.split('\n') if l.strip()]
             if len(tl) != 2: E.append(f'slide {i}: point title must be exactly 2 lines')
-            if not any(l.strip().startswith('❌') for l in lines) or not any(l.strip().startswith('✅') for l in lines):
-                E.append(f'slide {i}: body needs a "❌ زمان:" line and a "✅ دلوقتي:" line')
+            if not any(l.strip().startswith('🎬') for l in lines) or not any(l.strip().startswith('👉') for l in lines):
+                E.append(f'slide {i}: body needs a "🎬" story line (what happened to the hero) and a "👉" line (what they did with AI)')
+            if re.search(r'❌|✅|زمان:|دلوقتي:', body): E.append(f'slide {i}: the old "❌ زمان / ✅ دلوقتي" format is retired; tell the story with 🎬 / 👉')
             if words(body) > 30: E.append(f'slide {i}: body {words(body)} words (max 30)')
             if not emojiless_end(body): W.append(f'slide {i}: body ends with an emoji (breaks RTL)')
             if re.search(r'(^|\s)و[A-Za-z]', body + ' ' + s.get('prompt', '')): W.append(f'slide {i}: put a space between "و" and an English word')

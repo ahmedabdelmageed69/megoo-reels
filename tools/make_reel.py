@@ -92,22 +92,29 @@ h2{margin-bottom:26px}
 .prompt .pb{font-size:39px;line-height:1.6;font-weight:700}
 .caret{display:inline-block;width:5px;height:40px;background:currentColor;vertical-align:middle;margin-inline-start:8px;animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
+.herow{margin-inline-start:auto}
+.hero{display:inline-block;font-size:32px;font-weight:800;padding:6px 22px;border-radius:999px;border:3px solid var(--fg);color:var(--fg)}
 .cemoji{font-size:150px;line-height:1;margin-bottom:22px;align-self:flex-start}
 """
 
-KINDS = (("❌", "before"), ("✅", "after"), ("💡", "tip"), ("⚠", "warn"))
+# story format: 🎬 = what happened to the hero (faded card), 👉 = what they did with AI (solid card).
+# ❌/✅ are the old "زمان / دلوقتي" format, still rendered so older posts rebuild.
+KINDS = (("🎬", "before"), ("👉", "after"), ("❌", "before"), ("✅", "after"), ("💡", "tip"), ("⚠", "warn"))
 def line_kind(line):
-    """❌ / ✅ / 💡 / ⚠️ at the start of a body line picks its card style."""
+    """🎬 / 👉 / 💡 / ⚠️ (or old ❌ / ✅) at the start of a body line picks its card style."""
     line = line.strip()
     return next((k for e, k in KINDS if line.startswith(e)), "plain")
 
 def body_lines(slide):
     return [l for l in (slide.get("body") or "").split("\n") if l.strip()]
 
-def point_main(slide, i, wrap=lambda key, k, cls, inner: f'<div class="{cls}">{inner}</div>'):
+def hero_chip(hero):
+    return f'<span class="hero">{hero.get("emoji", "")} {esc(hero.get("name", ""), False)}</span>' if hero else ""
+
+def point_main(slide, i, wrap=lambda key, k, cls, inner: f'<div class="{cls}">{inner}</div>', hero=None):
     """Point slide: number + app tag, 2-line title, ❌/✅ (+💡/⚠️) cards, optional tap path chips and a ready-to-copy prompt.
     wrap(key, k, cls, inner) lets tools/reel_anim.py add animation timing to each piece."""
-    top = wrap("num", 0, "num", str(i)) + (wrap("tag", 0, "tag", esc(slide["tag"], False)) if slide.get("tag") else "")
+    top = wrap("num", 0, "num", str(i)) + (wrap("tag", 0, "tag", esc(slide["tag"], False)) if slide.get("tag") else "") + (wrap("hero", 0, "herow", hero_chip(hero)) if hero else "")
     h = f'<div class="ptop">{top}</div>'
     h += "<h2>" + "".join(wrap("title", k, "", l) for k, l in enumerate(esc(slide["title"]).split("<br>"))) + "</h2>"
     h += '<div class="cards">' + "".join(wrap("line", k, f"card {line_kind(l)}", esc(l)) for k, l in enumerate(body_lines(slide))) + "</div>"
@@ -124,11 +131,12 @@ def point_main(slide, i, wrap=lambda key, k, cls, inner: f'<div class="{cls}">{i
                   + '<i class="caret"></i></div>')
     return h
 
-def slide_html(slide, i, n, css, logo=""):
+def slide_html(slide, i, n, css, logo="", hero=None):
     bar = "".join(f'<i class="{"on" if k == i else ""}"></i>' for k in range(n))
     t = slide.get("type", "point")
     if t == "cover":
-        main = ((f'<div class="cemoji">{slide["emoji"]}</div>' if slide.get("emoji") else "")
+        emoji = slide.get("emoji") or (hero or {}).get("emoji")
+        main = ((f'<div class="cemoji">{emoji}</div>' if emoji else "")
                 + f'<div class="kicker">{esc(slide.get("kicker"), False)}</div>'
                 f'<h1>{esc(slide["title"])}</h1>'
                 + (f'<div class="sub">{esc(slide.get("subtitle"))}</div>' if slide.get("subtitle") else ""))
@@ -138,7 +146,7 @@ def slide_html(slide, i, n, css, logo=""):
                 '<div class="icons"><span>❤️ لايك</span><span>🔖 احفظ</span><span>↗️ شارك</span></div>'
                 '<div class="site2">التفاصيل كاملة على <b>megoo.me</b> · اللينك في البايو 🔗</div></div>')
     else:
-        main = point_main(slide, i)
+        main = point_main(slide, i, hero=hero)
     mark = '<div class="mark"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>'
     swipe = ''
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}</style></head>
@@ -165,13 +173,13 @@ def main():
         b = p.chromium.launch(**({"executable_path": exe} if exe and os.path.isfile(exe) else {}))
         pg = b.new_page(viewport={"width": 1080, "height": 1920})
         for i, s in enumerate(slides):
-            pg.set_content(slide_html(s, i, len(slides), css, logo))
+            pg.set_content(slide_html(s, i, len(slides), css, logo, spec.get("hero")))
             pg.evaluate("document.fonts.ready")
             path = os.path.join(out, f"slide_{i+1:02d}.png")
             pg.screenshot(path=path)
             pg.add_style_tag(content=".body,.cards,.path,.prompt,.tag,.sub,.icons,.site2{visibility:hidden}")
             pg.screenshot(path=os.path.join(out, f"slide_{i+1:02d}a.png"))
-            pg.set_content(slide_html(s, i, len(slides), css, logo))
+            pg.set_content(slide_html(s, i, len(slides), css, logo, spec.get("hero")))
             pg.evaluate("document.fonts.ready")
             # overflow check
             over = pg.evaluate("(()=>{const m=document.querySelector('.main');return m.scrollHeight>m.clientHeight+2})()")

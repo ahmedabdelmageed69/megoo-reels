@@ -113,7 +113,7 @@ def future_css(i):
     c1,c2=NEON[SEED%3]; c=(c1,c2)[i%2]
     return f"""body{{--bg:#070B1A;--fg:#E8F6FF;--hl:{c};--hlfg:#070B1A}}
 .card.before{{background:#FFFFFF10!important}} .card.after{{background:#0E1530!important;color:#E8F6FF!important;border:3px solid {c1};box-shadow:0 0 34px {c1}66,inset 0 0 26px {c1}22!important}}
-.card.tip,.card.warn{{border-color:{c2}99!important}}
+.card.tip,.card.warn{{border-color:{c2}99!important}} .hero{{border-color:{c2}!important;color:{c2}!important;box-shadow:0 0 18px {c2}66}}
 .path .chip{{background:transparent!important;color:{c}!important;border:3px solid {c};box-shadow:0 0 20px {c}77}}
 .prompt{{background:#0E1530F2!important;color:#E8F6FF!important;border:2px solid {c2};box-shadow:0 0 40px {c2}55!important;font-family:Cairo}}
 .segs i{{background:#E8F6FF22!important}} .segs b,.segs i.done{{background:linear-gradient(90deg,{c1},{c2})!important;box-shadow:0 0 14px {c1}}}
@@ -138,7 +138,8 @@ body::after{{content:"";position:absolute;inset:0;background:repeating-linear-gr
 def page(i,s):
     t=s.get('type','point'); D=DUR[i]
     if t=='cover':
-        main=((f'<div class="cemoji">{s["emoji"]}</div>' if s.get('emoji') else '')+
+        emo=s.get('emoji') or (spec.get('hero') or {}).get('emoji')
+        main=((f'<div class="cemoji">{emo}</div>' if emo else '')+
               f'<div class="kicker a" style="animation:pop .6s .1s both">{M.esc(s["kicker"],False)}</div>'
               f'<h1>{lines(s["title"],"",.05,.18,"punch .55s")}</h1>'
               f'<div class="sub a" style="animation:up .7s {rv(i,1,1.3):.2f}s both">{M.esc(s.get("subtitle",""))}</div>')
@@ -160,9 +161,9 @@ def page(i,s):
             st={'num':'pop .6s .15s','tag':'pop .5s .3s','title':f'{ENTER} .7s {.35+k*.2:.2f}s',
                 'line':f'{BODYIN} .7s {rv(i,k+1,1.0+k*1.1):.2f}s',
                 'chip':f'pop .45s {t_after+.5+k*.3:.2f}s both,tap .9s {t_after+.75+k*.3:.2f}s','arrow':f'up .4s {t_after+.4+k*.3:.2f}s',
-                'prompt':f'up .6s {t_pr-.35:.2f}s','word':f'win .08s {t_pr+(t_end-t_pr)*k/words:.2f}s'}[key]
+                'prompt':f'up .6s {t_pr-.35:.2f}s','hero':'pop .5s .45s','word':f'win .08s {t_pr+(t_end-t_pr)*k/words:.2f}s'}[key]
             return f'<div class="a {cls}" style="animation:{st} both cubic-bezier(.2,.8,.2,1)">{inner}</div>'
-        main=M.point_main(s,i,wrap)
+        main=M.point_main(s,i,wrap,spec.get('hero'))
         ghost=f'<div class="ghost">{i}</div>'
     mark='<div class="mark"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>'
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}{ANIM}{theme_css(i)}{style_css(i)}{future_css(i) if AM else ''}</style></head><body>

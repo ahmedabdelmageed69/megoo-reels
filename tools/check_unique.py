@@ -20,8 +20,8 @@ def items(path):
         if t == 'cover': out.append(('cover', '', norm(s.get('title', ''))))
         elif t == 'point':
             out.append(('title', s.get('tag', ''), norm(s.get('title', ''))))
-            act = [l for l in s.get('body', '').split('\n') if '✅' in l or 'دلوقتي' in l]
-            if act: out.append(('action', s.get('tag', ''), norm(re.sub(r'.*دلوقتي', '', act[0]))))
+            act = [l for l in s.get('body', '').split('\n') if '👉' in l or '✅' in l or 'دلوقتي' in l]
+            if act: out.append(('action', s.get('tag', ''), norm(re.sub(r'.*دلوقتي', '', act[0]).replace('👉', ''))))
             if s.get('prompt'): out.append(('prompt', s.get('tag', ''), norm(s['prompt'])))
     return out
 def posts(): return sorted(p for p in glob.glob(os.path.join(ROOT, 'reels', '**', 'post.json'), recursive=True))
