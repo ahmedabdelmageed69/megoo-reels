@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Voice-over for a Reel with Gemini TTS: one continuous, low, secretive, unhurried take that reads ALL the text on the slides.
+"""Voice-over for a Reel with Gemini TTS: one continuous, warm, lively storyteller take that reads ALL the text on the slides.
 The voice is made FIRST and decides how long each slide lasts (the video grows to fit the speech) and when each line appears.
   python3 tools/voiceover.py plan post.json WORKDIR              -> WORKDIR/plan.json (+ per-slide wavs)
   python3 tools/voiceover.py mix  post.json WORKDIR reel_in.mp4 reel_out.mp4
@@ -19,8 +19,9 @@ def parts(s):
     return [clean(s['title'])] + [clean(l) for l in s.get('body', '').split('\n') if l.strip()] + ([clean('اكتب: ' + s['prompt'])] if s.get('prompt') else [])
 def dur_of(f): return float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]))
 def gemini(texts):
-    arc = ('Narrate this as ONE continuous take by the same single speaker, in a natural Egyptian Arabic accent. Keep the SAME very low, quiet, secretive, intimate voice from the first word to the last, '
-           'like whispering a secret to a close friend; calm and steady, never louder or more excited at the end. Speak at a calm, relaxed, natural conversational pace (not slow, not rushed), and read every word. '
+    arc = ('Narrate this as ONE continuous take by the same single speaker, in a natural Egyptian Arabic accent, like a warm, engaging storyteller telling a friend a short true story. '
+           'Clear, confident, normal speaking volume (never whispering), expressive and lively: a little suspense when the hero has the problem, a smile and some excitement when the AI trick works, '
+           'and read the words after "اكتب:" slightly slower and very clearly so people can copy them. Natural, upbeat conversational pace (not rushed), same voice from the first word to the last, and read every word. '
            'Pause only very briefly (about 0.4 seconds) between lines of the same section, but clearly (about 1.5 seconds) between sections. Sections:\n')
     body = {'contents': [{'parts': [{'text': arc + '\n\n'.join(f'Section {k+1}:\n' + '\n'.join(p) for k, p in enumerate(texts))}]}],
             'generationConfig': {'responseModalities': ['AUDIO'], 'speechConfig': {'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': os.environ.get('GEMINI_VOICE', 'Puck')}}}}}

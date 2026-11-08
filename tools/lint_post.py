@@ -52,7 +52,7 @@ def lint(path):
     if prompts < 2: E.append(f'DEPTH: only {prompts} point(s) have a "prompt"; give at least 2 ready-to-copy prompts')
     if paths < 2: W.append(f'DEPTH: only {paths} point(s) have a "path"; show the exact taps on most slides')
     if not extras: W.append('DEPTH: no 💡 (pro tip) or ⚠️ (limit/privacy) line anywhere; one honest caveat builds trust')
-    # the calm whispered voice reads ~2 words/s: ~105 words fits 60 s without speeding the voice up
+    # the storyteller voice reads ~1.7-2 words/s: ~105 words fits 60 s without speeding the voice up
     if spoken > 125: E.append(f'{spoken} spoken words (aim for ~105): the voice gets sped up / the Reel runs over 60 s; cut text')
     elif spoken > 110: W.append(f'{spoken} spoken words: the voice will be sped up a little; ~105 is ideal')
     return E, W, spoken

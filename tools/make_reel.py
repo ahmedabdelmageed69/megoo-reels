@@ -165,7 +165,7 @@ def main():
                  "la": font_b64("cairo-latin-wght-normal.woff2"),
                  "mono": font_b64("jetbrains-mono-latin-700-normal.woff2")} + EXTRA_CSS
     import comic
-    if comic.enabled(): css += comic.font_css() + comic.CSS + comic.vars_css(0, False)
+    if comic.enabled(): css += comic.font_css() + comic.CSS + comic.vars_css(0, True)
     slides = spec["slides"]
     logo = ""
     for ext, mime in ((".png", "image/png"), (".svg", "image/svg+xml")):

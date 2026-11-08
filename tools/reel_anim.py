@@ -162,7 +162,7 @@ def comic_page(i,s):
         st=','.join(x.strip()+' both cubic-bezier(.2,.8,.2,1)' for x in st.split(','))   # every animation keeps its end state
         return f'<div class="a {cls}" style="animation:{st}">{inner}</div>'
     main=C.main_html(s,i,wrap,hero)
-    css_c=C.font_css()+C.CSS+C.vars_css(SEED,AM)+COMIC_ANIM
+    css_c=C.font_css()+C.CSS+C.vars_css(SEED,True)+COMIC_ANIM
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}{ANIM}{theme_css(i)}{css_c}</style></head><body>
 <div class="segs">{''.join(f'<i class="done"></i>' if k<i else (f'<i><b style="animation-duration:{D}s"></b></i>' if k==i else '<i></i>') for k in range(n))}</div>
 <div class="wrap" style="animation:kb {D}s linear both">
