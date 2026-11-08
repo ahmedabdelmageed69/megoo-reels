@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "طالع من البيت\nونسيت *حاجة*؟",
+   "subtitle": "٥ حركات تريحك الصبح ⏰"
+  },
+  {
+   "type": "point",
+   "title": "فكرني\n*بالباب*",
+   "body": "❌ زمان: تفتكر المفتاح وإنت في الأسانسير.\n✅ دلوقتي: في Reminders اعمل تذكير واختار Location ثم When I leave.",
+   "tag": "Reminders"
+  },
+  {
+   "type": "point",
+   "title": "طريقك\n*جاهز*",
+   "body": "❌ زمان: تدور كل يوم على المسار.\n✅ دلوقتي: في Google Maps احفظ Commute من القايمة وشوف الزحمة قبل ما تنزل.",
+   "tag": "Maps Commute"
+  },
+  {
+   "type": "point",
+   "title": "وصّل\n*في ميعادك*",
+   "body": "❌ زمان: تحسبها بدماغك وتتأخر.\n✅ دلوقتي: في Google Maps اضغط Directions ثم Depart at واختار Arrive by.",
+   "tag": "Maps Arrive"
+  },
+  {
+   "type": "point",
+   "title": "وإنت\n*سايق*",
+   "body": "❌ زمان: الرسايل تشغلك وإنت في الطريق.\n✅ دلوقتي: في الآيفون افتح Settings ثم Focus واختار Driving.",
+   "tag": "Driving Focus"
+  },
+  {
+   "type": "point",
+   "title": "إشعار\n*مزعج*",
+   "body": "❌ زمان: يضيع وقتك وتنساه.\n✅ دلوقتي: في أندرويد اسحب الإشعار شوية واضغط أيقونة الساعة Snooze.",
+   "tag": "Snooze"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لصاحبك اللي\nدايما *بينسى*",
+   "body": "وابدأوا يومكم مرتاحين"
+  }
+ ]
+}

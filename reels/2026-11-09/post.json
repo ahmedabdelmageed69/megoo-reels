@@ -1,0 +1,45 @@
+{
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "مسحت صورة غالية\nبالغلط؟ *ارجعها*",
+   "subtitle": "٥ حركات تحمي صورك 📸"
+  },
+  {
+   "type": "point",
+   "title": "رجّعها\n*بسهولة*",
+   "body": "❌ زمان: تحس إن الصورة راحت للأبد.\n✅ دلوقتي: افتح Google Photos واختار Bin من القايمة، وهتلاقيها مستنياك 60 يوم.",
+   "tag": "Photos Bin"
+  },
+  {
+   "type": "point",
+   "title": "الآيفون\n*بيحفظها*",
+   "body": "❌ زمان: تمسح بالغلط وتزعل.\n✅ دلوقتي: اضغط Recently Deleted في Photos واختار Recover، وتفضل 30 يوم.",
+   "tag": "Recently Deleted"
+  },
+  {
+   "type": "point",
+   "title": "صورك\n*لشريكك*",
+   "body": "❌ زمان: تبعتله كل صورة لوحدها.\n✅ دلوقتي: في Google Photos اختار Partner sharing وحدد الشخص.",
+   "tag": "Partner sharing"
+  },
+  {
+   "type": "point",
+   "title": "قص\n*للستوري*",
+   "body": "❌ زمان: الصورة تتقص غلط.\n✅ دلوقتي: في Google Photos اضغط Edit ثم Crop واختار Aspect ratio.",
+   "tag": "Photos Crop"
+  },
+  {
+   "type": "point",
+   "title": "ارسم\n*وابعت*",
+   "body": "❌ زمان: تشرح بالكلام وهو مش فاهم.\n✅ دلوقتي: في الآيفون افتح الصورة واضغط Edit ثم Markup وارسم دايرة.",
+   "tag": "Markup"
+  },
+  {
+   "type": "cta",
+   "title": "ابعتها لحد\nبيمسح *صوره*",
+   "body": "وخليكم مطمنين على ذكرياتكم"
+  }
+ ]
+}
