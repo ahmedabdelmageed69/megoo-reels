@@ -1,0 +1,17 @@
+{
+ "hero": {"name": "سارة", "emoji": "👩"},
+ "sources": [
+  "https://www.npr.org/sections/shots-health-news/2025/09/11/nx-s1-5537067/ai-medicine-privacy-test-results",
+  "https://kffhealthnews.org/news/article/electronic-medical-records-patients-ai-chatbots-diagnosis-privacy-accuracy/",
+  "https://siphoxhealth.com/articles/can-gemini-explain-my-blood-test-results"
+ ],
+ "slides": [
+  {"type":"cover","kicker":"AI Tips","title":"سارة مش *فاهمة*\nورقة التحاليل","subtitle":"شوف عملت إيه في دقيقة"},
+  {"type":"point","title":"صوّرت\n*الورقة*","body":"🎬 الدكتور بعد أسبوع وهي قلقانة.\n👉 صوّرتها وسألت Gemini.","path":["Gemini","+","Camera"],"prompt":"اشرحلي التحليل ده بالعامية، وإيه اللي مش طبيعي؟","tag":"Gemini"},
+  {"type":"point","title":"طلبت\n*جدول*","body":"🎬 الأرقام والرموز لسه ملخبطاها.\n👉 خلّته يرتبهالها في جدول.","prompt":"اعملي جدول: التحليل، النتيجة، المعدل، طبيعي ولا لأ","tag":"Gemini"},
+  {"type":"point","title":"قارنت\n*بالقديم*","body":"🎬 افتكرت تحليل السنة اللي فاتت.\n👉 رفعت الورقتين مع بعض.","path":["ChatGPT","+","Photos"],"prompt":"قارن بينهم، إيه اللي اتحسن وإيه اللي زاد؟","tag":"ChatGPT"},
+  {"type":"point","title":"جهّزت\n*أسئلتها*","body":"🎬 كل مرة بتدخل الكشف وتنسى تسأل.\n👉 المرة دي دخلت جاهزة.","prompt":"إيه أهم ٣ أسئلة أسألها للدكتور عن النتيجة دي؟","tag":"ChatGPT"},
+  {"type":"point","title":"وخلّت\n*بالها*","body":"🎬 بس فكرت في خصوصيتها.\n👉 غطّت اسمها من الصورة.\n⚠️ الشرح للفهم بس، والعلاج من الدكتور.","path":["Photos","Edit","Markup"],"tag":"Privacy"},
+  {"type":"cta","title":"سارة خرجت\n*مطمّنة*","body":"وإنت كمان تقدر. ابعتها لحد مستني نتيجة"}
+ ]
+}
