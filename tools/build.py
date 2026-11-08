@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build one day's megoo post from a post.json.
 Usage: python3 tools/build.py post.json OUT_DIR
-Outputs in OUT_DIR: slide_XX.png (4:5 carousel), reel.mp4 (9:16 animated, vocal-only hum), reel_no_audio.mp4
+Outputs in OUT_DIR: slide_XX.png (9:16 stills of each slide), reel.mp4 (9:16 animated, vocal-only hum), reel_no_audio.mp4
 Needs: python3 + numpy/scipy + playwright (chromium) + ffmpeg, and fonts (run tools/setup_fonts.sh once).
 """
 import json, os, subprocess, sys, shutil, tempfile
@@ -14,8 +14,13 @@ if '/reels/' in post and not os.environ.get('NO_UNIQUE_CHECK'):
     r = subprocess.run([sys.executable, f'{HERE}/check_unique.py', post], capture_output=True, text=True)
     print((r.stdout + r.stderr).strip())
     if r.returncode: sys.exit('REPEATED CONTENT: replace the listed slides with new ideas and rebuild')
-# 1) carousel PNGs
-r = subprocess.run([sys.executable, f'{HERE}/make_carousel_brand.py', post, out], capture_output=True, text=True, check=True)
+# 0b) format + depth rules (set NO_LINT=1 to skip)
+if '/reels/' in post and not os.environ.get('NO_LINT'):
+    r = subprocess.run([sys.executable, f'{HERE}/lint_post.py', post], capture_output=True, text=True)
+    print((r.stdout + r.stderr).strip())
+    if r.returncode: sys.exit('LINT FAILED: fix the listed problems in post.json and rebuild')
+# 1) still PNG of every slide in the exact 9:16 Reel layout (same point_main as the video), used for the overflow check + review
+r = subprocess.run([sys.executable, f'{HERE}/make_reel.py', post, out], capture_output=True, text=True, check=True)
 print(r.stdout.strip())
 if 'OVERFLOW' in r.stdout: sys.exit('OVERFLOW: shorten the slide text and rebuild')
 # 2) voice first (if GEMINI_API_KEY is set): the speech decides how long each slide lasts and when each line appears

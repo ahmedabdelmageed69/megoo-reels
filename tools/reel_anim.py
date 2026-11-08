@@ -4,7 +4,7 @@ sys.argv=[sys.argv[0]]+sys.argv[1:]
 import make_reel as M
 from playwright.sync_api import sync_playwright
 spec=json.load(open(os.environ.get('POST','post.json'),encoding='utf-8')); slides=spec['slides']; n=len(slides)
-css = M.CSS % {"ar": M.font_b64("cairo-arabic-wght-normal.woff2"),"la": M.font_b64("cairo-latin-wght-normal.woff2"),"mono": M.font_b64("jetbrains-mono-latin-700-normal.woff2")}
+css = M.CSS % {"ar": M.font_b64("cairo-arabic-wght-normal.woff2"),"la": M.font_b64("cairo-latin-wght-normal.woff2"),"mono": M.font_b64("jetbrains-mono-latin-700-normal.woff2")} + M.EXTRA_CSS
 ANIM = """
 @keyframes up{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:none}}
 @keyframes inR{from{opacity:0;transform:translateX(-120px)}to{opacity:1;transform:none}}
@@ -33,7 +33,17 @@ h1 em,h2 em{animation:wipe .6s both cubic-bezier(.2,.8,.2,1)}
 .url{display:inline-block;margin-top:22px;font-family:Mono;direction:ltr;font-size:46px;font-weight:700;padding:12px 30px;border-radius:16px;background:#C8F25A;color:#15131A;text-decoration:underline;text-underline-offset:8px}
 .mark i.a{opacity:1}
 h1{font-size:100px}
-.wrap{z-index:1}
+.wrap{z-index:1;transform-origin:50% 45%}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.035)}}
+@keyframes tap{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--hl) 80%,transparent)}100%{box-shadow:0 0 0 26px transparent}}
+@keyframes win{from{opacity:0}to{opacity:1}}
+@keyframes punch{0%{opacity:0;transform:scale(1.5)}60%{opacity:1;transform:scale(.96)}100%{opacity:1;transform:none}}
+.segs{position:absolute;top:44px;left:44px;right:44px;display:flex;gap:10px;z-index:6}
+.segs i{flex:1;height:9px;border-radius:9px;background:color-mix(in srgb,var(--fg) 22%,transparent);overflow:hidden}
+.segs i.done{background:var(--fg)}
+.segs b{display:block;height:100%;background:var(--fg);transform-origin:right;animation:bar linear both}
+.prog{display:none}
+.cemoji{animation:pop .6s .05s both,bob 2.6s .8s ease-in-out infinite}
 """
 def lines(s,cls,d0,step,anim=None):
     anim=anim or ENTER+' .7s'
@@ -73,7 +83,7 @@ for k in range(7):
 def theme_css(i):
     t=THEMES[i%len(THEMES)]; b1,b2,b3=t['blobs']
     chl=t['bg'] if t['hl']==t['fg'] else t['hl']   # CTA box is filled with fg, so a fg-coloured highlight would vanish
-    return f'''body{{background:{t['bg']};color:{t['fg']}}}
+    return f'''body{{background:{t['bg']};color:{t['fg']};--bg:{t['bg']};--fg:{t['fg']};--hl:{chl};--hlfg:{t['fg']}}}
 .top,.top .cnt,.handle,.sub,.body{{color:{t['fg']}}} .top .cnt{{opacity:.6}}
 .main h1 em,.main h2 em{{background:{t['hl']};color:{t['hlfg']}}}
 .num{{background:{t['badge']};color:{t['badgefg']}}}
@@ -101,7 +111,13 @@ body::before{{content:"";position:absolute;inset:0;background:linear-gradient({f
 NEON=[('#00F0FF','#FF2BD6'),('#7CFF6B','#00B7FF'),('#FFB000','#FF3D81')]
 def future_css(i):
     c1,c2=NEON[SEED%3]; c=(c1,c2)[i%2]
-    return f"""body{{background:radial-gradient(900px 700px at 85% 8%,{c1}33,transparent 60%),radial-gradient(900px 800px at 5% 95%,{c2}30,transparent 60%),#070B1A!important;color:#E8F6FF!important}}
+    return f"""body{{--bg:#070B1A;--fg:#E8F6FF;--hl:{c};--hlfg:#070B1A}}
+.card.before{{background:#FFFFFF10!important}} .card.after{{background:#0E1530!important;color:#E8F6FF!important;border:3px solid {c1};box-shadow:0 0 34px {c1}66,inset 0 0 26px {c1}22!important}}
+.card.tip,.card.warn{{border-color:{c2}99!important}}
+.path .chip{{background:transparent!important;color:{c}!important;border:3px solid {c};box-shadow:0 0 20px {c}77}}
+.prompt{{background:#0E1530F2!important;color:#E8F6FF!important;border:2px solid {c2};box-shadow:0 0 40px {c2}55!important;font-family:Cairo}}
+.segs i{{background:#E8F6FF22!important}} .segs b,.segs i.done{{background:linear-gradient(90deg,{c1},{c2})!important;box-shadow:0 0 14px {c1}}}
+body{{background:radial-gradient(900px 700px at 85% 8%,{c1}33,transparent 60%),radial-gradient(900px 800px at 5% 95%,{c2}30,transparent 60%),#070B1A!important;color:#E8F6FF!important}}
 .top,.top .cnt,.handle,.sub,.body,.main h1,.main h2{{color:#E8F6FF!important}} .top .cnt{{opacity:.7}}
 .top .site,.handle,.tag,.num,.kicker{{font-family:Mono!important}}
 .main h1 em,.main h2 em{{background:{c}!important;color:#070B1A!important;border-radius:10px!important;transform:none!important;box-shadow:0 0 38px {c}aa,0 0 90px {c}55}}
@@ -122,8 +138,9 @@ body::after{{content:"";position:absolute;inset:0;background:repeating-linear-gr
 def page(i,s):
     t=s.get('type','point'); D=DUR[i]
     if t=='cover':
-        main=(f'<div class="kicker a" style="animation:pop .6s .1s both">{M.esc(s["kicker"],False)}</div>'
-              f'<h1>{lines(s["title"],"",.35,.22)}</h1>'
+        main=((f'<div class="cemoji">{s["emoji"]}</div>' if s.get('emoji') else '')+
+              f'<div class="kicker a" style="animation:pop .6s .1s both">{M.esc(s["kicker"],False)}</div>'
+              f'<h1>{lines(s["title"],"",.05,.18,"punch .55s")}</h1>'
               f'<div class="sub a" style="animation:up .7s {rv(i,1,1.3):.2f}s both">{M.esc(s.get("subtitle",""))}</div>')
         ghost=''
     elif t=='cta':
@@ -134,17 +151,24 @@ def page(i,s):
               f'<div class="site2 a" style="animation:up .6s 2s both">الموقع واللينك في البايو 🔗<div class="url">🌐 https://megoo.me</div></div></div>')
         ghost=''
     else:
-        bl=M.esc(s.get('body','')).split('<br>')
-        body=''.join(f'<div class="a" style="animation:{BODYIN} .7s {rv(i,k+1,1.0+k*1.1):.2f}s both cubic-bezier(.2,.8,.2,1)">{l}</div>' for k,l in enumerate(bl))
-        main=(f'<div class="num a" style="animation:pop .6s .15s both">{i}</div>'
-              f'<h2>{lines(s["title"],"",.35,.2)}</h2><div class="body">{body}</div>'
-              + (f'<div class="tag a" style="animation:pop .5s {rv(i,len(bl),1.1+len(bl)*1.1)+0.4:.2f}s both">{M.esc(s["tag"],False)}</div>' if s.get('tag') else ''))
+        bl=M.body_lines(s); nb=len(bl)
+        after=next((k for k,l in enumerate(bl) if M.line_kind(l)=='after'),nb-1)
+        t_after=rv(i,after+1,1.0+after*1.1)
+        t_pr=rv(i,nb+1,1.0+nb*1.1); t_end=max(t_pr+1.0,D-0.9)                 # the prompt is spoken last: type it out while it is read
+        words=len((s.get('prompt') or '').split()) or 1
+        def wrap(key,k,cls,inner):
+            st={'num':'pop .6s .15s','tag':'pop .5s .3s','title':f'{ENTER} .7s {.35+k*.2:.2f}s',
+                'line':f'{BODYIN} .7s {rv(i,k+1,1.0+k*1.1):.2f}s',
+                'chip':f'pop .45s {t_after+.5+k*.3:.2f}s both,tap .9s {t_after+.75+k*.3:.2f}s','arrow':f'up .4s {t_after+.4+k*.3:.2f}s',
+                'prompt':f'up .6s {t_pr-.35:.2f}s','word':f'win .08s {t_pr+(t_end-t_pr)*k/words:.2f}s'}[key]
+            return f'<div class="a {cls}" style="animation:{st} both cubic-bezier(.2,.8,.2,1)">{inner}</div>'
+        main=M.point_main(s,i,wrap)
         ghost=f'<div class="ghost">{i}</div>'
     mark='<div class="mark"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>'
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}{ANIM}{theme_css(i)}{style_css(i)}{future_css(i) if AM else ''}</style></head><body>
 <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>{ghost}
-<div class="prog" style="animation-duration:{D}s"></div>
-<div class="wrap"><div class="top"><span class="site">🌐 https://megoo.me</span><span class="cnt">{i+1}/{n}</span></div>
+<div class="segs">{''.join(f'<i class="done"></i>' if k<i else (f'<i><b style="animation-duration:{D}s"></b></i>' if k==i else '<i></i>') for k in range(n))}</div>
+<div class="wrap" style="animation:kb {D}s linear both"><div class="top"><span class="site">🌐 https://megoo.me</span><span class="cnt">{i+1}/{n}</span></div>
 <div class="main">{main}</div>
 <div class="foot"><span class="handle">https://megoo.me<s>|</s>@_megoo.me</span>{mark}</div></div></body></html>"""
 out=sys.argv[1] if len(sys.argv)>1 else 'anim'; os.makedirs(out,exist_ok=True)

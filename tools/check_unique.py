@@ -22,6 +22,7 @@ def items(path):
             out.append(('title', s.get('tag', ''), norm(s.get('title', ''))))
             act = [l for l in s.get('body', '').split('\n') if '✅' in l or 'دلوقتي' in l]
             if act: out.append(('action', s.get('tag', ''), norm(re.sub(r'.*دلوقتي', '', act[0]))))
+            if s.get('prompt'): out.append(('prompt', s.get('tag', ''), norm(s['prompt'])))
     return out
 def posts(): return sorted(p for p in glob.glob(os.path.join(ROOT, 'reels', '**', 'post.json'), recursive=True))
 def compare(path, others):
@@ -32,7 +33,7 @@ def compare(path, others):
                 if k != k2 or not txt or not txt2: continue
                 r = sim(txt, txt2)
                 same_feature = k == 'action' and tag == tag2 and bool(feats(txt) & feats(txt2))   # same app + same named feature = same idea
-                if (k == 'cover' and r > .72) or (k == 'title' and r > .78) or (k == 'action' and (r > .66 or (tag and tag == tag2 and r > .72))) or same_feature:
+                if (k == 'cover' and r > .72) or (k == 'title' and r > .78) or (k == 'action' and (r > .66 or (tag and tag == tag2 and r > .72))) or (k == 'prompt' and r > .7) or same_feature:
                     bad.append((os.path.relpath(o, ROOT), k, tag, txt, txt2, r))
     return bad
 if __name__ == '__main__':

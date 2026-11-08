@@ -4,7 +4,7 @@ The voice is made FIRST and decides how long each slide lasts (the video grows t
   python3 tools/voiceover.py plan post.json WORKDIR              -> WORKDIR/plan.json (+ per-slide wavs)
   python3 tools/voiceover.py mix  post.json WORKDIR reel_in.mp4 reel_out.mp4
 Env: GEMINI_API_KEY (required; GEMINI_API_KEYS = comma-separated list to fall through when one key's daily quota is spent), GEMINI_VOICE (default Puck), GEMINI_TTS_MODEL (default gemini-3.8-flash-tts)
-A slide may carry "vo" to override what is spoken for it.
+A slide may carry "vo" to override what is spoken for it. A point's "prompt" is read last ("اكتب: …"); its "path" chips are not spoken.
 """
 import base64, json, os, re, subprocess, sys, time, urllib.error, urllib.request
 X, LEAD, TAIL, MIN, MAXTOTAL = 0.45, 0.3, 0.35, [3.4, 5.2, 4.6], 59.0   # xfade overlap, silence before/after the line, minimum slide time (cover, point, cta)
@@ -16,7 +16,7 @@ def parts(s):
     t = s.get('type', 'point')
     if t == 'cover': return [clean(s['title']), clean(s.get('subtitle', ''))]
     if t == 'cta': return [clean(s['title']), clean(s.get('body', ''))]
-    return [clean(s['title'])] + [clean(l) for l in s.get('body', '').split('\n') if l.strip()]
+    return [clean(s['title'])] + [clean(l) for l in s.get('body', '').split('\n') if l.strip()] + ([clean('اكتب: ' + s['prompt'])] if s.get('prompt') else [])
 def dur_of(f): return float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]))
 def gemini(texts):
     arc = ('Narrate this as ONE continuous take by the same single speaker, in a natural Egyptian Arabic accent. Keep the SAME very low, quiet, secretive, intimate voice from the first word to the last, '
@@ -47,12 +47,12 @@ def plan(post, work):
     slides = json.load(open(post, encoding='utf-8'))['slides']; n = len(slides); os.makedirs(work, exist_ok=True)
     P = [parts(s) for s in slides]
     for attempt in range(3):
-        res = _plan(P, n, work)
+        res = _plan(P, n, work, relaxed=attempt == 2)   # last try accepts a looser split rather than losing the voice
         if res: break
         print('speech split looks off, regenerating', file=sys.stderr)
     else: sys.exit('could not split the voice into slides reliably')
     return finish(P, n, work, *res)
-def _plan(P, n, work):
+def _plan(P, n, work, relaxed=False):
     full = f'{work}/full.wav'; open(full, 'wb').write(gemini(P))
     log = subprocess.run(['ffmpeg', '-i', full, '-af', 'silencedetect=n=-38dB:d=0.3', '-f', 'null', '-'], capture_output=True, text=True).stderr
     st = [float(x) for x in re.findall(r'silence_start: ([\d.]+)', log)]; en = [float(x) for x in re.findall(r'silence_end: ([\d.]+)', log)]
@@ -62,16 +62,16 @@ def _plan(P, n, work):
     cuts, last = [], 0.0
     for k in range(1, n):                                    # each slide boundary = the longest pause near where it should fall by text length
         exp = total * cum[k] / cum[-1]
-        win = [g for g in gaps if abs(g[1] - exp) < 0.14 * total and g[1] > last + 0.3]
-        if not win: return None
-        m = max(win, key=lambda g: g[0] - 1.0 * abs(g[1] - exp) / total)[1]; cuts.append(m); last = m
+        win = [g for g in gaps if abs(g[1] - exp) < (0.22 if relaxed else 0.14) * total and g[1] > last + 0.3]
+        if not win: print(f'no pause found near slide {k+1} boundary (expected {exp:.1f}s of {total:.1f}s)', file=sys.stderr); return None
+        m = max(win, key=lambda g: min(g[0], 1.6) - 3.0 * abs(g[1] - exp) / total)[1]; cuts.append(m); last = m   # longest pause (section break) close to where the text length says
     b = [0.0] + cuts + [total]; segs, vs = [], []
     for i in range(n):
         o = f'{work}/seg{i}.wav'
         run('ffmpeg', '-y', '-ss', f'{b[i]:.3f}', '-to', f'{b[i+1]:.3f}', '-i', full, '-af', 'silenceremove=start_periods=1:start_threshold=-42dB,areverse,silenceremove=start_periods=1:start_threshold=-42dB,areverse', '-ar', '48000', '-ac', '2', o)
         segs.append(o); vs.append(dur_of(o))
     rate = [v / max(c, 1) for v, c in zip(vs, chars)]      # seconds per character should be similar on every slide, else a cut landed on the wrong pause
-    if max(rate) > 2.2 * min(rate): return None
+    if max(rate) > (3.2 if relaxed else 2.2) * min(rate): print('per-slide speech rates uneven:', [round(r*100, 1) for r in rate], file=sys.stderr); return None
     return segs, vs
 def finish(P, n, work, segs, vs):
     over = sum(max(MIN[0 if i == 0 else 2 if i == n - 1 else 1], LEAD + v + TAIL + X) for i, v in enumerate(vs)) - (n - 1) * X
@@ -92,7 +92,10 @@ def mix(post, work, vin, vout):
     for i in range(n):
         inputs += ['-i', pl['segs'][i]]; ms = int((off + LEAD) * 1000); fl.append(f'[{i+1}:a]adelay={ms}|{ms}[d{i}]'); off += pl['dur'][i] - X
     fl.append(''.join(f'[d{i}]' for i in range(n)) + f'amix=inputs={n}:normalize=0[vo]')
-    fl.append('[0:a]volume=0.5[mu]'); fl.append('[mu][vo]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[aout]')
+    # music ducks under the voice (sidechain) and the mix is normalised to Instagram's loudness (~-14 LUFS)
+    fl.append('[vo]asplit=2[vo1][vo2]'); fl.append('[0:a]volume=0.55[mu]')
+    fl.append('[mu][vo1]sidechaincompress=threshold=0.02:ratio=8:attack=15:release=450[duck]')
+    fl.append('[duck][vo2]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[aout]')
     run('ffmpeg', '-y', '-i', vin, *inputs, '-filter_complex', ';'.join(fl), '-map', '0:v', '-map', '[aout]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '160k', vout)
 if __name__ == '__main__':
     if sys.argv[1] == 'plan': plan(sys.argv[2], sys.argv[3])

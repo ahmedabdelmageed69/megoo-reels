@@ -68,11 +68,68 @@ def esc(s, allow_em=True):
         s = "".join(f"<em>{p}</em>" if i % 2 else p for i, p in enumerate(parts))
     return s.replace("\n", "<br>")
 
+# New layout pieces (plain string, NOT %-formatted, so "%" is safe here). Colours come from CSS variables that
+# tools/reel_anim.py sets per theme: --bg (slide background), --fg (ink), --hl (highlight), --hlfg (text on highlight).
+EXTRA_CSS = """
+body{--bg:#9C8BFF;--fg:#15131A;--hl:#C8F25A;--hlfg:#15131A}
+.main{min-height:0}  /* keep .main inside the safe area so the OVERFLOW check can see text that does not fit */
+.wrap{padding:170px 130px 320px 90px}  /* right side kept clear of Instagram's like/comment/share column */
+.ptop{display:flex;align-items:center;gap:22px;margin-bottom:24px}
+.ptop .num{margin-bottom:0}
+.ptop .tag{margin-top:0;align-self:center;font-size:30px}
+h2{margin-bottom:26px}
+.cards{display:flex;flex-direction:column;gap:18px}
+.card{font-size:44px;line-height:1.6;font-weight:700;padding:20px 30px;border-radius:28px}
+.card.before{font-size:38px;opacity:.8;background:color-mix(in srgb,var(--fg) 9%,transparent)}
+.card.after{background:var(--fg);color:var(--bg);font-weight:800;box-shadow:0 18px 40px color-mix(in srgb,var(--fg) 22%,transparent)}
+.card.tip,.card.warn{font-size:37px;border:4px dashed color-mix(in srgb,var(--fg) 45%,transparent)}
+.card.plain{padding:0}
+.path{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:24px}
+.path .chip{direction:ltr;unicode-bidi:isolate;font-size:32px;font-weight:800;padding:6px 24px;border-radius:999px;background:var(--bg);color:var(--fg);border:4px solid var(--fg);position:relative}
+.path b{font-size:34px;opacity:.55;font-weight:900}
+.prompt{margin-top:24px;border-radius:30px;background:#FFFFFFF0;color:#15131A;padding:20px 30px 24px;box-shadow:0 20px 50px #0002}
+.prompt .ph{font-size:28px;font-weight:800;opacity:.55;margin-bottom:6px}
+.prompt .pb{font-size:39px;line-height:1.6;font-weight:700}
+.caret{display:inline-block;width:5px;height:40px;background:currentColor;vertical-align:middle;margin-inline-start:8px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.cemoji{font-size:150px;line-height:1;margin-bottom:22px;align-self:flex-start}
+"""
+
+KINDS = (("❌", "before"), ("✅", "after"), ("💡", "tip"), ("⚠", "warn"))
+def line_kind(line):
+    """❌ / ✅ / 💡 / ⚠️ at the start of a body line picks its card style."""
+    line = line.strip()
+    return next((k for e, k in KINDS if line.startswith(e)), "plain")
+
+def body_lines(slide):
+    return [l for l in (slide.get("body") or "").split("\n") if l.strip()]
+
+def point_main(slide, i, wrap=lambda key, k, cls, inner: f'<div class="{cls}">{inner}</div>'):
+    """Point slide: number + app tag, 2-line title, ❌/✅ (+💡/⚠️) cards, optional tap path chips and a ready-to-copy prompt.
+    wrap(key, k, cls, inner) lets tools/reel_anim.py add animation timing to each piece."""
+    top = wrap("num", 0, "num", str(i)) + (wrap("tag", 0, "tag", esc(slide["tag"], False)) if slide.get("tag") else "")
+    h = f'<div class="ptop">{top}</div>'
+    h += "<h2>" + "".join(wrap("title", k, "", l) for k, l in enumerate(esc(slide["title"]).split("<br>"))) + "</h2>"
+    h += '<div class="cards">' + "".join(wrap("line", k, f"card {line_kind(l)}", esc(l)) for k, l in enumerate(body_lines(slide))) + "</div>"
+    if slide.get("path"):
+        chips = []
+        for k, step in enumerate(slide["path"]):
+            if k: chips.append(wrap("arrow", k, "arr", "<b>←</b>").replace("<div", "<span").replace("</div>", "</span>"))
+            chips.append(wrap("chip", k, "chip", esc(step, False)).replace("<div", "<span").replace("</div>", "</span>"))
+        h += '<div class="path">' + "".join(chips) + "</div>"
+    if slide.get("prompt"):
+        words = esc(slide["prompt"], False).split()
+        h += wrap("prompt", 0, "prompt", '<div class="ph">✨ اكتب كده بالظبط</div><div class="pb" dir="auto">'
+                  + " ".join(wrap("word", k, "", w).replace("<div", "<span").replace("</div>", "</span>") for k, w in enumerate(words))
+                  + '<i class="caret"></i></div>')
+    return h
+
 def slide_html(slide, i, n, css, logo=""):
     bar = "".join(f'<i class="{"on" if k == i else ""}"></i>' for k in range(n))
     t = slide.get("type", "point")
     if t == "cover":
-        main = (f'<div class="kicker">{esc(slide.get("kicker"), False)}</div>'
+        main = ((f'<div class="cemoji">{slide["emoji"]}</div>' if slide.get("emoji") else "")
+                + f'<div class="kicker">{esc(slide.get("kicker"), False)}</div>'
                 f'<h1>{esc(slide["title"])}</h1>'
                 + (f'<div class="sub">{esc(slide.get("subtitle"))}</div>' if slide.get("subtitle") else ""))
     elif t == "cta":
@@ -81,9 +138,7 @@ def slide_html(slide, i, n, css, logo=""):
                 '<div class="icons"><span>❤️ لايك</span><span>🔖 احفظ</span><span>↗️ شارك</span></div>'
                 '<div class="site2">التفاصيل كاملة على <b>megoo.me</b> · اللينك في البايو 🔗</div></div>')
     else:
-        main = (f'<div class="num">{i}</div><h2>{esc(slide["title"])}</h2>'
-                f'<div class="body">{esc(slide.get("body"))}</div>'
-                + (f'<div class="tag">{esc(slide["tag"], False)}</div>' if slide.get("tag") else ""))
+        main = point_main(slide, i)
     mark = '<div class="mark"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>'
     swipe = ''
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>{css}</style></head>
@@ -97,7 +152,7 @@ def main():
     os.makedirs(out, exist_ok=True)
     css = CSS % {"ar": font_b64("cairo-arabic-wght-normal.woff2"),
                  "la": font_b64("cairo-latin-wght-normal.woff2"),
-                 "mono": font_b64("jetbrains-mono-latin-700-normal.woff2")}
+                 "mono": font_b64("jetbrains-mono-latin-700-normal.woff2")} + EXTRA_CSS
     slides = spec["slides"]
     logo = ""
     for ext, mime in ((".png", "image/png"), (".svg", "image/svg+xml")):
@@ -114,7 +169,7 @@ def main():
             pg.evaluate("document.fonts.ready")
             path = os.path.join(out, f"slide_{i+1:02d}.png")
             pg.screenshot(path=path)
-            pg.add_style_tag(content=".body,.tag,.sub,.icons,.site2{visibility:hidden}")
+            pg.add_style_tag(content=".body,.cards,.path,.prompt,.tag,.sub,.icons,.site2{visibility:hidden}")
             pg.screenshot(path=os.path.join(out, f"slide_{i+1:02d}a.png"))
             pg.set_content(slide_html(s, i, len(slides), css, logo))
             pg.evaluate("document.fonts.ready")
