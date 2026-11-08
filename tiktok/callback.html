@@ -1,0 +1,27 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MeGo × TikTok</title>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:#0D0F1E;color:#F4F1E8;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
+.card{max-width:560px;width:100%;background:#1C1F35;border:4px solid #F4F1E8;box-shadow:10px 10px 0 #2EE6D6;padding:28px;border-radius:10px}
+h1{margin:0 0 12px;font-size:26px} p,li{line-height:1.7}
+code{display:block;direction:ltr;text-align:left;word-break:break-all;background:#0D0F1E;border:2px dashed #2EE6D6;padding:14px;border-radius:8px;font-size:15px;margin:12px 0}
+button,a.btn{display:inline-block;background:#FFE14D;color:#141414;border:3px solid #141414;font-weight:800;padding:10px 18px;border-radius:8px;cursor:pointer;text-decoration:none;font-size:16px;margin:4px 0}
+.err{color:#FF8080}
+</style></head><body><div class="card">
+<h1>ربط حساب TikTok بـ MeGo</h1>
+<div id="out"><p>جاري القراءة…</p></div>
+</div>
+<script>
+const q=new URLSearchParams(location.search), out=document.getElementById('out');
+const code=q.get('code'), err=q.get('error');
+if(err){out.innerHTML='<p class="err">TikTok رجّع خطأ: '+(q.get('error_description')||err)+'</p>';}
+else if(!code){out.innerHTML='<p>الصفحة دي بتظهر لما تربط حساب TikTok. مفيش كود هنا دلوقتي.</p>';}
+else{
+ out.innerHTML='<p>تمام! ده الكود (صالح لدقايق قليلة بس):</p><code id="c"></code>'+
+ '<button id="cp">📋 انسخ الكود</button>'+
+ '<ol><li>افتح صفحة الـ workflow من الزرار تحت.</li><li>اضغط <b>Run workflow</b>.</li><li>الصق الكود في خانة <b>code</b> واضغط <b>Run workflow</b> الأخضر.</li></ol>'+
+ '<a class="btn" target="_blank" href="https://github.com/ahmedabdelmageed69/megoo-reels/actions/workflows/tiktok.yml">افتح Publish Reel to TikTok ↗</a>';
+ document.getElementById('c').textContent=code;
+ document.getElementById('cp').onclick=()=>{navigator.clipboard.writeText(code).then(()=>{document.getElementById('cp').textContent='✅ اتنسخ'})};
+}
+</script></body></html>

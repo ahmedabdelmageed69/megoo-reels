@@ -1,0 +1,58 @@
+name: Publish Reel to TikTok
+# Same Reels, same times as Instagram (5 minutes later). Does nothing until the TikTok secrets exist.
+# One-time setup: add secrets TIKTOK_CLIENT_KEY + TIKTOK_CLIENT_SECRET, open the connect link, then run this
+# workflow by hand with the "code" shown on https://ahmedabdelmageed69.github.io/megoo-reels/tiktok/callback.html
+on:
+  schedule:
+    - cron: '5 5 * * *'    # 8:05 AM Cairo (summer) / 7:05 (winter)
+    - cron: '5 17 * * *'   # 8:05 PM Cairo (summer) / 7:05 (winter)
+  workflow_dispatch:
+    inputs:
+      date: { description: 'Date to post (YYYY-MM-DD). Empty = today in Cairo', required: false }
+      slot: { description: 'am or pm. Empty = by current Cairo time', required: false }
+      code: { description: 'ONLY when connecting your TikTok account: the code from the callback page', required: false }
+permissions: { contents: write }
+concurrency: { group: publish, cancel-in-progress: false }
+jobs:
+  tiktok:
+    runs-on: ubuntu-latest
+    env:
+      TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+      TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+      TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_PAT }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check setup
+        id: chk
+        run: |
+          if [ -z "$TIKTOK_CLIENT_KEY" ] || [ -z "$TIKTOK_CLIENT_SECRET" ]; then echo "TikTok is not set up yet (no TIKTOK_CLIENT_KEY/SECRET secrets); skipping."; echo "skip=1" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if [ -z "$GH_TOKEN" ]; then echo "::error::GH_PAT secret is missing, so TikTok tokens can't be saved"; exit 1; fi
+      - name: Connect TikTok account (one time)
+        if: steps.chk.outputs.skip != '1' && inputs.code != ''
+        env: { CODE: '${{ inputs.code }}' }
+        run: |
+          NEW=$(python3 scripts/tiktok.py connect "$CODE")
+          echo "::add-mask::$NEW"
+          gh secret set TIKTOK_REFRESH_TOKEN --body "$NEW" --repo "$GITHUB_REPOSITORY"
+          echo "TikTok account connected. Reels will now go to TikTok at 8:05 AM and 8:05 PM."
+      - name: Post to TikTok
+        if: steps.chk.outputs.skip != '1' && inputs.code == ''
+        env:
+          DATE: ${{ inputs.date }}
+          SLOT: ${{ inputs.slot || (github.event.schedule == '5 5 * * *' && 'am') || (github.event.schedule == '5 17 * * *' && 'pm') || '' }}
+          OUT_REFRESH: ${{ runner.temp }}/tt_refresh
+        run: |
+          if [ -z "$TIKTOK_REFRESH_TOKEN" ]; then echo "::error::TikTok account not connected yet (run this workflow once with the code from the callback page)"; exit 1; fi
+          python3 scripts/tiktok.py publish
+      - name: Save rotated TikTok token
+        if: always() && steps.chk.outputs.skip != '1' && inputs.code == ''
+        run: |
+          F="$RUNNER_TEMP/tt_refresh"
+          if [ -s "$F" ]; then NEW=$(cat "$F"); echo "::add-mask::$NEW"; gh secret set TIKTOK_REFRESH_TOKEN --body "$NEW" --repo "$GITHUB_REPOSITORY"; echo "refresh token rotated and saved"; fi
+      - name: Save posted marker
+        if: steps.chk.outputs.skip != '1' && inputs.code == ''
+        run: |
+          git config user.name "megoo-bot"; git config user.email "actions@users.noreply.github.com"
+          git add reels/*/tiktok.json reels/*/am/tiktok.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "Sent reel to TikTok" && git pull --rebase -q && git push)
