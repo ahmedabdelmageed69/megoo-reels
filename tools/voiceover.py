@@ -9,7 +9,7 @@ A slide may carry "vo" to override what is spoken for it. A point's "prompt" is 
 import base64, json, os, re, subprocess, sys, time, urllib.error, urllib.request
 X, LEAD, TAIL, MIN, MAXTOTAL = 0.45, 0.3, 0.35, [3.4, 5.2, 4.6], 59.0   # xfade overlap, silence before/after the line, minimum slide time (cover, point, cta)
 def run(*a): subprocess.run(a, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-def clean(t): return re.sub(r'\s+', ' ', re.sub(r'[^\w\s:،؟?!.,/+\-]', ' ', t.replace(' ', ' '))).strip()
+def clean(t): return re.sub(r'\s+', ' ', re.sub(r'[^\w\s\u064B-\u0652:،؟?!.,/+\-]', ' ', t.replace(' ', ' '))).strip()
 def parts(s):
     """The pieces of a slide in the order they appear (and are spoken)."""
     if s.get('vo'): return [clean(s['vo'])]
