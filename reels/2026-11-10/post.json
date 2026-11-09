@@ -1,0 +1,69 @@
+{
+ "hero": {
+  "name": "أم يوسف",
+  "emoji": "👩"
+ },
+ "sources": [
+  "https://www.i-scoop.eu/chatgpt-images-2-6/",
+  "https://testingcatalog.com/openai-launches-images-2-6-with-gifs-and-image-reference",
+  "https://www.mysmartprice.com/gear/internet/internet-news/openai-images-2-6-brings-faster-image-generation-and-gif-creation-to-chatgpt/",
+  "https://openai.com/index/new-chatgpt-images-is-here/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "أم يوسف زهقت\nمن شكل *الصالة*",
+   "subtitle": "شوف عملت إيه"
+  },
+  {
+   "type": "point",
+   "title": "صوّرت\n*الصالة*",
+   "body": "🎬 ضيوف الخميس جايين وهي زهقت.\n👉 رفعت صورتها.",
+   "path": [
+    "ChatGPT",
+    "+",
+    "Photos"
+   ],
+   "prompt": "غيّر لون الحيطة لبيج هادي وسيب الأثاث زي ما هو",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "جرّبت\n*ستايلات*",
+   "body": "🎬 اللون عجبها، بس عايزة تقارن.\n👉 طلبت تلات أشكال.",
+   "prompt": "ورّيني نفس الصالة بتلات ستايلات: عصري، كلاسيك، بسيط",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "حطّت\n*مرجع*",
+   "body": "🎬 شافت ستارة حلوة على فيسبوك.\n👉 ضمّتها كمرجع.",
+   "path": [
+    "ChatGPT",
+    "+",
+    "Photos"
+   ],
+   "prompt": "حط ستارة زي الصورة التانية على شباك الصالة",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "طلعت\n*القايمة*",
+   "body": "🎬 الميزانية خمستلاف.\n👉 حوّلته لقايمة شراء.",
+   "prompt": "اعملي جدول بالحاجات اللازمة للشكل ده بميزانية ٥٠٠٠ جنيه",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "قاست\n*بالمتر*",
+   "body": "🎬 الصورة مش مقاس حقيقي.\n👉 جابت شريط القياس.\n⚠️ ألوان الشاشة بتختلف، خدي عينة قبل الشراء.",
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "الصالة بقت\n*جديدة*",
+   "body": "وإنت كمان تقدر. ابعتها لحد زهق من بيته"
+  }
+ ]
+}

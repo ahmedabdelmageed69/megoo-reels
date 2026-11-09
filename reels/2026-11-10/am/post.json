@@ -1,0 +1,71 @@
+{
+ "hero": {
+  "name": "مها",
+  "emoji": "👩‍💼"
+ },
+ "sources": [
+  "https://wabetainfo.com/whatsapp-is-rolling-out-chats-powered-by-meta-ai-on-android/",
+  "https://www.sammyfans.com/2026/11/04/whatsapp-users-can-now-create-separate-chats-with-meta-ai/",
+  "https://wabetainfo.com/whatsapp-news-of-the-week-android-update-with-enhanced-voice-chats-with-meta-ai-is-available/",
+  "https://blog.whatsapp.com/more-ways-to-use-meta-ai-now-available-for-more-people"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "مرتب مها بيخلص\n*بدري* كل شهر",
+   "subtitle": "شوف عملت إيه"
+  },
+  {
+   "type": "point",
+   "title": "كتبت\n*مرتبها*",
+   "body": "🎬 الشهر بيخلص بدري.\n👉 كتبت أرقامها لـ Meta AI.",
+   "path": [
+    "WhatsApp",
+    "Meta AI"
+   ],
+   "prompt": "مرتبي ١٠ آلاف، إيجار ٣ آلاف، أكل ٣ آلاف. وزّع الباقي",
+   "tag": "Meta AI"
+  },
+  {
+   "type": "point",
+   "title": "حوّلت\n*لأرقام*",
+   "body": "🎬 الرد طويل ومش واضح.\n👉 خلّته نسب قصيرة.",
+   "prompt": "اكتبلي كل بند بنسبته من المرتب في سطر واحد",
+   "tag": "Meta AI"
+  },
+  {
+   "type": "point",
+   "title": "عملت\n*شات*",
+   "body": "🎬 مش عايزة تخلط ميزانيتها بأسئلة تانية.\n👉 عملت شات ليها بس.\n💡 لسه بيوصل تدريجي.",
+   "path": [
+    "WhatsApp",
+    "Meta AI",
+    "New chat"
+   ],
+   "tag": "Meta AI"
+  },
+  {
+   "type": "point",
+   "title": "قالتها\n*بصوتها*",
+   "body": "🎬 في المواصلات مش فاضية تكتب.\n👉 سجلت مصروفها بصوتها.",
+   "path": [
+    "Meta AI",
+    "Voice"
+   ],
+   "prompt": "النهارده صرفت ٢٠٠ جنيه على أكل، خصمهم من الميزانية",
+   "tag": "Meta AI"
+  },
+  {
+   "type": "point",
+   "title": "راجعت\n*الحسبة*",
+   "body": "🎬 خافت الأرقام تطلع غلط.\n👉 راجعتها على الكالكيوليتر.\n⚠️ ما تبعتيش رقم كارت أو حساب بنكي.",
+   "tag": "Privacy"
+  },
+  {
+   "type": "cta",
+   "title": "مها وفّرت\n*الشهر*",
+   "body": "وإنت كمان تقدر. ابعتها لحد مرتبه بيخلص بدري"
+  }
+ ]
+}
