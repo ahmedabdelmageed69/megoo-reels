@@ -1,0 +1,73 @@
+{
+ "hero": {
+  "name": "عم حسن",
+  "emoji": "👨"
+ },
+ "sources": [
+  "https://faq.whatsapp.com/1153795669452207/?cms_platform=web",
+  "https://whatsappbusiness.com/products/business-app-ai-agent/",
+  "https://www.wati.io/en/blog/meta-business-agent/",
+  "https://wabetainfo.com/meta-introduces-ai-business-agent-for-whatsapp-worldwide/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "عم حسن غرقان\nفي رسايل *الزباين*",
+   "subtitle": "شوف عمل إيه"
+  },
+  {
+   "type": "point",
+   "title": "فتح\n*الوكيل*",
+   "body": "🎬 الزباين بيسألوا طول الليل.\n👉 فعّل وكيل ميتا الجديد.",
+   "path": [
+    "WhatsApp Business",
+    "Tools",
+    "Business Agent"
+   ],
+   "tag": "WhatsApp Business"
+  },
+  {
+   "type": "point",
+   "title": "علّمه\n*المحل*",
+   "body": "🎬 خاف يرد غلط على الأسعار.\n👉 جهّز معلومات المحل.",
+   "prompt": "اكتبلي نبذة عن محلي: مفتوح ١٠ لـ ١٠، التوصيل ٣٠ جنيه، مفيش استرجاع",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "جرّب\n*بنفسه*",
+   "body": "🎬 مش واثق قبل ما يسيبه.\n👉 بعت سؤال من رقم تاني.",
+   "path": [
+    "رقم تاني",
+    "WhatsApp",
+    "محلك"
+   ],
+   "prompt": "الشاحن ده أصلي؟ وتوصلوه إمتى؟",
+   "tag": "WhatsApp"
+  },
+  {
+   "type": "point",
+   "title": "اختار\n*الشاتات*",
+   "body": "🎬 الصحاب مش لازم يكلمهم روبوت.\n👉 حدد مين يرد عليه.",
+   "path": [
+    "Agent",
+    "Settings",
+    "Which chats"
+   ],
+   "tag": "WhatsApp Business"
+  },
+  {
+   "type": "point",
+   "title": "راجع\n*الردود*",
+   "body": "🎬 تاني يوم قرا الردود.\n👉 سأل Gemini يراجعها.\n⚠️ الوكيل ممكن يغلط.",
+   "prompt": "راجع الرد ده وقوللي لو فيه معلومة غلط",
+   "tag": "Gemini"
+  },
+  {
+   "type": "cta",
+   "title": "عم حسن نام\n*مرتاح*",
+   "body": "وإنت كمان تقدر. ابعتها لصاحب محل"
+  }
+ ]
+}

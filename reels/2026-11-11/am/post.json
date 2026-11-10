@@ -1,0 +1,72 @@
+{
+ "hero": {
+  "name": "هالة",
+  "emoji": "👩"
+ },
+ "sources": [
+  "https://blog.google/intl/en-mena/product-updates/explore-get-answers/google-launches-storybook-feature-on-gemini-arabic",
+  "https://gemini.google/overview/storybook/",
+  "https://dupple.com/tutorial/transform-any-idea-into-personalized-illustrated-storybooks"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "بنت هالة خايفة\nمن *الروضة*",
+   "subtitle": "شوف عملت إيه"
+  },
+  {
+   "type": "point",
+   "title": "طلبت\n*حكاية*",
+   "body": "🎬 ليلى رفضت تلبس الزي الصبح.\n👉 فتحت Storybook.",
+   "path": [
+    "Gemini",
+    "Gems",
+    "Storybook"
+   ],
+   "prompt": "اعملي قصة لبنتي ليلى ٥ سنين، خايفة من أول يوم روضة، بالعامية",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "غيّرت\n*البطلة*",
+   "body": "🎬 عايزاها تحس إنها هي البطلة.\n👉 رفعت رسمة ليلى.",
+   "path": [
+    "Storybook",
+    "+",
+    "Drawing"
+   ],
+   "prompt": "خلي البطلة شبه رسمتي المرفقة واسمها ليلى",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "عدّلت\n*الأحداث*",
+   "body": "🎬 ليلى سألت: هبقى لوحدي؟\n👉 كملت الشات وطلبت تعديل.",
+   "prompt": "ضيف صاحبة بتساعد البطلة في الفصل وخلي النهاية مبهجة",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "نزّلتها\n*كتاب*",
+   "body": "🎬 ليلى عايزاها كل ليلة.\n👉 حفظتها ملف وبعتتها لجدتها.",
+   "path": [
+    "Storybook",
+    "Download",
+    "PDF"
+   ],
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "قرأتها\n*الأول*",
+   "body": "🎬 القصة حلوة، بس هالة اتأكدت.\n👉 قرأتها قبل ما تحكيها.\n⚠️ ارفعي رسمة بدل صورة وش طفلك.",
+   "tag": "Safety"
+  },
+  {
+   "type": "cta",
+   "title": "ليلى راحت\n*مبسوطة*",
+   "body": "وإنت كمان تقدر. ابعتها لأم محتاجاها"
+  }
+ ]
+}
