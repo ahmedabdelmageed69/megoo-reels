@@ -1,0 +1,68 @@
+{
+ "hero": {
+  "name": "رحاب",
+  "emoji": "👩"
+ },
+ "sources": [
+  "https://openai.com/ro-RO/index/gpt-6-for-everyone/",
+  "https://betanews.com/article/gpt-6-intelligent-ui-chatgpt-free-users/",
+  "https://mixed-news.com/en/?p=36267",
+  "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "رحاب بتتلخبط\nفي دوا *أبوها*",
+   "subtitle": "كل صبح"
+  },
+  {
+   "type": "point",
+   "title": "كتبت\n*الروشتة*",
+   "body": "🎬 أربع علب والساعة سبعة.\n👉 كتبت الروشتة لـ ChatGPT.",
+   "path": [
+    "ChatGPT",
+    "New chat"
+   ],
+   "prompt": "روشتة بابا: الضغط الصبح، السكر قبل الفطار، الفيتامين بعده. رتبها جدول",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "علّمت على\n*الأزرار*",
+   "body": "🎬 عايزة تعلّم على كل دوا.\n👉 الجديد: ChatGPT بيرد بأزرار.",
+   "prompt": "حوّلها لقايمة أعلّم فيها على كل دوا",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "صوّرت\n*العلب*",
+   "body": "🎬 علبة شكلها غريب.\n👉 صوّرت العلب وقارنتها.",
+   "path": [
+    "ChatGPT",
+    "+",
+    "Camera"
+   ],
+   "prompt": "قارن العلب دي بالروشتة، وقوللي لو فيه اسم مختلف",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "كتبت\n*لأخوها*",
+   "body": "🎬 أخوها هيقعد مع بابا بكرة.\n👉 طلبت ورقة واضحة.",
+   "prompt": "اكتبلي ورقة بخط كبير لأخويا بمواعيد الدوا",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "سألت\n*الصيدلي*",
+   "body": "🎬 العلبة طلعت بديل.\n👉 أكّدت مع الصيدلي.\n⚠️ الجرعة من الدكتور بس.",
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "رحاب بدأت يومها\n*مطمّنة*",
+   "body": "وإنت كمان تقدر. ابعتها لحد بيراعي أبوه"
+  }
+ ]
+}

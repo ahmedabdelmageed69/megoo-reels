@@ -1,0 +1,76 @@
+{
+ "hero": {
+  "name": "مجدي",
+  "emoji": "👨"
+ },
+ "sources": [
+  "https://workspaceupdates.googleblog.com/2026/10/create-preview-and-edit-files-directly-in-the-Gemini-app.html",
+  "https://www.androidpolice.com/gemini-create-preview-edit-pdf-files-docs-directly-inside-your-chat/",
+  "https://www.unite.ai/gemini-app-now-lets-users-edit-documents-and-pdfs-in-chat/",
+  "https://www.explainx.ai/blog/gemini-edit-files-in-chat-full-screen-editor-pdf-docs-sheets-slides-web-mobile-what-works-2026"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "مجدي لازم يقدّم\nطلب *رسمي* بكرة",
+   "subtitle": "ومش عارف يبدأ"
+  },
+  {
+   "type": "point",
+   "title": "خلّى Gemini\n*يكتبه*",
+   "body": "🎬 المدرسة طلبت طلب مكتوب.\n👉 الجديد: Gemini بيعمل الملف في الشات.",
+   "path": [
+    "Gemini",
+    "اكتب طلبك"
+   ],
+   "prompt": "اكتبلي طلب تحويل رسمي لمدرسة النور لابني آدم، واعمله PDF",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "صلّح\n*بإيده*",
+   "body": "🎬 اسم المدرسة ناقص.\n👉 كبّر الملف وصحّحه بإيده.",
+   "path": [
+    "الملف",
+    "ملء الشاشة",
+    "اكتب"
+   ],
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "علّم على\n*فقرة*",
+   "body": "🎬 الكلام طلع ناشف.\n👉 حدّد الفقرة وعدّلها هي بس.",
+   "path": [
+    "الملف",
+    "حدّد الفقرة"
+   ],
+   "prompt": "خلّيها أهدى وأقصر، وزوّد إن المدرسة بعيدة عن البيت",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "جهّز\n*الرسالة*",
+   "body": "🎬 السكرتيرة قالت ابعته واتساب.\n👉 طلب رسالة تروح مع الملف.",
+   "path": [
+    "الملف",
+    "Share",
+    "WhatsApp"
+   ],
+   "prompt": "اكتبلي رسالة واتساب قصيرة ومحترمة للسكرتارية",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "راجع قبل\nما *يبعت*",
+   "body": "🎬 كان هيبعت على طول.\n👉 راجع الأسامي والتاريخ.\n⚠️ الرقم القومي بإيدك، مش في الشات.",
+   "tag": "Privacy"
+  },
+  {
+   "type": "cta",
+   "title": "مجدي قدّم\nالطلب *مرتاح*",
+   "body": "وإنت كمان تقدر. ابعتها لأب عنده ورق مدرسة"
+  }
+ ]
+}
