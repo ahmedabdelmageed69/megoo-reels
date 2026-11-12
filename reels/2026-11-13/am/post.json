@@ -1,0 +1,74 @@
+{
+ "hero": {
+  "name": "هند",
+  "emoji": "👩"
+ },
+ "sources": [
+  "https://www.androidauthority.com/how-to-use-gemini-skills-google-upgraded-gems-feature-3718807/",
+  "https://www.androidheadlines.com/2026/10/google-makes-gemini-skills-official-to-automate-tasks-and-replace-gems.html",
+  "https://gemini.google/overview/productivity/",
+  "https://9to5google.com/2026/09/27/gemini-gems-skills/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "هند بتسمّع لآدم\nكل *صبح*",
+   "subtitle": "ونفس الكلام"
+  },
+  {
+   "type": "point",
+   "title": "صوّرت\n*الدرس*",
+   "body": "🎬 الساعة سبعة وآدم بيلبس.\n👉 صوّرت الدرس.",
+   "path": [
+    "Gemini",
+    "+",
+    "Camera"
+   ],
+   "prompt": "إنت مدرس لطيف، اسأل ابني ٥ أسئلة من الصفحة دي واحد واحد",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "خلّته\n*يشجّع*",
+   "body": "🎬 آدم اتضايق من غلطة.\n👉 طلبت تلميح بدل الإجابة.",
+   "prompt": "لو غلط اديله تلميح وشجّعه",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "حفظتها\n*مهارة*",
+   "body": "🎬 زهقت من التكرار.\n👉 الجديد: Gemini Skills بتحفظ طريقتك.",
+   "path": [
+    "Gemini",
+    "Settings",
+    "Skills"
+   ],
+   "prompt": "اعمل skill اسمها سمّعلي من الشات ده",
+   "tag": "Gemini Skills"
+  },
+  {
+   "type": "point",
+   "title": "بعتت ملخص\n*لأبوه*",
+   "body": "🎬 تاني يوم كتبت / سمّعلي بس.\n👉 وزوّدت ملخص لباباه.",
+   "path": [
+    "Gemini",
+    "/",
+    "سمّعلي"
+   ],
+   "prompt": "عدّل سمّعلي: في الآخر اكتب غلطات آدم في رسالة لباباه",
+   "tag": "Gemini Skills"
+  },
+  {
+   "type": "point",
+   "title": "راجعت\n*الكتاب*",
+   "body": "🎬 سؤال طلع مش من الدرس.\n👉 راجعت مع الكتاب.\n⚠️ المهارات لحسابك، مش لحساب آدم.",
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "آدم نزل المدرسة\n*واثق*",
+   "body": "وإنت كمان تقدر. ابعتها لأم بتسمّع لولادها"
+  }
+ ]
+}

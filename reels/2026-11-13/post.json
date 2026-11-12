@@ -1,0 +1,74 @@
+{
+ "hero": {
+  "name": "دعاء",
+  "emoji": "👩"
+ },
+ "sources": [
+  "https://mixed-news.com/en/chatgpt-images-26-gifs-reference-images-openai/",
+  "https://www.techrepublic.com/article/news-chatgpt-images-2-6-gif-creation/",
+  "https://www.notebookcheck.net/ChatGPT-can-now-make-GIFs-and-save-your-photos-for-later-chats.1445192.0.html",
+  "https://help.openai.com/en/articles/11084440-images-in-chatgpt"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "دعاء عايزة تفرّح\n*مريم* في عيدها",
+   "subtitle": "بأقل تكلفة"
+  },
+  {
+   "type": "point",
+   "title": "حرّكت\n*الرسمة*",
+   "body": "🎬 مريم رسمت نفسها بالبلالين.\n👉 خلّت ChatGPT يحرّكها، دي ميزة جديدة.",
+   "path": [
+    "ChatGPT",
+    "+",
+    "Photos"
+   ],
+   "prompt": "حرّك الرسمة دي GIF: البلالين تطير ومريم تضحك",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "هدّت\n*السرعة*",
+   "body": "🎬 الحركة سريعة.\n👉 عدّلت مشهد واحد بس.",
+   "prompt": "خلّيها أبطأ، وفي الآخر مريم تشاور بإيدها",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "حفظت صورة\n*مريم*",
+   "body": "🎬 عايزاها في كل حاجة.\n👉 حفظتها مرجع باسمها.",
+   "path": [
+    "ChatGPT",
+    "+",
+    "Photos"
+   ],
+   "prompt": "احفظ صورة بنتي دي مرجع باسم مريم",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "عملت\n*الدعوة*",
+   "body": "🎬 فاضل دعوة لصحابها.\n👉 نادتها بـ @ في شات جديد.",
+   "path": [
+    "New chat",
+    "@",
+    "مريم"
+   ],
+   "prompt": "اعمل GIF دعوة عيد ميلاد فيها @مريم بتطفي الشمع",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "كتبت المعاد\n*بإيدها*",
+   "body": "🎬 الكلام العربي في الصورة اتلخبط.\n👉 كتبت المعاد في الجروب.\n⚠️ متحفظيش صور ولاد غيرك.",
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "مريم فرحت\nفرحة *كبيرة*",
+   "body": "وإنت كمان تقدر. ابعتها لأم عندها عيد ميلاد"
+  }
+ ]
+}
