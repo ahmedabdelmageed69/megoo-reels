@@ -1,0 +1,63 @@
+{
+ "hero": {
+  "name": "كريم",
+  "emoji": "👨‍💼"
+ },
+ "sources": [
+  "https://venturebeat.com/technology/openai-launches-gpt-live-a-full-duplex-voice-upgrade-that-lets-chatgpt-talk-more-like-a-person",
+  "https://www.notebookcheck.net/ChatGPT-Voice-GPT-Live-1-1-brings-new-voices-for-six-languages.1425810.0.html",
+  "https://www.theneuron.ai/news/chatgpt-gpt-live-1-1-13-new-voices/",
+  "https://www.macrumors.com/2026/07/08/openai-gpt-live-voice/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "كريم عنده مكالمة\n*إنجليزي* بكرة",
+   "subtitle": "وقلبه بيدق"
+  },
+  {
+   "type": "point",
+   "title": "عمل\n*بروفة*",
+   "body": "🎬 أول عميل أجنبي ليه.\n👉 كلّم ChatGPT بالصوت الجديد.",
+   "path": [
+    "ChatGPT",
+    "Voice"
+   ],
+   "prompt": "إنت عميل أجنبي زعلان من تأخير الشحنة، كلّمني بالإنجليزي",
+   "tag": "ChatGPT Voice"
+  },
+  {
+   "type": "point",
+   "title": "طلب\n*تصحيح*",
+   "body": "🎬 حس إن ردوده مكسّرة.\n👉 خلّاه يصحّحله بالعربي.",
+   "prompt": "بعد كل رد، قولّي غلطتي بالعربي وجملة أحسن",
+   "tag": "ChatGPT Voice"
+  },
+  {
+   "type": "point",
+   "title": "خلّاه\n*يقاطعه*",
+   "body": "🎬 العميل الحقيقي مش هيستنّاه.\n👉 الصوت الجديد بيقاطعك زي البني آدم.",
+   "prompt": "اتكلم أسرع وقاطعني زي العميل الحقيقي",
+   "tag": "GPT-Live"
+  },
+  {
+   "type": "point",
+   "title": "طلّع ورقة\n*الجمل*",
+   "body": "🎬 خاف ينسى الكلام.\n👉 طلب ملخص من نفس الشات.",
+   "prompt": "اكتبلي أهم ٦ جمل قلتها صح ومعناها بالعربي",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "شال\n*الأسعار*",
+   "body": "🎬 كان هيقول اسم الشركة.\n👉 استخدم أرقام وهمية في البروفة.\n⚠️ متحطش أسرار شغلك.",
+   "tag": "Privacy"
+  },
+  {
+   "type": "cta",
+   "title": "كريم خلّص المكالمة\n*واثق*",
+   "body": "وإنت كمان تقدر. ابعتها لحد بيخاف من الإنجليزي"
+  }
+ ]
+}

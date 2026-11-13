@@ -1,0 +1,69 @@
+{
+ "hero": {
+  "name": "نادية",
+  "emoji": "👩‍⚕️"
+ },
+ "sources": [
+  "https://workspaceupdates.googleblog.com/2026/10/an-easier-way-to-customize-how-gemini-works-for-you.html",
+  "https://www.androidauthority.com/google-gemini-customize-menu-3726247/",
+  "https://support.google.com/gemini/answer/15305236",
+  "https://ideakitchen.substack.com/p/ai-recipe-quick-add-events-from-any"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "نادية تايهة في\n*شيفتاتها*",
+   "subtitle": "والجدول على الحيطة"
+  },
+  {
+   "type": "point",
+   "title": "صوّرت\n*الجدول*",
+   "body": "🎬 الجدول بخط صغير وأسامي كتير.\n👉 بعتت الصورة لـ Gemini يفرزها.",
+   "path": [
+    "Gemini",
+    "+",
+    "Camera"
+   ],
+   "prompt": "طلّعلي شيفتات نادية بس بالتاريخ والساعة",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "وصّلت\n*الكالندر*",
+   "body": "🎬 مش عايزة تكتبهم واحد واحد.\n👉 من قايمة Customize الجديدة.",
+   "path": [
+    "Customize",
+    "Connectors",
+    "Calendar"
+   ],
+   "prompt": "ضيفهم في الكالندر بتنبيه قبل كل شيفت بساعة",
+   "tag": "Gemini Connectors"
+  },
+  {
+   "type": "point",
+   "title": "دوّرت على\n*أجازة*",
+   "body": "🎬 نفسها تسافر لأهلها.\n👉 سألت Gemini عن الكالندر.",
+   "prompt": "إمتى عندي يومين أجازة ورا بعض الشهر ده؟",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "طلبت\n*تبديل*",
+   "body": "🎬 فرح أختها جه على شيفت.\n👉 طلبت رسالة لزميلتها.",
+   "prompt": "اكتبلي رسالة واتساب لطيفة لزميلتي منى أبدّل معاها شيفت الخميس",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "راجعت\n*بعينها*",
+   "body": "🎬 Gemini قرا رقم غلط.\n👉 قارنت الكالندر بالورقة.\n⚠️ متصوّريش ورق فيه أسامي مرضى.",
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "نادية نامت\n*مرتاحة*",
+   "body": "وإنت كمان تقدر. ابعتها لحد شغال شيفتات"
+  }
+ ]
+}
