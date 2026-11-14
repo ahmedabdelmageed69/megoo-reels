@@ -1,0 +1,79 @@
+{
+ "hero": {
+  "name": "مازن",
+  "emoji": "🧑‍🎓"
+ },
+ "sources": [
+  "https://blog.google/innovation-and-ai/products/gemini-app/gemini-study-notebooks/",
+  "https://blog.google/innovation-and-ai/products/gemini-app/how-to-make-gemini-study-notebooks/",
+  "https://www.androidauthority.com/study-notebooks-feature-gemini-app-3681541/",
+  "https://workspaceupdates.googleblog.com/2026/10/find-your-learning-tools-all-in-one-place-with-the-student-hub-in-Gemini.html",
+  "https://www.technology.org/2026/10/08/gpt-6-intelligent-ui-free-chatgpt-users/",
+  "https://www.mindstudio.ai/blog/gpt-6-intelligent-ui-chatgpt"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "مازن تايه في\n*الفيزيا*",
+   "subtitle": "والامتحان بعد أسبوع"
+  },
+  {
+   "type": "point",
+   "title": "عمل كراسة\n*مذاكرة*",
+   "body": "🎬 مش عارف يبدأ منين.\n👉 عمل كراسة مذاكرة في Gemini.",
+   "path": [
+    "Gemini",
+    "Notebooks",
+    "New notebook",
+    "Study and learn"
+   ],
+   "prompt": "هدفي فصل الكهربا لتالتة ثانوي، اختبرني الأول وقولّي أنا فين",
+   "tag": "Gemini Notebook"
+  },
+  {
+   "type": "point",
+   "title": "عرف نقطة\n*ضعفه*",
+   "body": "🎬 الاختبار كشفه في كيرشوف.\n👉 طلب شرح على مقاسه.",
+   "path": [
+    "Notebook",
+    "Focus Area"
+   ],
+   "prompt": "اشرحلي كيرشوف بالمصري بمثال من كهربا البيت",
+   "tag": "Gemini Notebook"
+  },
+  {
+   "type": "point",
+   "title": "لعب بدايرة\n*تفاعلية*",
+   "body": "🎬 القانون مش داخل دماغه.\n👉 ChatGPT بقى يرد برسمة بتتحرك.",
+   "path": [
+    "ChatGPT",
+    "New chat"
+   ],
+   "prompt": "اعمل دايرة تفاعلية أغيّر فيها المقاومة وأشوف التيار",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "قسّم\n*الأسبوع*",
+   "body": "🎬 فاضل ٦ أيام.\n👉 طلب خطة من كراسته.",
+   "path": [
+    "Gemini",
+    "Notebooks"
+   ],
+   "prompt": "قسّم نقط ضعفي على ٥ أيام، وآخر يوم امتحان تجريبي",
+   "tag": "Gemini Notebook"
+  },
+  {
+   "type": "point",
+   "title": "حل امتحانات\n*قديمة*",
+   "body": "🎬 الكراسة قالت إنه شاطر.\n👉 حل امتحان قديم بإيده.\n⚠️ راجع على كتاب المدرسة.",
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "مازن دخل الامتحان\n*مرتاح*",
+   "body": "وإنت كمان تقدر. ابعتها لطالب ثانوي"
+  }
+ ]
+}

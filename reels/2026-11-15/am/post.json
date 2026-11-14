@@ -1,0 +1,75 @@
+{
+ "hero": {
+  "name": "شيرين",
+  "emoji": "👩"
+ },
+ "sources": [
+  "https://blog.google/innovation-and-ai/products/gemini-app/generate-files-in-gemini/",
+  "https://tech.yahoo.com/ai/gemini/articles/gemini-now-lets-create-preview-155909619.html",
+  "https://datanorth.ai/news/gemini-edit-files-in-chat",
+  "https://www.explainx.ai/blog/gemini-edit-files-in-chat-full-screen-editor-pdf-docs-sheets-slides-web-mobile-what-works-2026"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "صباح شيرين\nكله *زعيق*",
+   "subtitle": "والولاد بيتأخروا"
+  },
+  {
+   "type": "point",
+   "title": "عملت جدول\n*مهام*",
+   "body": "🎬 كل يوم نفس الخناقة.\n👉 طلبت جدول للطباعة.",
+   "path": [
+    "Gemini",
+    "Chat"
+   ],
+   "prompt": "اعمل PDF جدول مهام الصبح لسليم ولمى، بخط كبير وأشكال مرحة",
+   "tag": "Gemini PDF"
+  },
+  {
+   "type": "point",
+   "title": "عدّلت جوه\n*الشات*",
+   "body": "🎬 الجدول طلع زحمة.\n👉 جديد: عدّلت ملف PDF بالكلام.",
+   "path": [
+    "Gemini",
+    "PDF",
+    "Edit"
+   ],
+   "prompt": "شيل الفطار من عمود سليم وضيف نجمة جنب كل مهمة",
+   "tag": "Gemini PDF"
+  },
+  {
+   "type": "point",
+   "title": "عملت نسخة\n*بالرسومات*",
+   "body": "🎬 لمى لسه مبتقراش.\n👉 طلبت نسخة بالصور.",
+   "prompt": "اعمل نسخة للمى من غير كلام، رسمة بس لكل مهمة",
+   "tag": "Gemini PDF"
+  },
+  {
+   "type": "point",
+   "title": "اختارت\n*مكافأة*",
+   "body": "🎬 سليم سأل: هناخد إيه؟\n👉 طلبت أفكار.",
+   "path": [
+    "Gemini",
+    "Chat"
+   ],
+   "prompt": "اقترح ٥ مكافآت ببلاش، من غير حلويات ولا موبايل",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "كمّلت من\n*المتصفح*",
+   "body": "🎬 حبّت نسخة Word.\n👉 فتحت Gemini من الكمبيوتر.\n⚠️ الموبايل بيعدّل ملفات PDF بس.",
+   "path": [
+    "gemini.google.com"
+   ],
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "صباح شيرين بقى\n*هادي*",
+   "body": "وإنت كمان تقدر. ابعتها لأم تعبانة الصبح"
+  }
+ ]
+}
