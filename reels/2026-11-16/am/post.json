@@ -1,0 +1,75 @@
+{
+ "hero": {
+  "name": "الحاج محمود",
+  "emoji": "👴"
+ },
+ "sources": [
+  "https://www.canva.com/newsroom/news/canva-craft/",
+  "https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model",
+  "https://letsdatascience.com/news/canva-releases-craft-its-first-in-house-image-generation-mod-6fa641a3",
+  "https://smartscope.blog/en/blog/canva-craft-it-use-dream-lab-free-plan-2026/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "صباح الخير بتاع\nالحاج محمود *محدش* بيرد",
+   "subtitle": "لحد ما عمل ده"
+  },
+  {
+   "type": "point",
+   "title": "عمل صورة\n*بنفسه*",
+   "body": "🎬 الصور المتكررة زهّقت العيلة.\n👉 جرّب Craft الجديد في Canva.",
+   "path": [
+    "Canva",
+    "Dream Lab",
+    "Craft"
+   ],
+   "prompt": "فنجان شاي على بلكونة مصرية الصبح، ياسمين ونور دافي",
+   "tag": "Canva Craft"
+  },
+  {
+   "type": "point",
+   "title": "ظبط\n*المقاس*",
+   "body": "🎬 الصورة اتقصّت في الحالة.\n👉 طلبها بالطول.",
+   "path": [
+    "Dream Lab",
+    "Craft"
+   ],
+   "prompt": "نفس الصورة بالطول لحالة الواتساب، وسيب مكان فاضي فوق",
+   "tag": "Canva Craft"
+  },
+  {
+   "type": "point",
+   "title": "كتب\n*بإيده*",
+   "body": "🎬 الكلام العربي جوه الصورة اتلخبط.\n👉 كتبه هو فوقها.",
+   "path": [
+    "Use in design",
+    "Text"
+   ],
+   "tag": "Canva"
+  },
+  {
+   "type": "point",
+   "title": "عمل لكل\n*حفيد*",
+   "body": "🎬 حفيدته نور عندها امتحان.\n👉 عمل لها صورة لوحدها.",
+   "prompt": "كراسة وألوان جنب فنجان الشاي، ستايل مبهج",
+   "tag": "Canva Craft"
+  },
+  {
+   "type": "point",
+   "title": "وفّر\n*محاولاته*",
+   "body": "🎬 المحاولات المجانية محدودة.\n👉 حفظ الحلو في ملف.\n💡 اكتب الوصف كامل من أول مرة.",
+   "path": [
+    "Canva",
+    "Projects"
+   ],
+   "tag": "Pro tip"
+  },
+  {
+   "type": "cta",
+   "title": "العيلة كلها\n*ردّت*",
+   "body": "وإنت كمان تقدر. ابعتها لجدك"
+  }
+ ]
+}

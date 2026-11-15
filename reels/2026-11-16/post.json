@@ -1,0 +1,77 @@
+{
+ "hero": {
+  "name": "حمادة",
+  "emoji": "👨"
+ },
+ "sources": [
+  "https://www.techrepublic.com/article/news-chatgpt-images-2-6-gif-creation/",
+  "https://basic-tutorials.com/news/chatgpt-images-2-6-openai-introduces-gifs-reference-images-and-50-faster-performance/",
+  "https://www.businesstoday.in/technology/news/story/chatgpt-images-2-6-is-here-openai-wants-to-fix-one-of-ai-image-editings-biggest-frustrations-565931-2026-11-05",
+  "https://kingy.ai/blog/gpt-image-2-6-sunburst-flare/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "حمادة مسافر\nومش في *صورة* العيلة",
+   "subtitle": "شوف عمل إيه"
+  },
+  {
+   "type": "point",
+   "title": "ضمّ نفسه\n*للصورة*",
+   "body": "🎬 مراته بعتت صورة الولاد من غيره.\n👉 رفعها مع سيلفي.",
+   "path": [
+    "ChatGPT",
+    "+",
+    "Photos"
+   ],
+   "prompt": "حطّني جنب مراتي وولادي بنفس الإضاءة، والوشوش زي ما هي",
+   "tag": "ChatGPT Images"
+  },
+  {
+   "type": "point",
+   "title": "عدّل حاجة\n*واحدة*",
+   "body": "🎬 حس إنه بعيد عنهم.\n👉 الجديد: التعديل مبقاش يبوّظ الوشوش.",
+   "prompt": "خلّي إيدي على كتف ابني، والباقي زي ما هو",
+   "tag": "Images 2.6",
+   "path": [
+    "ChatGPT",
+    "Edit"
+   ]
+  },
+  {
+   "type": "point",
+   "title": "حوّلها\n*لوحة*",
+   "body": "🎬 عايزها على حيطة الصالة.\n👉 خلّاها لوحة زيت تتبروز.",
+   "prompt": "اعملها لوحة زيت دافية بالطول للطباعة",
+   "tag": "ChatGPT Images",
+   "path": [
+    "ChatGPT",
+    "Images",
+    "Edit"
+   ]
+  },
+  {
+   "type": "point",
+   "title": "كتب\n*رسالة*",
+   "body": "🎬 الصورة محتاجة كلمتين.\n👉 طلبهم من ChatGPT.",
+   "prompt": "رسالة قصيرة بالمصري لمراتي، من أب واحشه ولاده",
+   "tag": "ChatGPT",
+   "path": [
+    "ChatGPT",
+    "New chat"
+   ]
+  },
+  {
+   "type": "point",
+   "title": "قال\n*الحقيقة*",
+   "body": "🎬 بنته سألت: إمتى اتصورنا؟\n👉 قالها الحقيقة.\n⚠️ صور ولادك لتطبيق معروف بس.",
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "حمادة رجع\n*وسطهم*",
+   "body": "وإنت كمان تقدر. ابعتها لحد مسافر"
+  }
+ ]
+}
