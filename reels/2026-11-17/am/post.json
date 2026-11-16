@@ -1,0 +1,74 @@
+{
+ "hero": {
+  "name": "شيماء",
+  "emoji": "👩"
+ },
+ "sources": [
+  "https://help.openai.com/en/articles/9624314-model-release-notes",
+  "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+  "https://help.openai.com/en/articles/8400551-chatgpt-image-inputs-faq",
+  "https://help.openai.com/en/articles/8555545-file-uploads-faq"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "صاحب الشقة\nعايز يزوّد على *شيماء*",
+   "subtitle": "ردّت قبل الشغل"
+  },
+  {
+   "type": "point",
+   "title": "ردّت\n*بهدوء*",
+   "body": "🎬 صحيت على: الإيجار هيزيد ٣٠٪.\n👉 لصقت الرسالة وطلبت رد.",
+   "path": [
+    "WhatsApp",
+    "Copy",
+    "ChatGPT"
+   ],
+   "prompt": "اكتبلي رد مؤدب بالمصري لصاحب الشقة من غير ما أوافق",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "قصّرت\n*الرد*",
+   "body": "🎬 الرد طلع رسمي.\n👉 خلّته يعرض حل وسط.",
+   "prompt": "٤ سطور، ودود وحازم، واقترح ١٠٪ بس",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "رجعت\n*للعقد*",
+   "body": "🎬 افتكرت بند في العقد.\n👉 ضافت صورة العقد للشات.",
+   "path": [
+    "ChatGPT",
+    "+",
+    "Camera"
+   ],
+   "prompt": "العقد بيقول إيه عن الزيادة؟ اقتبس البند بالظبط",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "طلبت\n*الصراحة*",
+   "body": "🎬 خافت الرد يزعّله.\n👉 تحديث جديد خلّاه أقل مجاملة.",
+   "prompt": "لو إنت صاحب الشقة، الرد ده هيزعلك؟ بصراحة",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "غطّت\n*البطاقة*",
+   "body": "🎬 كانت هتبعت البطاقة كمان.\n👉 خبّت الرقم القومي.\n⚠️ ده مش رأي محامي.",
+   "path": [
+    "Photos",
+    "Edit",
+    "Markup"
+   ],
+   "tag": "Privacy"
+  },
+  {
+   "type": "cta",
+   "title": "شيماء نزلت\n*مرتاحة*",
+   "body": "وإنت كمان تقدر. ابعتها لحد ساكن إيجار"
+  }
+ ]
+}

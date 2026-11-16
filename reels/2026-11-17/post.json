@@ -1,0 +1,72 @@
+{
+ "hero": {
+  "name": "حسام",
+  "emoji": "👨"
+ },
+ "sources": [
+  "https://www.engadget.com/2314093/google-brings-the-gemini-app-to-apple-carplay/",
+  "https://tbreak.com/gemini-on-carplay-iphone/",
+  "https://blog.google/products-and-platforms/products/maps/gemini-navigation-global/",
+  "https://dataconomy.com/2026/10/22/google-maps-gains-a-gemini-button-on-carplay/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "حسام سايق والعيال\n*زهقوا*",
+   "subtitle": "من غير ما يمسك الموبايل"
+  },
+  {
+   "type": "point",
+   "title": "كلّم Gemini\nمن *الشاشة*",
+   "body": "🎬 العيال: إحنا وصلنا؟\n👉 الجديد: Gemini على شاشة العربية.",
+   "path": [
+    "CarPlay",
+    "Gemini",
+    "Live"
+   ],
+   "prompt": "اقترح لعبة كلام لعيال ٨ سنين بالمصري",
+   "tag": "Gemini CarPlay"
+  },
+  {
+   "type": "point",
+   "title": "عمل\n*مسابقة*",
+   "body": "🎬 اللعبة خلصت بسرعة.\n👉 طلب مسابقة.",
+   "prompt": "اسألهم عن إسكندرية سؤال سؤال وشجّعهم",
+   "tag": "Gemini Live"
+  },
+  {
+   "type": "point",
+   "title": "لقى\n*استراحة*",
+   "body": "🎬 الصغير عايز الحمام.\n👉 داس زرار Gemini في الخريطة.",
+   "path": [
+    "Google Maps",
+    "Gemini"
+   ],
+   "prompt": "فيه استراحة نضيفة قريبة على طريقي؟",
+   "tag": "Maps + Gemini"
+  },
+  {
+   "type": "point",
+   "title": "خطّط\n*اليوم*",
+   "body": "🎬 مراته: هنروح فين؟\n👉 كمّل نفس الشات من الموبايل.",
+   "path": [
+    "Gemini",
+    "Chats"
+   ],
+   "prompt": "خطة يوم في إسكندرية لعيلة بميزانية ١٥٠٠ جنيه",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "وعينه على\n*الطريق*",
+   "body": "🎬 الشاشة بتشد عينه.\n👉 خلّى كل حاجة بالصوت.\n⚠️ Gemini ممكن يغلط في المواعيد.",
+   "tag": "Safety"
+  },
+  {
+   "type": "cta",
+   "title": "الرحلة بقت\n*ضحك*",
+   "body": "وإنت كمان تقدر. ابعتها لأب مسافر بعيلته"
+  }
+ ]
+}
