@@ -1,0 +1,71 @@
+{
+ "hero": {
+  "name": "نهى",
+  "emoji": "👩‍🍳"
+ },
+ "sources": [
+  "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/",
+  "https://www.fonearena.com/blog/495350/google-gemini-tools-small-business.html",
+  "https://www.digitalapplied.com/blog/gemini-small-business-hub-connected-apps-brand-style",
+  "https://cellcog.ai/blog/gemini-small-business-tools/",
+  "https://www.chromegeek.com/gemini-small-business-hub-brand-kits-finance/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "نهى بتبيع تورت\nومش عارفة *كسبانة*؟",
+   "subtitle": "والفلوس بتروح فين؟"
+  },
+  {
+   "type": "point",
+   "title": "صوّرت\n*الفواتير*",
+   "body": "🎬 آخر الشهر الدُرج فاضي.\n👉 جربت صفحة البيزنس الجديدة.",
+   "path": [
+    "Gemini",
+    "Business",
+    "+",
+    "Camera"
+   ],
+   "prompt": "دي فواتير الخامات والطلبات، ارسملي ربحي من كل تورتة",
+   "tag": "Gemini Business"
+  },
+  {
+   "type": "point",
+   "title": "لقت\n*الخسران*",
+   "body": "🎬 طلعت الشوكولاتة خسرانة.\n👉 طلبت نموذج تلعب بأرقامه.",
+   "prompt": "خليني أغير سعر الزبدة وسعر البيع وأشوف الربح",
+   "tag": "Gemini Business"
+  },
+  {
+   "type": "point",
+   "title": "قارنت\n*أكتوبر*",
+   "body": "🎬 الشهر اللي فات كان أحسن.\n👉 حطّت الشهرين جنب بعض.",
+   "prompt": "إيه أكتر حاجة أكلت الربح الشهر ده؟",
+   "tag": "Gemini Business"
+  },
+  {
+   "type": "point",
+   "title": "عملت\n*منيو*",
+   "body": "🎬 قررت تعدّل الأسعار.\n👉 حفظت ألوان البراند مرة واحدة.",
+   "path": [
+    "Gemini",
+    "Brand style",
+    "Upload"
+   ],
+   "prompt": "اعملي منيو الأسعار الجديد بستايلي للستوري",
+   "tag": "Brand Style"
+  },
+  {
+   "type": "point",
+   "title": "راجعت\n*الأرقام*",
+   "body": "🎬 رقم بخط إيدها اتقرا غلط.\n👉 راجعته بالآلة الحاسبة.\n⚠️ متصورش كارت البنك.",
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "نهى عرفت\n*مكسبها*",
+   "body": "وإنت كمان تقدر. ابعتها لحد بيبيع من البيت"
+  }
+ ]
+}

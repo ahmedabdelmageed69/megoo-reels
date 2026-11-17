@@ -1,0 +1,74 @@
+{
+ "hero": {
+  "name": "رامي",
+  "emoji": "👨‍💼"
+ },
+ "sources": [
+  "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+  "https://www.digitaltrends.com/computing/chatgpt-finally-gets-the-icloud-mail-and-calendar-plugins-users-have-been-waiting-for/",
+  "https://www.igeeksblog.com/chatgpt-icloud-mail-calendar-plugins/",
+  "https://www.notebookcheck.net/ChatGPT-can-now-read-iCloud-Mail-and-disconnecting-is-not-enough.1438039.0.html",
+  "https://mezha.ua/en/news/chatgpt-icloud-integration-316619/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "رامي صاحي\nومش فاكر *مواعيده*",
+   "subtitle": "٤٠ إيميل مستنيينه"
+  },
+  {
+   "type": "point",
+   "title": "سأل عن\n*يومه*",
+   "body": "🎬 صحي متلخبط.\n👉 جديد: ChatGPT بيقرا كالندر iCloud.",
+   "path": [
+    "ChatGPT",
+    "Plugins",
+    "iCloud Calendar"
+   ],
+   "prompt": "لخصلي يومي في ٣ سطور وفين عندي ساعة فاضية",
+   "tag": "ChatGPT iCloud"
+  },
+  {
+   "type": "point",
+   "title": "فرز\n*الإيميلات*",
+   "body": "🎬 الإيميلات متكومة.\n👉 وصّل iCloud Mail كمان.",
+   "path": [
+    "Plugins",
+    "iCloud Mail"
+   ],
+   "prompt": "طلعلي الإيميلات اللي مستنية رد مني النهاردة بس",
+   "tag": "ChatGPT iCloud"
+  },
+  {
+   "type": "point",
+   "title": "لقط\n*التعارض*",
+   "body": "🎬 عميل كاتب إنه جاي بدري.\n👉 خلّاه يقارن الاتنين.",
+   "prompt": "فيه إيميل بيغير معاد اجتماع؟ قارنه بالكالندر",
+   "tag": "ChatGPT iCloud"
+  },
+  {
+   "type": "point",
+   "title": "جهّز\n*الرد*",
+   "body": "🎬 لازم يرد قبل ما ينزل.\n👉 طلب مسودة ونسخها.",
+   "prompt": "رد قصير بالإنجليزي أأكد فيه اجتماع ١١",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "حمى\n*حسابه*",
+   "body": "🎬 كان هيكتب باسورد أبل.\n👉 عمل باسورد للتطبيق بس.\n⚠️ لو فصلته، امسحه من أبل.",
+   "path": [
+    "Apple Account",
+    "Sign-In",
+    "App Password"
+   ],
+   "tag": "Privacy"
+  },
+  {
+   "type": "cta",
+   "title": "رامي نزل\n*فاضي*",
+   "body": "وإنت كمان تقدر. ابعتها لزميلك اللي بيتأخر"
+  }
+ ]
+}
