@@ -1,0 +1,77 @@
+{
+ "hero": {
+  "name": "عم سعيد",
+  "emoji": "👴"
+ },
+ "sources": [
+  "https://blog.google/products-and-platforms/products/search/scam-detection-circle-to-search-lens/",
+  "https://www.tomsguide.com/phones/android-phones/your-android-can-detect-scam-texts-heres-how-to-use-circle-to-search-to-spot-them",
+  "https://androidauthority.com/circle-to-search-google-lens-scam-text-detection-3724020",
+  "https://blog.google/innovation-and-ai/products/gemini-app/updated-controls/",
+  "https://www.androidauthority.com/gemini-new-chat-history-settings-3736303/",
+  "https://www.digitaltrends.com/computing/gemini-users-can-finally-save-their-ai-chats-without-letting-google-use-them-for-training-but-theres-a-catch/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "عم سعيد جاله\nرسالة *مريبة*",
+   "subtitle": "حسابك هيتقفل!"
+  },
+  {
+   "type": "point",
+   "title": "رسم دايرة\nعلى *الرسالة*",
+   "body": "🎬 قلبه وقع وكان هيدوس اللينك.\n👉 جوجل بقى يكشف النصب.",
+   "path": [
+    "Long-press Home",
+    "Circle to Search"
+   ],
+   "tag": "Circle to Search"
+  },
+  {
+   "type": "point",
+   "title": "سأل عن\n*العلامات*",
+   "body": "🎬 الرد قصير ومش فاهمه.\n👉 كمّل السؤال تحت الدايرة.",
+   "path": [
+    "Ask anything"
+   ],
+   "prompt": "إيه علامات النصب في الرسالة دي؟ بالمصري في ٣ نقط",
+   "tag": "Circle to Search"
+  },
+  {
+   "type": "point",
+   "title": "قارن\n*الرسالتين*",
+   "body": "🎬 افتكر رسالة البنك الحقيقية.\n👉 حط الاتنين قدام Gemini.",
+   "path": [
+    "Gemini",
+    "+",
+    "Gallery"
+   ],
+   "prompt": "قارن الرسالتين: الرقم واللينك والكلام مختلفين في إيه؟",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "حذّر\n*العيلة*",
+   "body": "🎬 خاف على أخته الكبيرة.\n👉 طلب تحذير للجروب.",
+   "prompt": "رسالة قصيرة لجروب العيلة تحذرهم من النصباية دي من غير ما أخوفهم",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "حمى\n*صوره*",
+   "body": "🎬 خاف على صور رسايله.\n👉 جديد: فصل السجل عن تدريب Gemini.\n⚠️ كلّم البنك بنفسك.",
+   "path": [
+    "Gemini",
+    "Profile",
+    "Activity"
+   ],
+   "tag": "Gemini Privacy"
+  },
+  {
+   "type": "cta",
+   "title": "عم سعيد\n*نجا*",
+   "body": "وإنت كمان تقدر. ابعتها لأبوك أو أمك"
+  }
+ ]
+}

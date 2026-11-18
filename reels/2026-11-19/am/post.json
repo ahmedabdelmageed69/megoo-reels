@@ -1,0 +1,68 @@
+{
+ "hero": {
+  "name": "ياسمين",
+  "emoji": "👩‍💼"
+ },
+ "sources": [
+  "https://www.technology.org/2026/10/08/gpt-6-intelligent-ui-free-chatgpt-users/",
+  "https://www.kucoin.com/news/flash/openai-launches-gpt-6-for-all-chatgpt-users-including-free-accounts",
+  "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+  "https://help.openai.com/en/articles/8400551-chatgpt-image-inputs-faq"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "لمبة نوّرت\nفي عربية *ياسمين*",
+   "subtitle": "وهي متأخرة"
+  },
+  {
+   "type": "point",
+   "title": "صوّرت\n*التابلوه*",
+   "body": "🎬 لمبة صفرا ظهرت فجأة.\n👉 جديد: GPT-6 ببلاش، صوّرتهاله.",
+   "path": [
+    "ChatGPT",
+    "+",
+    "Camera"
+   ],
+   "prompt": "اللمبة دي معناها إيه؟ عربيتي إلنترا ٢٠١٨، أكمل ولا أقف؟",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "طلبت\n*إشارة*",
+   "body": "🎬 الرد طويل وهي مستعجلة.\n👉 خلّته يرد زي إشارة المرور.",
+   "prompt": "رد في سطرين: أخضر أكمل، أصفر ميكانيكي النهاردة، أحمر أقف",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "قارنت\n*الكتالوج*",
+   "body": "🎬 لقت كتيب العربية.\n👉 بعتت صفحة اللمبات كمان.",
+   "path": [
+    "+",
+    "Photos"
+   ],
+   "prompt": "قارن اللمبة بالصفحة دي وقولي اسمها بالظبط",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "كلّمت\n*الميكانيكي*",
+   "body": "🎬 مش عايزة تتغشّ.\n👉 جهّزت أسئلتها قبل الورشة.",
+   "prompt": "رسالة للميكانيكي فيها اسم اللمبة والكيلومترات و٣ أسئلة عن التكلفة",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "وقفت\n*بأمان*",
+   "body": "🎬 مرة كتبت الموديل غلط.\n👉 صحّحته وسألت تاني.\n⚠️ لمبة حمرا؟ اقف الأول.",
+   "tag": "Safety"
+  },
+  {
+   "type": "cta",
+   "title": "ياسمين وصلت\n*مطمّنة*",
+   "body": "وإنت كمان تقدر. ابعتها لحد بيسوق كل يوم"
+  }
+ ]
+}
