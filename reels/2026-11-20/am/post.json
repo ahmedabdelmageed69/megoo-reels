@@ -1,0 +1,71 @@
+{
+ "hero": {
+  "name": "ملك",
+  "emoji": "👧"
+ },
+ "sources": [
+  "https://9to5google.com/2026/11/16/gemini-rolling-out-66-new-regional-voices-on-android-and-ios-including-10-uk-dialects/",
+  "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/",
+  "https://www.androidauthority.com/google-gemini-new-regional-voices-3735654/",
+  "https://www.androidheadlines.com/2026/11/google-gemini-66-new-regional-voices.html"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "ملك عندها شفوي\n*إنجليزي* الساعة ٩",
+   "subtitle": "وصاحية مرعوبة"
+  },
+  {
+   "type": "point",
+   "title": "امتحنت\n*نفسها*",
+   "body": "🎬 صحيت وقلبها بيدق.\n👉 كلمت Gemini بالصوت.",
+   "path": [
+    "Gemini",
+    "Live"
+   ],
+   "prompt": "إنتي مدرسة إنجليزي، اسأليني ٣ أسئلة شفوي عن My Family",
+   "tag": "Gemini Live"
+  },
+  {
+   "type": "point",
+   "title": "غيرت\n*الصوت*",
+   "body": "🎬 مس هبة بتتكلم بريطاني.\n👉 جديد: اختارت صوت بلكنة إنجليزية.",
+   "path": [
+    "Live",
+    "⋮",
+    "Gemini's voice"
+   ],
+   "tag": "Regional voices"
+  },
+  {
+   "type": "point",
+   "title": "صححت\n*نطقها*",
+   "body": "🎬 كلمة بتتلخبط فيها كل مرة.\n👉 خلته يبطّأ ويعيد.",
+   "prompt": "لو نطقت كلمة غلط، قوليها ببطء مرتين وأنا أعيد وراكي",
+   "tag": "Gemini Live"
+  },
+  {
+   "type": "point",
+   "title": "سمعت\n*الإجابات*",
+   "body": "🎬 الطريق للمدرسة ربع ساعة.\n👉 طلبت إجابات وسمعتها بنفس الصوت.",
+   "path": [
+    "Gemini",
+    "🔊 Listen"
+   ],
+   "prompt": "اكتبيلي إجابة نموذجية قصيرة لكل سؤال بكلمات سهلة",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "سألت\n*المدرسة*",
+   "body": "🎬 Gemini عدّى كلمة كانت غلط.\n👉 المدرسة هي المرجع.\n⚠️ الأصوات لسه بتنزل ومش متسمية.",
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "ملك جابت\n*الدرجة*",
+   "body": "وإنت كمان تقدر. ابعتها لماما عندها امتحانات"
+  }
+ ]
+}

@@ -1,0 +1,66 @@
+{
+ "hero": {
+  "name": "الحاجة فوزية",
+  "emoji": "👵"
+ },
+ "sources": [
+  "https://9to5mac.com/2026/11/18/chatgpt-app-gains-enhanced-live-dictation-streaming-without-10-minute-limit/",
+  "https://runtimewire.com/article/openai-makes-chatgpt-dictation-stream-live-and-drops-its-10-minute-cap",
+  "https://mezha.net/eng/news/mezha-43ecf637f942e7c581a3b911_openai_adds_live",
+  "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "وصفات الحاجة فوزية\nفي *دماغها* بس",
+   "subtitle": "وبنتها مسافرة"
+  },
+  {
+   "type": "point",
+   "title": "حكت\n*وصفتها*",
+   "body": "🎬 بنتها المسافرة نفسها في ملوخية أمها.\n👉 جديد: الكلام بيتكتب وهي بتحكي.",
+   "path": [
+    "ChatGPT",
+    "🎤 Dictate"
+   ],
+   "tag": "Live Dictation"
+  },
+  {
+   "type": "point",
+   "title": "نظّمت\n*الحكاية*",
+   "body": "🎬 كلامها طلع ملخبط.\n👉 طلبت ترتيب بأسلوبها.",
+   "prompt": "رتب كلامي وصفة: المقادير وبعدين الخطوات بأرقام، وسيب أسلوبي زي ما هو",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "حكت\n*ساعة*",
+   "body": "🎬 افتكرت المحشي والكحك.\n👉 مبقاش فيه حد عشر دقايق.",
+   "prompt": "قسم الكلام ده لوصفات منفصلة، كل وصفة بعنوان",
+   "tag": "Live Dictation"
+  },
+  {
+   "type": "point",
+   "title": "فكرت\n*ببنتها*",
+   "body": "🎬 الملوخية الطازة مش موجودة هناك.\n👉 طلبت بدائل.",
+   "prompt": "اكتب لبنتي في ألمانيا قائمة مشتريات للوصفات دي، وبديل لكل حاجة مش هتلاقيها",
+   "tag": "ChatGPT"
+  },
+  {
+   "type": "point",
+   "title": "راجعت\n*المقادير*",
+   "body": "🎬 لقت معلقة اتكتبت كوباية!\n👉 صححت بإيدها قبل ما تبعت.\n⚠️ الإملاء ممكن يغلط في الأرقام.",
+   "path": [
+    "Edit",
+    "Send"
+   ],
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "البنت طبخت\n*ودمعت*",
+   "body": "وإنت كمان تقدر. ابعتها لأمك أو تيتة"
+  }
+ ]
+}
