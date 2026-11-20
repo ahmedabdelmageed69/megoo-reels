@@ -1,0 +1,70 @@
+{
+ "hero": {
+  "name": "دينا",
+  "emoji": "👩"
+ },
+ "sources": [
+  "https://techcrunch.com/2026/11/16/google-maps-can-now-build-trip-itineraries-with-real-time-details-about-each-stop/",
+  "https://www.androidauthority.com/google-maps-ask-maps-update-3735628/",
+  "https://www.droid-life.com/2026/11/16/google-maps-new-ask-maps-ai-features/",
+  "https://www.online-tech-tips.com/google-ask-maps-holiday-features-itineraries-route-tips-saved-lists/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "دينا وعدت العيال\nبفسحة *النهاردة*",
+   "subtitle": "ومش عارفة نروح فين"
+  },
+  {
+   "type": "point",
+   "title": "سألت\n*الخريطة*",
+   "body": "🎬 العيال صاحيين: رايحين فين؟\n👉 جديد: الخرايط بترتب يوم كامل.",
+   "path": [
+    "Google Maps",
+    "Ask Maps"
+   ],
+   "prompt": "خطة يوم في القاهرة لعيلة معاها طفلين، ٣ أماكن قريبة من بعض",
+   "tag": "Ask Maps"
+  },
+  {
+   "type": "point",
+   "title": "ظبطت\n*الميزانية*",
+   "body": "🎬 الفلوس آخر الشهر على القد.\n👉 قلّلت التكلفة.",
+   "prompt": "نفس الخطة بس كل الأماكن ببلاش أو تذكرتها أقل من ١٠٠ جنيه",
+   "tag": "Ask Maps"
+  },
+  {
+   "type": "point",
+   "title": "دورت\n*بقايمتها*",
+   "body": "🎬 افتكرت أماكن كانت حافظاها.\n👉 خلّت الخريطة تدور فيها.",
+   "prompt": "من أماكني المحفوظة، إيه اللي فاتح النهاردة ومناسب للأطفال؟",
+   "tag": "Ask Maps"
+  },
+  {
+   "type": "point",
+   "title": "بعتت\n*الخطة*",
+   "body": "🎬 جوزها لسه نايم.\n👉 شيّرت الخطة على جروب العيلة.",
+   "path": [
+    "Share",
+    "WhatsApp"
+   ],
+   "tag": "Ask Maps"
+  },
+  {
+   "type": "point",
+   "title": "اتأكدت\n*بنفسها*",
+   "body": "🎬 مكان طلع قافل للصيانة!\n👉 اتصلت قبل ما تنزل.\n⚠️ الميزة بتوصل بالتدريج.",
+   "path": [
+    "Maps",
+    "📞 Call"
+   ],
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "العيال رجعوا\n*مبسوطين*",
+   "body": "وإنت كمان تقدر. ابعتها لأم محتارة"
+  }
+ ]
+}

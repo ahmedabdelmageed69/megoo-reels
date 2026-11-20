@@ -1,0 +1,71 @@
+{
+ "hero": {
+  "name": "وليد",
+  "emoji": "👨‍💼"
+ },
+ "sources": [
+  "https://www.digitaltrends.com/computing/gemini-notebook-can-now-turn-your-notes-into-interactive-websites/",
+  "https://www.online-tech-tips.com/gemini-notebook-interactive-sites/",
+  "https://x.com/Gemini_Notebook/status/2122436141282660596",
+  "https://www.androidpolice.com/gemini-notebook-made-your-study-notes-into-something-you-can-explore/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "وليد عنده اجتماع\nأرقام *بكرة*",
+   "subtitle": "والشيتات ملخبطة"
+  },
+  {
+   "type": "point",
+   "title": "رفع\n*الشيتات*",
+   "body": "🎬 تلات شيتات مبيعات ملخبطينه.\n👉 حطهم في Gemini Notebook.",
+   "path": [
+    "Gemini Notebook",
+    "+ Add sources"
+   ],
+   "prompt": "إنت محلل مبيعات، إيه أهم ٣ أرقام اتغيرت عن الشهر اللي فات؟",
+   "tag": "Gemini Notebook"
+  },
+  {
+   "type": "point",
+   "title": "عمل\n*داشبورد*",
+   "body": "🎬 المدير بيحب يشوف مش يسمع.\n👉 جديد: Notebook بيبني موقع.",
+   "prompt": "make me a site: داشبورد مبيعات بفلتر لكل فرع ورسم لكل أسبوع",
+   "tag": "Notebook Sites"
+  },
+  {
+   "type": "point",
+   "title": "اتمرّن\n*قبلها*",
+   "body": "🎬 خاف من أسئلة المدير.\n👉 عمل بروفة.",
+   "prompt": "إنت مديري المتشدد، اسألني ٥ أسئلة صعبة عن الأرقام",
+   "tag": "Gemini Notebook"
+  },
+  {
+   "type": "point",
+   "title": "بعت\n*اللينك*",
+   "body": "🎬 قبل الاجتماع بساعة.\n👉 بعت الموقع.",
+   "path": [
+    "Share",
+    "Copy link"
+   ],
+   "prompt": "إيميل قصير لمديري فيه أهم ٣ نتايج ولينك الداشبورد",
+   "tag": "Gemini Notebook"
+  },
+  {
+   "type": "point",
+   "title": "لقى\n*غلطة*",
+   "body": "🎬 رقم فرع طلع غلط!\n👉 قارنه بالشيت وصلّحه.\n⚠️ متحطش بيانات العملا.",
+   "path": [
+    "Sources",
+    "Excel"
+   ],
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "المدير قاله\n*برافو*",
+   "body": "وإنت كمان تقدر. ابعتها لزميل عنده اجتماع"
+  }
+ ]
+}
