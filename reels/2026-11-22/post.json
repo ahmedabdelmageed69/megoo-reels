@@ -1,0 +1,69 @@
+{
+ "hero": {
+  "name": "عمر",
+  "emoji": "👦"
+ },
+ "sources": [
+  "https://blog.google/innovation-and-ai/products/gemini-app/immersive-explorations-student-hub/",
+  "https://workspaceupdates.googleblog.com/2026/10/immersive-explorations-now-available-in-the-Gemini-app.html",
+  "https://tech.yahoo.com/ai/gemini/articles/geminis-immersive-explorations-unlocks-interactive-171518559.html",
+  "https://explainx.ai/blog/gemini-immersive-explorations-student-hub-silk-road-jet-engine-lightning-layer-by-layer-six-languages-2026",
+  "https://blog.google/innovation-and-ai/products/gemini-app/student-offer-google-ai/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "عمر مش فاهم\nدرس *البرق*",
+   "subtitle": "والاختبار بكرة"
+  },
+  {
+   "type": "point",
+   "title": "لقط\n*الصفحة*",
+   "body": "🎬 قرا الصفحة تلات مرات ومفيش فايدة.\n👉 طلب الزتونة بس.",
+   "path": [
+    "Gemini",
+    "+",
+    "Camera"
+   ],
+   "prompt": "لخّص الصفحة دي في ٣ أفكار، كل فكرة بمثال من الشارع",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "فرّق بين\n*الشحنات*",
+   "body": "🎬 الموجب والسالب ملخبطينه.\n👉 طلبهم في عمودين.",
+   "prompt": "جدول: موجبة وسالبة، بتتحرك إزاي، ومثال من البيت",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "دخل جوّه\n*السحابة*",
+   "body": "🎬 مش قادر يتخيل البرق.\n👉 جديد: رحلة تفاعلية جوّه السحابة.\n💡 بالإنجليزي، دوس أي جزء يكبر.",
+   "path": [
+    "Gemini",
+    "Students",
+    "Immersive explore"
+   ],
+   "tag": "Immersive Explore"
+  },
+  {
+   "type": "point",
+   "title": "اتمرّن\n*بالكروت*",
+   "body": "🎬 فاضل مراجعة قبل النوم.\n👉 عمل كروت للأتوبيس.",
+   "prompt": "اعمل ١٠ كروت مذاكرة، السؤال بالعربي والمصطلح بالإنجليزي",
+   "tag": "Gemini Cards"
+  },
+  {
+   "type": "point",
+   "title": "كتب كلام\n*الكتاب*",
+   "body": "🎬 تعريف Gemini مختلف عن الكتاب!\n👉 التزم بتعريف المنهج.\n⚠️ التصحيح بالكتاب، مش بالذكاء الاصطناعي.",
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "عمر خد\n*الدرجة*",
+   "body": "وإنت كمان تقدر. ابعتها لأم عندها امتحانات"
+  }
+ ]
+}

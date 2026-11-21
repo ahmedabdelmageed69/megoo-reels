@@ -1,0 +1,68 @@
+{
+ "hero": {
+  "name": "رانيا",
+  "emoji": "👩"
+ },
+ "sources": [
+  "https://blog.google/products-and-platforms/products/search/temporary-threads-ai-mode/",
+  "https://techcrunch.com/2026/11/18/googles-ai-feature-in-search-gets-its-own-incognito-mode",
+  "https://androidauthority.com/google-ai-mode-temporary-threads-3735924",
+  "https://support.google.com/websearch/answer/16296315"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "رانيا شعرها بيقع\nومكسوفة *تسأل*",
+   "subtitle": "والتابلت بتاع البيت"
+  },
+  {
+   "type": "point",
+   "title": "سألت\n*بالسر*",
+   "body": "🎬 الصبح لقت شعر كتير على المشط.\n👉 جديد: فتحت سؤال مؤقت ميتحفظش.",
+   "path": [
+    "Google",
+    "AI Mode",
+    "⏱ Temporary"
+   ],
+   "prompt": "شعري بيقع أكتر من العادي من شهرين، إيه الأسباب الشائعة؟",
+   "tag": "Search AI"
+  },
+  {
+   "type": "point",
+   "title": "رتّبت\n*الأسباب*",
+   "body": "🎬 الإجابة طويلة وقلقتها.\n👉 طلبت الخلاصة.",
+   "prompt": "جدول: السبب، علامته، وإمتى لازم أروح لدكتور",
+   "tag": "Search AI"
+  },
+  {
+   "type": "point",
+   "title": "شكّت في\n*الشامبو*",
+   "body": "🎬 افتكرت إنها غيّرت الشامبو.\n👉 صوّرت المكونات.",
+   "path": [
+    "AI Mode",
+    "Camera"
+   ],
+   "prompt": "المكونات دي ممكن تضايق فروة حساسة؟",
+   "tag": "Search Camera"
+  },
+  {
+   "type": "point",
+   "title": "حضّرت\n*للكشف*",
+   "body": "🎬 حجزت دكتورة جلدية.\n👉 كتبت اللي هتسأله قبلها.",
+   "prompt": "اكتبلي ٤ أسئلة للدكتورة، وإيه التحاليل اللي ممكن تطلبها",
+   "tag": "Search AI"
+  },
+  {
+   "type": "point",
+   "title": "خبّت\n*هويتها*",
+   "body": "🎬 المؤقت مش معناه إن مفيش تسجيل.\n👉 مكتبتش اسمها ولا صوّرت وشها.\n⚠️ ده فهم، مش تشخيص.",
+   "tag": "Privacy"
+  },
+  {
+   "type": "cta",
+   "title": "رانيا بقت\n*مطمّنة*",
+   "body": "وإنت كمان تقدر. ابعتها لصاحبتك المكسوفة تسأل"
+  }
+ ]
+}
