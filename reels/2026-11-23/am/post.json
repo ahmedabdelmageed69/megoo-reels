@@ -1,0 +1,68 @@
+{
+ "hero": {
+  "name": "طارق",
+  "emoji": "👨‍🦳"
+ },
+ "sources": [
+  "https://9to5google.com/2026/11/12/gemini-4-hydrogen-launch/",
+  "https://www.makeuseof.com/gemini-4-hydrogen-rolls-out/",
+  "https://www.ghacks.net/2026/11/13/google-releases-gemini-4-hydrogen-in-search-and-the-gemini-app-replacing-gemini-3-8-flash/",
+  "https://techcrunch.com/2026/11/17/google-to-keep-gemini-chats-for-two-months-up-from-72-hours-even-with-history-off/",
+  "https://gemini.google/release-notes/"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "طارق مسؤول\nعن *أسانسير*\nعطلان",
+   "subtitle": "والجروب مولّع"
+  },
+  {
+   "type": "point",
+   "title": "كتب\n*الإعلان*",
+   "body": "🎬 ٤٠ رسالة قبل الفطار.\n👉 طلب إعلان واحد.",
+   "path": [
+    "Gemini",
+    "Chat"
+   ],
+   "prompt": "إعلان لجروب العمارة: الأسانسير عطلان، الفني الخميس، والتكلفة ٦٠٠٠",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "قسّم\n*الفلوس*",
+   "body": "🎬 كل واحد بيحسب على مزاجه.\n👉 جديد: Gemini 4 أشطر في الجداول.",
+   "prompt": "١١ شقة والأرضي معفي، قسّم ٦٠٠٠، جدول: الشقة، المبلغ، دفع؟",
+   "tag": "Gemini 4"
+  },
+  {
+   "type": "point",
+   "title": "طلب\n*الضمان*",
+   "body": "🎬 الفني عايز عربون النهاردة.\n👉 خلّى الشرط مكتوب.",
+   "path": [
+    "Gemini",
+    "Chat"
+   ],
+   "prompt": "رد مهذب للفني: موافق، بشرط ضمان ٦ شهور مكتوب",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "فكّر\n*المتأخرين*",
+   "body": "🎬 ٣ شقق لسه مدفعوش.\n👉 طلب تذكير ميحرجش حد.",
+   "prompt": "تذكير لطيف للي لسه مدفعش، من غير أسماء",
+   "tag": "Gemini"
+  },
+  {
+   "type": "point",
+   "title": "خبّى\n*الأرقام*",
+   "body": "🎬 كان هيلصق أرقام الجيران.\n👉 كتب رقم الشقة بس.\n⚠️ Gemini بيحفظ الشات شهرين حتى والسجل مقفول.",
+   "tag": "Privacy"
+  },
+  {
+   "type": "cta",
+   "title": "الأسانسير\n*اشتغل*",
+   "body": "وإنت كمان تقدر. ابعتها لمسؤول عمارتكم"
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "hero": {
+  "name": "مصطفى",
+  "emoji": "👨‍💼"
+ },
+ "sources": [
+  "https://help.openai.com/en/articles/11084440-images-in-chatgpt",
+  "https://openai.com/index/introducing-images-2-6/",
+  "https://www.newsbytesapp.com/news/science/phota-labs-releases-ios-app-enhancing-photos-while-preserving-realism/tldr",
+  "https://www.zetik.com/news/article/story_id-p008-231758",
+  "https://www.photalabs.com/solutions/ai-photo-editing"
+ ],
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "AI Tips",
+   "title": "مصطفى معندوش\nصورة *محترمة*\nللـ CV",
+   "subtitle": "والتقديم بكرة"
+  },
+  {
+   "type": "point",
+   "title": "حوّل\n*السيلفي*",
+   "body": "🎬 كل صوره من الأفراح.\n👉 بعت سيلفي جنب الشباك.",
+   "path": [
+    "ChatGPT",
+    "+",
+    "Photos"
+   ],
+   "prompt": "حوّلها صورة بروفايل رسمية: قميص أبيض، خلفية رمادي، ووشي زي ما هو",
+   "tag": "ChatGPT Images"
+  },
+  {
+   "type": "point",
+   "title": "صلّح حتة\n*واحدة*",
+   "body": "🎬 الياقة طالعة مكرمشة.\n👉 حدّدها بصباعه بس.",
+   "path": [
+    "الصورة",
+    "Select"
+   ],
+   "prompt": "اكوي الياقة دي بس، ومتغيرش الوش",
+   "tag": "ChatGPT Select"
+  },
+  {
+   "type": "point",
+   "title": "جرّب تطبيق\n*جديد*",
+   "body": "🎬 لسه مش شبهه أوي.\n👉 جديد: Phota بيتعلم وشه من صوره.\n💡 على الآيفون، ولسه ببلاش.",
+   "path": [
+    "App Store",
+    "Phota"
+   ],
+   "tag": "Phota"
+  },
+  {
+   "type": "point",
+   "title": "كمّل\n*البروفايل*",
+   "body": "🎬 الصفحة لسه فاضية.\n👉 طلب غلاف لينكدإن.",
+   "path": [
+    "ChatGPT",
+    "Images"
+   ],
+   "prompt": "غلاف لينكدإن لمحاسب، كحلي ورمادي، من غير كتابة",
+   "tag": "ChatGPT Images"
+  },
+  {
+   "type": "point",
+   "title": "عرف\n*الحدود*",
+   "body": "🎬 فكّر يحطها في الباسبور.\n👉 استخدمها للـ CV بس.\n⚠️ الباسبور لازم صورة حقيقية من استوديو.",
+   "tag": "Honest"
+  },
+  {
+   "type": "cta",
+   "title": "مصطفى اتطلب\n*للمقابلة*",
+   "body": "وإنت كمان تقدر. ابعتها لصاحبك اللي بيقدّم"
+  }
+ ]
+}
